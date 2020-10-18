@@ -18,7 +18,6 @@ header:
       slug: /blog
     - name: Documents
       slug: /work
-    - name: People
 
 footer:
   show_powered_by: true

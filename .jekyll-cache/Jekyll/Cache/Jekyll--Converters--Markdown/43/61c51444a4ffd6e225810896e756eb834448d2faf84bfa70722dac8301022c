@@ -1,0 +1,19 @@
+I"Ì<p>HybridSynchAADL is a plugin of OSATE, the standard tool environment for AADL, and supports the modeling and formal anlaysis of HybridSynchAADL models within OSATE.</p>
+
+<p>HybridSynchAADL uses Maude combined with SMT solving to symbolically encode all possible continuous behaviors depending on imprecise clocks. Please download Maude combined with SMT. <a href="https://maude-se.github.io/">Maude-SE</a></p>
+
+<p>HybridSynchAADL has been tested on macOS Catalina and Linux (Ubuntu x64) using Java 1.8</p>
+
+<h2 id="for-mac-user">For Mac user</h2>
+<p>Notice that OSATE binary is not signed. This can result in an error message when starting OSATE.</p>
+
+<p>To correct this issue, run the following command to allow OSATE execution.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo xattr -rd com.apple.quarantine osate2.app/
+</code></pre></div></div>
+
+<p>##</p>
+
+<h2 id="stable-version">Stable Version</h2>
+<p><br />
+<br /></p>
+:ET
