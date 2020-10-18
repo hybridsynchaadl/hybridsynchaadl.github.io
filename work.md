@@ -1,20 +1,21 @@
 ---
 layout: work
-title: Work
+title: Documents 
 slug: /work
 items:
-  - title: My Interest 1
+  - title: Technical Report 
     image:
-      src: /assets/img/work/water.png
-      alt: water
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  - title: My Interest 2
+      src: /assets/img/work/report.png
+      alt: report 
+    download: docs/techrep.pdf 
+    description: Technical report about a sublanguage of AADL, a formal semantics, and HybridSynchAADL tool description. 
+  - title: Tutorial 
     image:
-      src: /assets/img/work/sand.png
-      alt: sand
-    description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      src: /assets/img/work/study.png
+      alt: study 
+    download: docs/tutorial.pdf
+    description: Tutorials about how to use HybridSynchAADL. 
 ---
-
-This is an example of a "Work" page, displaying your work, your interests, your projects.
+The techniques in HybridSynchAADL are described by the following documents.
 <br />
 <br />
