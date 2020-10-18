@@ -12,13 +12,13 @@ header:
   pages:
     - name: Home
       slug: /
-    - name: DOWNLOAD
-      slug: /work
-    - name: BENCHMARKS
+    - name: Download
+      slug: /download
+    - name: Benchmarks 
       slug: /blog
-    - name: DOCUMENTS
+    - name: Documents
       slug: /work
-    - name: PEOPLE
+    - name: People
 
 footer:
   show_powered_by: true
