@@ -1,8 +1,7 @@
 <html>
   <body>
     <h1>HYBRIDSYNCHAADL: Modeling and Formal Analysis of Virtually Synchronous CPSs in AADL</h1>
-    <h2>Abstract</h2>
-		<p>We present the HybridSynchAADL modeling language andformal analysis tool for virtually synchronous cyber-physical systemswith complex control programs, continuous behaviors, and bounded clockskews, network delays, and execution times. We leverage the Hybrid PALS equivalence, so that it is sufficient to model and verify the simpler underlying synchronous designs. We define the HybridSynchAADL language as a sublanguage of the avionics modeling standard AADL for modeling such designs in AADL. HybridSynchAADL models are given a formal semantics and analyzed using Maude with SMT solving,which allows us to represent advanced control programs and communication features in Maude, while capturing timing uncertainties and continuous behaviors symbolically with SMT solving. We demonstrate the effectiveness of HybridSynchAADL on a number of applications, including autonomous drones that collaborate to achieve common goals.</p>
+	<p>This web page contains resources for our paper “HYBRIDSYNCHAADL: Modeling and Formal Analysis of Virtually Synchronous CPSs in AADL” by J. Lee, S. Kim, K. Bae, P. C. Ölveczky, and M. Kang.</p>
 	<h2>HybridSynchAADL Tool</h2>
 		<p>
 			HybridSynchAADL is an <a href="https://osate.org/">OSATE</a> plug-in to model Hybrid Synchronous AADL models in the OSATE environment. Our tool requires the following tools:
@@ -19,49 +18,25 @@
 		</p>
 	<h2>Technical Report</h2>
 		<p>
-			The technical report gives more details about HybridSynchAAD. It contains following informations:
-			<ul>
-				<li>HybridSynchAADL Modeling Language</li>
-				<li>Formal Semantics of HybridSynchAADL</li>
-				<li>Merging Symbolic States</li>
-				<li>Property Specification Language</li>
-				<li>Case Study(Two Dimensional FourDronesSystem)</li>
-				<li>Evaluation</li>
-			</ul>
+			The technical report gives more details about HybridSynchAADL.
 			You can download technical report in this <a href="https://hybridsynchaadl.github.io/docs/techrep.pdf">link</a>			
 		</p>
     <h2>Benchmarks</h2>
 		<p>
 			There are six benchmarks used in the HybridSynchAADL tool. Each benchmarks are as follows:
 			<ul>
-				<li>Drone_Single_Integrator: rendezvous and formation control of drones with single-integrator dynamics</li>
-				<li>Drone with double-integrator: rendezvous and formation control of drones with single-integrator dynamics</li>
-				<li>Thermostat: networked thermostat system</li>
-				<li>WaterTank: watertank system with pump</li>
-				<li>FourDronesExample: rendezvous control of four one-dimensional drones</li>
-				<li>FourDronesSystem_Two_Dim: rendezvous control of four two-dimensional drones</li>
+				<li><a href="https://hybridsynchaadl.github.io/models/Drone_Single_Integrator.zip">Drone_Single_Integrator</a>: rendezvous and formation control of drones with single-integrator dynamics</li>
+				<li><a href="https://hybridsynchaadl.github.io/models/Drone_Double_Integrator.zip">Drone with double-integrator</a>: rendezvous and formation control of drones with single-integrator dynamics</li>
+				<li><a href="https://hybridsynchaadl.github.io/models/Thermostat.zip">Thermostat</a>: networked thermostat system</li>
+				<li><a href="https://hybridsynchaadl.github.io/models/WaterTank.zip">WaterTank</a>: watertank system with pump</li>
+				<li><a href="https://hybridsynchaadl.github.io/models/FourDronesExample.zip">FourDronesExample</a>: rendezvous control of four one-dimensional drones</li>
+				<li><a href="https://hybridsynchaadl.github.io/models/FourDronesExample_Two_Dim.zip">FourDronesSystem_Two_Dim</a>: rendezvous control of four two-dimensional drones</li>
 			</ul>
-			For the sake of convenience, we also provide the <a href="https://hybridsynchaadl.github.io/models/models.zip">zip file</a> that contains all benchmarks.
-		</p>
-	<h2>Raw Data</h2>
-		<p>
-			You can download all raw data used in the TACAS 2021 paper. Download <a href="">rawdata.zip</a> (5.62GB)
-		</p>
-	<h2>Experimental Results</h2>
-		<p>
-			CSV files from raw data, and summarized excel files can be downloaded in this <a href="">link</a>
+			For the convenience, we also provide the <a href="https://hybridsynchaadl.github.io/models/models.zip">zip file</a> that contains all benchmarks.
 		</p>
 	<h2>Artifact.zip</h2>
 		<p>
 			For TACAS 2021, download the <a href="https://tinyurl.com/y36trke5">artifact.zip</a>
-		</p>
-	<h2>Other CPS Analysis Tools</h2>
-		<p>
-			<ul>
-				<li><a href="http://spaceex.imag.fr/">SpaceEx</a> is designed to facillitate the implementation of algorithms related to reachability and safety verification.</li>
-				<li><a href="https://github.com/stanleybak/hylaa">Hylaa</a> is a verifiation tool for system models with lenear ODEs, time-varying inputs, and possibly hybrid dynamics </li>
-				<li><a href="https://es-static.fbk.eu/tools/hycomp/">HyComp</a> is a model checker for asynchronous hybrid systems. HyComp is built on top of the nuXmv model checker </li>
-			</ul>
 		</p>
   </body>
 </html>
