@@ -4,11 +4,11 @@ title: Benchmarks
 slug: /blog
 ---
 
-[Drone_Single_Integrator](models/Drone_Single_Integrator.zip): rendezvous and formation control of drones with single-integrator dynamics
+[Drone_Single_Integrator](models/DroneSingle.zip): rendezvous and formation control of drones with single-integrator dynamics
 <br />
 <br />
 
-[Drone with double-integrator](models/Drone_Double_Integrator.zip): rendezvous and formation control of drones with single-integrator dynamics
+[Drone with double-integrator](models/DroneDouble.zip): rendezvous and formation control of drones with single-integrator dynamics
 <br />
 <br />
 
@@ -24,7 +24,7 @@ slug: /blog
 <br />
 <br />
 
-[FourDronesSystem_Two_Dim](models/FourDronesSystem_Two_Dim.zip): rendezvous control of four two-dimensional drones
+[FourDronesSystem_Two_Dim](models/FourDronesSystem2.zip): rendezvous control of four two-dimensional drones
 <br />
 <br />
 <br />
