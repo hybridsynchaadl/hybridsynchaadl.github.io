@@ -20,23 +20,8 @@ header:
       slug: /work
 
 footer:
-  show_powered_by: true
+  show_powered_by: false
   contact:
-    - name: Email
-      value: thkighie1224@postech.ac.kr
-      link: mailto:thkighie1224@postech.ac.kr
-    - name: Email
-      value: ksron@postech.ac.kr 
-      link: mailto:ksron@postech.ac.kr
-    - name: Email
-      value: kmbae@postech.ac.kr 
-      link: mailto:kmbae@postech.ac.kr
-    - name: Email
-      value: peterol@ifi.uio.no 
-      link: mailto:peterol@ifi.uio.no
-    - name: Email
-      value: masonkang@postech.ac.kr 
-      link: mailto:masonkang@postech.ac.kr
 
 # Build settings
 markdown: kramdown
