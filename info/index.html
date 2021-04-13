@@ -7,7 +7,7 @@
 			HybridSynchAADL is an <a href="https://osate.org/">OSATE</a> plug-in to model Hybrid Synchronous AADL models in the OSATE environment. Our tool requires the following tools:
 			<ul>
 				<li><a href="https://www.java.com/ko/download/">Java 1.8</a>: For running OSATE, Java 8 or upper version is required</li>
-				<li><a href="https://maude-se.github.io/">Mause with SMT solving</a>: HybridSynchAADL uses Maude combined with SMT solving to symbolically enoce all possible continuous behaviors</li>
+				<li><a href="https://maude-se.github.io/">Mause with SMT solving</a>: HybridSynchAADL uses Maude combined with SMT solving to symbolically encode all possible continuous behaviors</li>
 			</ul>
 			
 			After install all the tools above, download HybridSynchAADL tool in this <a href="https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0">link</a>. 	
@@ -21,6 +21,18 @@
 			The technical report gives more details about HybridSynchAADL.
 			You can download technical report in this <a href="https://hybridsynchaadl.github.io/docs/techrep.pdf">link</a>			
 		</p>
+	<h2>HybridSynchAADL Semantics</h2>
+		<p>
+			HybridSynchAADL formalizes modeling language and implements tool's analysis by developing Maude-with-SMT semantics. Each component in HybridSynchAADL model is represented as an object instance of the corresponding class, and rewrite rules involving such objects specify the behavior of the component. 
+		</p><a href="https://hybridsynchaadl.github.io/semantics/semantics.zip">link</a>
+	<h2>Case Study</h2>
+		<p>
+			Explanation XXX.
+			<ul>
+				<li><a href="">FourDronesSystem</a>: rendezvous control of four two-dimensional drones.
+				<li><a href="">Airplane</a>: An airplane model.
+			</ul>
+		</p>
     <h2>Benchmarks</h2>
 		<p>
 			There are six benchmarks used in the HybridSynchAADL tool. Each benchmarks are as follows:
@@ -29,14 +41,12 @@
 				<li><a href="https://hybridsynchaadl.github.io/models/DroneDouble.zip">DroneDouble</a>: rendezvous and formation control of drones with single-integrator dynamics</li>
 				<li><a href="https://hybridsynchaadl.github.io/models/Thermostat.zip">Thermostat</a>: networked thermostat system</li>
 				<li><a href="https://hybridsynchaadl.github.io/models/WaterTank.zip">WaterTank</a>: watertank system with pump</li>
-				<li><a href="https://hybridsynchaadl.github.io/models/FourDronesSystem.zip">FourDronesSystem</a>: rendezvous control of four one-dimensional drones</li>
-				<li><a href="https://hybridsynchaadl.github.io/models/FourDronesSystem2.zip">FourDronesSystem2</a>: rendezvous control of four two-dimensional drones</li>
 			</ul>
 			For the convenience, we also provide the <a href="https://hybridsynchaadl.github.io/models/models.zip">zip file</a> that contains all benchmarks.
 		</p>
 	<h2>Artifact.zip</h2>
 		<p>
-			For TACAS 2021, download the <a href="https://tinyurl.com/y36trke5">artifact.zip</a>
+			To run HybridSynchAADL with benchmarks, download the <a href="https://tinyurl.com/y36trke5">artifact.zip</a>.
 		</p>
   </body>
 </html>
