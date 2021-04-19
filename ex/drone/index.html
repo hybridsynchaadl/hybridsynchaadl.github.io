@@ -1,12 +1,42 @@
 <html>
   <body>
-    <h1>Consensus Algorithm Application On Distributed Drones</h1>
-	<p>Explanation XXX</p>
-	<p>Figure XXX</p>
+    <h1>Distributed Drones with Consensus Algorithm Application</h1>
+<p>Virtually synchronous CPSs for controlling distributed drones can be modeled
+and analyzed using HybridSYNCHAADL. Controllers of multiple drones collaborate
+to achieve common maneuver goals, such as rendezvous. The controllers are
+physically distributed, since a controller is included in the hardware of each
+drone. Our models take into account continuous dynamics, asynchronous
+communication, network delays, clock skews, execution times, sampling and
+actuating time, etc.</p>
+	<h2>Architecture of Airplane Turning Controller</h2>
+<p>
+		<img src="https://hybridsynchaadl.github.io/images/architecture_of_drone.png" style="width: 65%; height: auto"></p>
+	<p>There are four drone components. Each drone is connected with two other
+drones to exchange positions. For example, Drone 1 sends its position to Drone
+2, and receives the position of Drone 4. A drone component consists of an
+environment and its controller. An environment component specifies the physical
+model of the drone, including position and velocity. A controller component
+interacts with the environment according to the sampling and actuating times.
+All controllers in the model have the same period.</p>
+	<h2>AADL Code of Airplane Turning Controller</h2> 
+<p>The following AADL component declares the top-level
+“implementation” of the system in terms of connections and subcomponents:</p>
+<p></p>
+<p>
+		<img src="https://hybridsynchaadl.github.io/images/aadl_drone.png" style="width: 65%; height: auto">
+</p>	
+<p>
+Each drone sends its position through its output ports oX and oY, and receives
+the position of the other drone through its input ports iX and iY. The
+component is declared to be synchronous with period 100 ms. Also, to meet the
+constraints of HybridSynchAADL, the connections between drone components are
+delayed and the output ports have some initial values. The maximal clock skew
+is given by Hybrid_SynchAADL::Max_Clock_Deviation.
+</p>
 	<h2>Download</h2>
 		<p>
 			<ul>
-				<li><a href="https://hybridsynchaadl.github.io/ex/drone/models/drone_consensus.zip">Drone_Consensus</a></li>
+				<li><a href="https://hybridsynchaadl.github.io/ex/drone/models/drone-consensus.zip">AirplaneTurn</a>: Distributed Drones</li>
 			</ul>
 		</p>
   </body>
