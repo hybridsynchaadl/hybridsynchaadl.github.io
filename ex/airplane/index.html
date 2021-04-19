@@ -4,7 +4,7 @@
 	<p>The design of a virtually synchronous control system for turning an airplane can be specified in Multirate Synchrnous AADL. To achieve a smooth turn of the airplane, the controller must synchronize the movements of the airplane's two airlerons and rudder r (an aileron is a flap attached to
 the end of the left or the right wing, and a rudder is a flap attached to the
 vertical tail).</p>
-	<h2>Diagrams</h2>
+	<h2>Architecture of Airplane Turning Controller</h2>
 		<p>
 		<img src="https://hybridsynchaadl.github.io/images/architecture_of_airplane.png" style="width: 65%; height: auto"></p>
 		<p>Our system consists of four periodic controllers with different
@@ -16,10 +16,13 @@ operates in the same way for the right wing aileron (resp., the rudder). The
 main controller receives the desired direction (from the pilot console) and the
 current angle of each device (from the device controllers), computes the new
 desired device angles, and sends them to the device controllers.</p>
-	<h2>AADL Code</h2>
-	<p>The following AADL component declares the top-level “implementation” of
+	<h2>AADL Code of Airplane Turning Controller</h2> 
+<p>The following AADL component declares the top-level
+“implementation” of the system in terms of connections and subcomponents:</p>
+<p></p>
+<p>
 		<img src="https://hybridsynchaadl.github.io/images/aadl_airplane.png" style="width: 65%; height: auto">
-the system in terms of connections and subcomponents:</p>	
+</p>	
 	<p>The pilot may in any round nondeterministically add 0◦, 10◦, or −10◦ to the
 current desired direction. The input port curr_dr receives the current direction
 ψ from the turning system, which operates 10 times faster than the pilot; we
