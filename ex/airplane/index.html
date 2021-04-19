@@ -6,7 +6,7 @@ the end of the left or the right wing, and a rudder is a flap attached to the
 vertical tail).</p>
 	<h2>Architecture of Airplane Turning Controller</h2>
 		<p>
-		<img src="https://hybridsynchaadl.github.io/images/architecture_of_airplane.png" style="width: 65%; height: auto"></p>
+		<img src="https://hybridsynchaadl.github.io/images/architecture_of_airplane.png" style="width: 60%; height: auto"></p>
 		<p>Our system consists of four periodic controllers with different
 periods. The environment is the pilot console that allows the pilot to select a
 new desired direction every 600 ms. The left wing controller receives the
@@ -21,7 +21,19 @@ desired device angles, and sends them to the device controllers.</p>
 “implementation” of the system in terms of connections and subcomponents:</p>
 <p></p>
 <p>
-		<img src="https://hybridsynchaadl.github.io/images/aadl_airplane.png" style="width: 65%; height: auto">
+	<code>
+		system implementation Airplane.impl
+			subcomponents
+				piolotConsole: system PilotConsole.impl; 	turnCtrl: system TurningController.impl;
+			connections
+				port pilotConsole.goal_dr -> turnCtrl.pilot_goal	{Timing => Delayed;};
+				port turnCtrl.curr_dr -> pilotConsole.curr_dr		{Timing => Delayed;};
+			properties
+				MR_SynchAADL::Synchronous => true;		Period => 600 ms;
+				Data_Model::Initial_Value => ("0.0") applies to pilotConsole.goal_dr, turnCtrl.curr_dr;
+		end Airplane.impl;
+	</code>
+		<img src="https://hybridsynchaadl.github.io/images/aadl_airplane.png" style="width: 55%; height: auto">
 </p>	
 	<p>The pilot may in any round nondeterministically add 0, 10, or −10 to the
 current desired direction. The input port curr_dr receives the current direction
