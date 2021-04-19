@@ -21,18 +21,6 @@ desired device angles, and sends them to the device controllers.</p>
 “implementation” of the system in terms of connections and subcomponents:</p>
 <p></p>
 <p>
-	<code>
-		system implementation Airplane.impl
-			subcomponents
-				piolotConsole: system PilotConsole.impl; 	turnCtrl: system TurningController.impl;
-			connections
-				port pilotConsole.goal_dr -> turnCtrl.pilot_goal	{Timing => Delayed;};
-				port turnCtrl.curr_dr -> pilotConsole.curr_dr		{Timing => Delayed;};
-			properties
-				MR_SynchAADL::Synchronous => true;		Period => 600 ms;
-				Data_Model::Initial_Value => ("0.0") applies to pilotConsole.goal_dr, turnCtrl.curr_dr;
-		end Airplane.impl;
-	</code>
 		<img src="https://hybridsynchaadl.github.io/images/aadl_airplane.png" style="width: 55%; height: auto">
 </p>	
 	<p>The pilot may in any round nondeterministically add 0, 10, or −10 to the
