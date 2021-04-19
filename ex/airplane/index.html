@@ -1,8 +1,21 @@
 <html>
   <body>
     <h1>Airplane Turning Controller</h1>
-	<p>Explanation XXX</p>
-	<p>Figure XXX</p>
+	<p>The design of a virtually synchronous control system for turning an airplane can be specified in Multirate Synchrnous AADL. To achieve a smooth turn of the airplane, the controller must synchronize the movements of the airplane's two airlerons and rudder r (an aileron is a flap attached to
+the end of the left or the right wing, and a rudder is a flap attached to the
+vertical tail).</p>
+	<p>Diagrams</p>
+		our system consists of four periodic controllers with different
+periods. The environment is the pilot console that allows the pilot to select a
+new desired direction every 600 ms. The left wing controller receives the
+desired angle goalL of the aileron from the main controller, and moves the
+aileron towards that angle. The right wing (resp., the rudder) controller
+operates in the same way for the right wing aileron (resp., the rudder). The
+main controller receives the desired direction (from the pilot console) and the
+current angle of each device (from the device controllers), computes the new
+desired device angles, and sends them to the device controllers. 
+		<img src="https://hybridsynchaadl.github.io/images/architecture_of_airplane.png">
+		
 	<h2>Download</h2>
 		<p>
 			<ul>
