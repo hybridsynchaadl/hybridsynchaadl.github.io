@@ -1,0 +1,39 @@
+<html>
+  <body>
+    <h1>Airplane Turning Controller</h1>
+	<p>The design of a virtually synchronous control system for turning an airplane can be specified in Multirate Synchrnous AADL. To achieve a smooth turn of the airplane, the controller must synchronize the movements of the airplane's two airlerons and rudder r (an aileron is a flap attached to
+the end of the left or the right wing, and a rudder is a flap attached to the
+vertical tail).</p>
+	<h2>Architecture of Airplane Turning Controller</h2>
+		<p>
+		<img src="https://hybridsynchaadl.github.io/images/architecture_of_airplane.png" style="width: 60%; height: auto"></p>
+		<p>Our system consists of four periodic controllers with different
+periods. The environment is the pilot console that allows the pilot to select a
+new desired direction every 600 ms. The left wing controller receives the
+desired angle goalL of the aileron from the main controller, and moves the
+aileron towards that angle. The right wing (resp., the rudder) controller
+operates in the same way for the right wing aileron (resp., the rudder). The
+main controller receives the desired direction (from the pilot console) and the
+current angle of each device (from the device controllers), computes the new
+desired device angles, and sends them to the device controllers.</p>
+	<h2>AADL Code of Airplane Turning Controller</h2> 
+<p>The following AADL component declares the top-level
+“implementation” of the system in terms of connections and subcomponents:</p>
+<p></p>
+<p>
+		<img src="https://hybridsynchaadl.github.io/images/aadl_airplane.png" style="width: 45%; height: auto">
+</p>	
+	<p>The pilot may in any round nondeterministically add 0, 10, or −10 to the
+current desired direction. The input port curr_dr receives the current direction
+ψ from the turning system, which operates 10 times faster than the pilot; we
+must therefore use an input adaptor to map the 10-tuple of directions into a
+single value, for which it is natural to use the last value.</p>	
+	<h2>Download</h2>
+		<p>
+			<ul>
+				<li><a href="https://hybridsynchaadl.github.io/ex/airplane/models/AirplaneTurn_MR.zip">AirplaneTurn</a>: Multirate Synchrnous AADL Version</li>
+				<li><a href="https://hybridsynchaadl.github.io/ex/airplane/models/AirplaneTurn_HS.zip">AirplaneTurn</a>: Hybrid Synchronous AADL Version</li>
+			</ul>
+		</p>
+  </body>
+</html>

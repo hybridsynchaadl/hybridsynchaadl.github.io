@@ -1,0 +1,65 @@
+(omod DRONE-MSG is
+  protecting VECTOR .
+  protecting TIME .
+  protecting OID-SET .
+  protecting INFO-STATE .
+
+  sort MsgContent .
+  subsorts Vector Pair{Vector, Vector} < MsgContent .
+
+  --- msg: source, InfoState, dest
+  msg m : Oid MsgContent Oid -> Msg .
+
+  --- delayed msg: msg delay
+  sort DelMsg .
+  subsort Msg < DelMsg < Configuration .
+  msg dm : Msg Time -> DelMsg .
+
+endom)
+
+(view Msg from TRIV to DRONE-MSG is
+  sort Elt to Msg .
+endv)
+
+(omod DRONE is
+  protecting VECTOR .
+  protecting TIME .
+  including OID-SET .
+  including SET{Msg} * (op _`,_ to _;_) .
+  including SYSTEM .
+
+  --- drone class
+  class Drone | speed    : Vector,
+                position : Vector,
+                period   : Time,
+                timer    : Time,
+                buffer   : Set{Msg},
+                neighbours : OidSet .
+
+endom)
+
+(omod DRONE-RENDEZVOUS is
+  including DRONE .
+
+  class rendezDrone | offset : Vector .
+  subclass rendezDrone < Drone .
+
+endom)
+
+(omod DRONE-LEADER is
+  including DRONE .
+  including LIST{Vector} .
+
+  class LeaderDrone | goal : List{Vector} .
+  subclass LeaderDrone < Drone .
+
+endom)
+
+(omod DRONE-FOLLOWER is
+  including DRONE .
+
+  class FollowerDrone | formationOffset : Vector,
+                        referenceDrone : Oid .
+  subclass FollowerDrone < Drone .
+
+endom)

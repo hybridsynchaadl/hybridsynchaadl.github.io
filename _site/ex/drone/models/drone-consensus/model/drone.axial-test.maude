@@ -1,0 +1,36 @@
+
+(omod DRONE-TEST is
+  including POSITION-CONSENSUS-BEHAVIOR .
+  including SYSTEM-BEHAVIOR .
+
+  ops a b c : -> Oid [ctor] .
+
+  ops drone1 drone2 drone3 : -> Object .
+  eq drone1
+   = < a : Drone | speed : [1,-2,1],
+                   position : [1,1,7],
+                   period : 2,
+                   timer : 2,
+                   buffer : empty,
+                   neighbours : b > .
+
+  eq drone2
+    = < b : Drone | speed : [0, 1, 1],
+                    position : [1,8,1],
+                    period : 2,
+                    timer : 2,
+                    buffer : empty,
+                    neighbours : a > .
+
+  op A : -> Sys .
+  eq A = {drone1 drone2} .
+
+
+endom)
+
+(red A .)
+(rew [3] A .)
+
+(search [1] A =>* { < a : Drone | position : [X:Rat,Y:Rat,Z:Rat] >
+                    < b : Drone | position : [X':Rat,Y':Rat,Z':Rat] > Cnf:Configuration }
+                    such that ((Z:Rat - Z':Rat) <= 1/100) .)

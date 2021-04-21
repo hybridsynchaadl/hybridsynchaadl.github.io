@@ -106,58 +106,75 @@
       <div class="wrapper">
         <div class="work">
           <h1 class="page-heading">Download</h1>
-          <p>HybridSynchAADL is a plugin of OSATE, the standard tool environment for AADL, and supports the modeling and formal anlaysis of HybridSynchAADL models within OSATE.</p>
+          <p>HybridSynchAADL tool is an <a href="https://osate.org/">OSATE</a> plugin. The tool runs in
+<b>java version 8</b> and is available for Linux and macOS. Check whether java
+version 8 is installed in your local machine or not. If it is not installed, go
+to this
+<a href="https://www.oracle.com/kr/java/technologies/javase/javase-jdk8-downloads.html">link</a>,
+and download java version 8.</p>
 
-<p>HybridSynchAADL uses Maude combined with SMT solving to symbolically encode all possible continuous behaviors depending on imprecise clocks. Please download Maude combined with SMT: <a href="https://maude-se.github.io/">Maude-SE</a></p>
+<p>HybridSynchAADL 1.0 platform package:</p>
+<ul>
+  <li><a href="https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0">OS X</a></li>
+  <li><a href="https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0">Linux(Ubuntu)</a></li>
+</ul>
 
-<p>HybridSynchAADL has been tested on macOS Catalina and Linux (Ubuntu x64) using Java 1.8</p>
-
-<h2 id="for-a-mac-user">For a Mac user</h2>
-<p>Notice that OSATE binary is not signed. This can result in an error message when starting OSATE.</p>
-
-<p>To correct this issue, run the following command to allow OSATE execution.</p>
+<p>Notice that OSATE binary is not signed. This can result in an error message when starting OSATE.
+To correct this issue, run the following command to allow OSATE execution.</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo xattr -rd com.apple.quarantine osate2.app/
 </code></pre></div></div>
 
-<h2 id="stable-version">Stable Version</h2>
-<p><br />
-<br /></p>
+<h2 id="installation">Installation</h2>
+<p>Download a recent OSATE available for Linux and macOS. Download plugins of our
+tools in in this <a href="https://hybridsynchaadl.github.io/plugins/plugins.zip">link</a>.
+Make the <b>dropins</b> folder in downloaded OSATE directory, and move out plugins
+into it.  In <b>osate/configuration/org.eclipase.equinox.simpleconfigurator</b>,
+there is a <b>bundles.info</b> file which contains a list of all the plugins
+installed in the current system.</p>
+
+<p>Put the following code under <b>#version=1</b> in the <b>bundles.info</b> file</p>
+
+<blockquote>
+  <p>edu.postech.aadl.synch,1.0.0.202104110533,dropins/edu.postech.aadl.synch_1.0.0.202104110533.jar,4,false
+edu.postech.aadl.xtext.propspec,1.0.0.202104110533,dropins/edu.postech.aadl.xtext.propspec_1.0.0.202104110533.jar,4,false
+edu.postech.aadl.xtext.propspec.ui,1.0.0.202104110533,dropins/edu.postech.aadl.xtext.propspec.ui_1.0.0.202104110533.jar,4,false</p>
+</blockquote>
+
+<p>You can now run <b>OSATE</b> and start verification. If you successfully execute
+<b>OSATE</b> with our plugins, you can find the following window.</p>
+
+<p><img src="https://raw.githubusercontent.com/hybridsynchaadl/HybridSynchAADL/master/images/start.png" alt="OSATE" /></p>
+
+<p>There must be the menu named by “HybridSynchAADL” when our plugins are
+successfullly included in OSATE.</p>
+
+<h2 id="getting-started--example">Getting Started + Example</h2>
+
+<p>The easiest way to get started is to run some of the simple HybridSynchAADL
+models. Follow the step-by-step instruction guideline in <b>tutorial.pdf</b> in
+this repository.</p>
+
+<p>Note that HybridSynchAADL tool uses Maude-with-SMT which is a rewriting modulo
+SMT extension of Maude 3.0 at C++ level. You can download it in this
+<a href="https://maude-se.github.io/">link</a></p>
+
+<h2 id="installation-for-developer">Installation (for Developer)</h2>
+
+<p>For developing HybridSynchAADL, download osate developer version in your local
+computer. Please refer to the <b>Developer Documentation</b> in OSATE web page.
+After successfully setting up an OSATE development environment, import three plugin projects in this repository:</p>
+
+<ul>
+  <li>edu.postech.aadl.synch</li>
+  <li>edu.postech.aadl.xtext.propspec</li>
+  <li>edu.postech.aadl.xtext.propspec.ui</li>
+</ul>
+
+<p>HybridSynchAADL uses <a href="https://www.antlr.org/">ANTLR</a> which is a powerful parser
+generator for java when parsing continuous dynamics in environment component.
+You can download ANTLR and ANTLR IDE in <b>Eclilpse Markeplace</b>.</p>
 
 
-          
-          <div class="work-item">
-            <img
-              src="http://localhost:4000/assets/img/work/mac.png"
-              alt="report"
-              class="work-bubble"
-            />
-            <span class="work-text">
-              <strong>Mac</strong>
-              &mdash;
-              Version 1.0
-            </span>
-            <span class="work-text">
-              <a href=https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0 download>Download
-			  </a>
-            </span>
-          </div>
-          
-          <div class="work-item">
-            <img
-              src="http://localhost:4000/assets/img/work/linux.png"
-              alt="study"
-              class="work-bubble"
-            />
-            <span class="work-text">
-              <strong>Linux</strong>
-              &mdash;
-              Version 1.0.
-            </span>
-            <span class="work-text">
-              <a href=https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0 download>Download
-			  </a>
-            </span>
-          </div>
           
         </div>
       </div>
@@ -170,99 +187,13 @@
         <h4>CONTACT</h4>
 
         
-
-          
-          <img
-            src="http://localhost:4000/assets/img/icons/email.png"
-            alt="email"
-          />
-          <a href="mailto:thkighie1224@postech.ac.kr" id="email-link">
-            
-              thkighie1224@postech.ac.kr
-            
-          </a>
-          <br />
-
-        
-
-          
-          <img
-            src="http://localhost:4000/assets/img/icons/email.png"
-            alt="email"
-          />
-          <a href="mailto:ksron@postech.ac.kr" id="email-link">
-            
-              ksron@postech.ac.kr
-            
-          </a>
-          <br />
-
-        
-
-          
-          <img
-            src="http://localhost:4000/assets/img/icons/email.png"
-            alt="email"
-          />
-          <a href="mailto:kmbae@postech.ac.kr" id="email-link">
-            
-              kmbae@postech.ac.kr
-            
-          </a>
-          <br />
-
-        
-
-          
-          <img
-            src="http://localhost:4000/assets/img/icons/email.png"
-            alt="email"
-          />
-          <a href="mailto:peterol@ifi.uio.no" id="email-link">
-            
-              peterol@ifi.uio.no
-            
-          </a>
-          <br />
-
-        
-
-          
-          <img
-            src="http://localhost:4000/assets/img/icons/email.png"
-            alt="email"
-          />
-          <a href="mailto:masonkang@postech.ac.kr" id="email-link">
-            
-              masonkang@postech.ac.kr
-            
-          </a>
-          <br />
-
-        
       </div>
 
-      
-        <div class="footer-col footer-col-3 powered-by">
-          <p>
-            powered by <a href="https://github.com/eliottvincent/bay">Bay</a> | 2020
-          </p>
-        </div>
       
     </div>
   </div>
 </footer>
 
-
-  
-
-  
-
-  
-
-  
-
-  
 
 
 

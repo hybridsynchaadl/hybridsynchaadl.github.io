@@ -1,0 +1,36 @@
+---smt
+load smt/smt.maude
+load smt/smt-interface.maude
+load smt/smt-condition.maude
+
+---  DRONE
+load drone-base.maude
+load full-maude
+load drone.maude
+load drone-dynamics.maude
+load system-dynamics.maude
+load consensus-dynamics.maude
+
+--- TEST
+--- Rendezvous test
+***(
+load consensus.rendezvous.maude
+load model/drone.rendezvous.maude
+)
+---simultanFalling test
+***(
+load consensus.simFalling.maude
+load model/drone.falling.maude
+)
+--- formation test
+***()
+load consensus.formation.maude
+load model/drone.formation.maude
+
+***(
+load consensus.symbolic.maude
+load model/drone.symbolic.maude
+
+load model/drone-test.maude
+load model/drone.reference.maude
+)

@@ -1,0 +1,74 @@
+(omod FALLING-CONSENSUS is
+  including SYSTEM-DYNAMICS .
+  including LEADER-DYNAMICS .
+  including FOLLOWER-DYNAMICS .
+
+  --- newSpeed: Speed position MessageSet -> speed
+  op newSpeed : Vector Vector Set{Msg} -> Vector .
+
+  vars P P' V : Vector .
+  var MSG' : Set{Msg} .
+  vars O O' : Oid .
+  vars X1 X2 Y1 Y2 Z1 Z2 V1 V2 V3 : Rat .
+
+  ceq newSpeed(V, P, MSG') = (1 / | MSG' | ) * refSum(P, MSG')
+    if MSG' =/= empty .
+  eq newSpeed(V, P, empty) = V .
+
+  --- aux function to calculate speed
+  --- refSum : currentPosition MessageSet
+  op refSum : Vector Set{Msg} -> Vector .
+
+  eq refSum(P', empty) = [0,0,0] .
+  eq refSum([X1, Y1, Z1], m(O, < [V1, V2, V3] ; [X2, Y2, Z2] >, O') ; MSG')
+    = ([0, 0, V3]  - (2 * ([0, 0, Z1] - [0, 0, Z2]))) + refSum([X1, Y1, Z1], MSG') .
+
+endom)
+
+
+(omod FALLING-CONSENSUS-BEHAVIOR is
+  including FALLING-CONSENSUS .
+  including SYSTEM .
+
+  var NEIGH : OidSet .
+  vars O O' : Oid .
+  var T : Time .
+  vars V P P' : Vector .
+  var MSG : Msg .
+  var MSG' : Set{Msg} .
+  vars CONF REST : Configuration .
+  var GOAL : List{Vector} .
+
+  --- message
+  --- assume message delay is always less than the period
+  rl [send-read-Msg] : {< O : FollowerDrone | speed : V,
+                                              position : P,
+                                              period : T,
+                                              timer : 0,
+                                              buffer : MSG',
+                                              neighbours : NEIGH > REST}
+                    => {broadcast(O,< V ; P >,NEIGH, 1/100)
+                        < O : FollowerDrone | speed : newSpeed(V, P, MSG'),
+                                              timer : T,
+                                              buffer : empty > REST}
+                      [print "" O " position= " P] .
+
+  --- update trajectory of leader
+  rl [turnLeader] : {< O : LeaderDrone | speed : V,
+                                         position : P,
+                                         goal : P GOAL > REST}
+                    => {< O : LeaderDrone | speed : updateSpeed(V, P, GOAL),
+                                            position : P,
+                                            goal : GOAL > REST} .
+
+  rl [ld-send-Msg] : {< O : LeaderDrone | speed : V,
+                                              position : P,
+                                              period : T,
+                                              timer : 0,
+                                              neighbours : NEIGH > REST}
+                    => {broadcast(O,< V ; P >,NEIGH, 1/100) < O : LeaderDrone | timer : T > REST}
+                    [print "" O " position= " P] .
+
+  rl [receiveMsg] : {dm(m(O,< V ; P >,O'),0) < O' : Drone | buffer : MSG' > REST}
+                    => {< O' : Drone | buffer : (m(O,< V ; P >,O') ; MSG') > REST} .
+endom)

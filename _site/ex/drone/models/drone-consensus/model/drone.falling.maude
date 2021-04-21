@@ -1,0 +1,78 @@
+(omod DRONE-TEST is
+  including FALLING-CONSENSUS-BEHAVIOR .
+  including SYSTEM-BEHAVIOR .
+
+  ops a b c d e f : -> Oid [ctor] .
+
+  ops d1 d2 d3 d4 d5 leader : -> Object .
+
+  eq d1
+   = < a : FollowerDrone | speed : [1,0,1],
+                         position : [5,5,12],
+                         period : 1/10,
+                         timer : 1/10,
+                         buffer : empty,
+                         neighbours : b ; e,
+                         referenceDrone : f,
+                         formationOffset : [0,0,0] > .
+
+  eq d2
+    = < b : FollowerDrone | speed : [0, 1, 1],
+                          position : [-5, -3, 8],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : c,
+                          referenceDrone : f,
+                          formationOffset : [0,0,0] > .
+
+
+  eq d3
+   = < c : FollowerDrone | speed : [2,-1,2],
+                         position : [2,4,4],
+                         period : 1/10,
+                         timer : 1/10,
+                         buffer : empty,
+                         neighbours : a ; d ,
+                         referenceDrone : f,
+                         formationOffset : [0,0,0]  > .
+
+  eq d4
+    = < d : FollowerDrone | speed : [-2, -3, 4],
+                          position : [-2, -3, 11],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : e,
+                          referenceDrone : f,
+                          formationOffset : [0,0,0]  > .
+
+  eq d5
+    = < e : FollowerDrone | speed : [1, 1, -1],
+                          position : [1, 5, 15],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : a ; b ,
+                          referenceDrone : f,
+                          formationOffset : [0,0,0]  > .
+
+
+  eq leader
+    = < f : LeaderDrone | speed : [0, 0, -4],
+                          position : [0, 0, 12],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : a ; b ; c ; d ; e ,
+                          goal : [0,0,0] > .
+
+  op init : -> Sys .
+  eq init = {d1 d2 d3 d4 d5 leader} .
+
+endom)
+
+set print attribute on .
+
+(red init .)
+(rew [800] init .)

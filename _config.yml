@@ -21,7 +21,6 @@ header:
 
 footer:
   show_powered_by: false
-  contact:
 
 # Build settings
 markdown: kramdown

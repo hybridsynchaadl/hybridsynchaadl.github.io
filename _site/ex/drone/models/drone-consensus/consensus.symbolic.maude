@@ -1,0 +1,37 @@
+--- maude-smt on speed consensus
+(omod DRONE-SYM-DYNAMICS is
+  including SPEED-CONSENSUS .
+  including SYM-STATE .
+  pr SMT-INTERFACE .
+  pr COND-SIMPLIFICATION .
+
+  vars Phi Phi' : Bool .
+  var NEIGH : OidSet .
+  vars O O' : Oid .
+  vars T : Time .
+  vars V P P' : Vector .
+  var MSG : Msg .
+  var MSG' : Set{Msg} .
+  vars CONF REST : Configuration .
+  vars N N' : Nat .
+
+  --- message
+  --- broadcast
+  crl [send-read-Msg] : {Phi, N, < O : Drone | speed : V,
+                                                position : P,
+                                                period : T,
+                                                timer : 0,
+                                                buffer : MSG',
+                                                neighbours : NEIGH > REST}
+                        => {Phi', N, broadcast(O,V,NEIGH, 1/100)
+                                      < O : Drone | speed : newSpeed(V, MSG'),
+                                                    timer : T,
+                                                    buffer : empty > REST}
+                        if Phi' := Phi /\ check-sat(Phi') .
+
+  crl [receiveMsg] : {Phi, N, dm(m(O,V,O'),0)
+                              < O' : Drone | buffer : MSG' > REST}
+                    => {Phi', N, < O' : Drone | buffer : (m(O,V,O') ; MSG') > REST}
+                    if Phi' := Phi  /\ check-sat(Phi') .
+
+endom)

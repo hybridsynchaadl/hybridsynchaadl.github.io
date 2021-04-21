@@ -1,0 +1,153 @@
+(omod RENDEZVOUS-TEST is
+  including RENDEZVOUS-CONSENSUS-BEHAVIOR .
+  including SYSTEM-BEHAVIOR .
+
+  ops a b c d e f : -> Oid [ctor] .
+
+  ops d1 d2 d3 d4 d5 d6 : -> Object .
+
+  eq d1
+   = < a : rendezDrone | speed : [1,0,1],
+                         position : [5,5,2],
+                         period : 1/10,
+                         timer : 1/10,
+                         buffer : empty,
+                         neighbours : b ; f ,
+                         offset : [0,0,0] > .
+
+  eq d2
+    = < b : rendezDrone | speed : [0, 1, 1],
+                          position : [-5, -3, 3],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : a ; c ,
+                          offset : [0,0,0] > .
+
+  eq d3
+    = < c : rendezDrone | speed : [1, 1, 0],
+                          position : [-2, -4, -1],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : b ; d ,
+                          offset : [0,0,0] > .
+
+  eq d4
+   = < d : rendezDrone | speed : [2,-1,2],
+                         position : [-5,4,4],
+                         period : 1/10,
+                         timer : 1/10,
+                         buffer : empty,
+                         neighbours : b ; e ,
+                         offset : [0,0,0] > .
+
+  eq d5
+    = < e : rendezDrone | speed : [-2, -3, 4],
+                          position : [-5, -3, 3],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : d ; f,
+                          offset : [0,0,0] > .
+
+  eq d6
+    = < f : rendezDrone | speed : [1, 1, -1],
+                          position : [0, 5, -1],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : d ,
+                          offset : [0,0,0] > .
+
+
+***(
+  eq d1
+   = < a : rendezDrone | speed : [1,0,1],
+                         position : [5,5,2],
+                         period : 1/10,
+                         timer : 1/10,
+                         buffer : empty,
+                         neighbours : b ; c ; d ; e ; f ; g ; h ; i ,
+                         offset : [0,0,0] > .
+
+  eq d2
+    = < b : rendezDrone | speed : [0, 1, 1],
+                          position : [-5, -3, 3],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : a ; c ; d ; e ; f ; g ; h ; i ,
+                          offset : [0,0,0] > .
+
+  eq d3
+    = < c : rendezDrone | speed : [1, 1, 0],
+                          position : [-2, -4, -1],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : a ; b ; d ; e ; f ; g ; h ; i ,
+                          offset : [0,0,0] > .
+  eq d4
+   = < d : rendezDrone | speed : [2,-1,2],
+                         position : [-5,4,4],
+                         period : 1/10,
+                         timer : 1/10,
+                         buffer : empty,
+                         neighbours : a ; b ; c ; e ; f ; g ; h ; i ,
+                         offset : [0,0,0] > .
+
+  eq d5
+    = < e : rendezDrone | speed : [-2, -3, 4],
+                          position : [-5, -3, 3],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : a ; b ; c ; d ; f ; g ; h ; i ,
+                          offset : [0,0,0] > .
+
+  eq d6
+    = < f : rendezDrone | speed : [1, 1, -1],
+                          position : [0, 5, -1],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : a ; b ; c ; d ; e ; g ; h ; i ,
+                          offset : [0,0,0] > .
+
+  eq d7
+   = < g : rendezDrone | speed : [3,-1,2],
+                         position : [5,-4,-3],
+                         period : 1/10,
+                         timer : 1/10,
+                         buffer : empty,
+                         neighbours : a ; b ; c ; d ; e ; f ; h ; i ,
+                         offset : [0,0,0] > .
+
+  eq d8
+    = < h : rendezDrone | speed : [-2, -3, 4],
+                          position : [6, 2, -6],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : a ; b ; c ; d ; e ; f ; g ; i ,
+                          offset : [0,0,0] > .
+
+  eq d9
+    = < i : rendezDrone | speed : [1, 1, -1],
+                          position : [0, 5, 5],
+                          period : 1/10,
+                          timer : 1/10,
+                          buffer : empty,
+                          neighbours : a ; b ; c ; d ; e ; f ; g ; h ,
+                          offset : [0,0,0] > .
+)
+  op init : -> Sys .
+  eq init = {d1 d2 d3 d4 d5 d6} .
+
+endom)
+
+set print attribute on .
+
+(red init .)
+(rew [600] init .)

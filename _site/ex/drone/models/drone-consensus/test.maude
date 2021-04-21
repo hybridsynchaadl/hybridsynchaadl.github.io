@@ -1,0 +1,14 @@
+load smt/smt
+load smt/smt-interface
+load drone-base-sym
+
+fmod TEST is
+  inc VAR .
+  inc SMT-INTERFACE .
+  inc RAT-INTERFACE .
+endfm
+
+red upTerm(3 / 4 / v(1)) .
+red tr(upTerm(3 / 4 / v(1))) .
+
+red metaCheck(['REAL-INTEGER], tr(upTerm(3 / 4 / v(1)))) .
