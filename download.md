@@ -53,17 +53,3 @@ this repository.
 Note that HybridSynchAADL tool uses Maude-with-SMT which is a rewriting modulo
 SMT extension of Maude 3.0 at C++ level. You can download it in this
 [link](https://maude-se.github.io/)
-
-## Installation (for Developer)
-
-For developing HybridSynchAADL, download osate developer version in your local
-computer. Please refer to the <b>Developer Documentation</b> in OSATE web page.
-After successfully setting up an OSATE development environment, import three plugin projects in this repository:
-
-* edu.postech.aadl.synch
-* edu.postech.aadl.xtext.propspec
-* edu.postech.aadl.xtext.propspec.ui
-
-HybridSynchAADL uses [ANTLR](https://www.antlr.org/) which is a powerful parser
-generator for java when parsing continuous dynamics in environment component.
-You can download ANTLR and ANTLR IDE in <b>Eclilpse Markeplace</b>.
