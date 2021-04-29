@@ -16,7 +16,7 @@ header:
       slug: /download
     - name: Benchmarks 
       slug: /blog
-    - name: Documents
+    - name: Documentation
       slug: /work
 
 footer:
