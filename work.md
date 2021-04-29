@@ -3,19 +3,31 @@ layout: work
 title: Documents 
 slug: /work
 items:
-  - title: Technical Report 
+  - title: Usage 
     image:
       src: /assets/img/work/report.png
       alt: report 
-    download: docs/techrep.pdf 
-    description: Technical report about a sublanguage of AADL, a formal semantics, and HybridSynchAADL tool description. 
-  - title: Tutorial 
+    download: docs/tutorial.pdf
+    description: Step-by-Step instructions from importing an project to performing an anlaysis using a sample project. 
+  - title: HybridSynchAADL Modeling Language
+    image:
+      src: /assets/img/work/study.png
+      alt: study 
+    download: docs/techrep.pdf
+    description: Instructions explaining how to model a valid HybridSynchAADL model. 
+  - title: Technical Report 
+    image:
+      src: /assets/img/work/study.png
+      alt: study 
+    download: docs/techrep.pdf
+    description: Technical report explaining more details about the formal semantics, language, experiments. 
+  - title: How to SetUp from the source code
     image:
       src: /assets/img/work/study.png
       alt: study 
     download: docs/tutorial.pdf
-    description: Tutorials about how to use HybridSynchAADL. 
+    description: Installation guideline from the source code. 
 ---
-The techniques in HybridSynchAADL are described by the following documents.
+The documents about HybridSynchAADL are described by the following documents.
 <br />
 <br />
