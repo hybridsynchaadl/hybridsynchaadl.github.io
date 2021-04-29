@@ -4,22 +4,26 @@ title: Download
 slug: /download
 ---
 HybridSynchAADL tool is an [OSATE](https://osate.org/) plugin. The tool runs in
-<b>java1.8</b> and is available for Linux(Ubuntu). Check whether java1.8 is
+<b>Java1.8</b> and is available for Linux(Ubuntu). Check whether java1.8 is
 installed in your local machine or not. If it is not installed, go
 to this
 [link](https://www.oracle.com/kr/java/technologies/javase/javase-jdk8-downloads.html),
-and download java1.8.
+and download Java1.8.
 
 
 You can download HybridSynchAADL tool as plugin projcect (three jar files). The
 installation process is explained below section 'Installtion' for operating
 system. The OSATE2 tool including our plugin version also can be downloaded.
 
+HybridSynchAADL 1.0 source:
+* [Source](https://hybridsynchaadl.github.io/source/source.zip)
+
+
 HybridSynchAADL 1.0 plugin:
 * [Plugin](https://hybridsynchaadl.github.io/plugins/plugins.zip)
 
 
-Installed HybridSynchAADL 1.0 in OSATE2:
+OSATE2 including HybridSynchAADL 1.0:
 * [Linux(Ubuntu)](https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0)
 
 
