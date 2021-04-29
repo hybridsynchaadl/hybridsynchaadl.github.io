@@ -1,6 +1,6 @@
 ---
 layout: work
-title: Documents 
+title: Documentation
 slug: /work
 items:
   - title: Usage (Tutorial)
