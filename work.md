@@ -3,17 +3,17 @@ layout: work
 title: Documents 
 slug: /work
 items:
-  - title: Usage 
+  - title: Usage (Tutorial)
     image:
       src: /assets/img/work/report.png
       alt: report 
     download: docs/tutorial.pdf
-    description: Step-by-Step instructions from importing an project to performing an anlaysis using a sample project. 
+    description: Step-by-step instructions with screenshot images from importing an project to performing an anlaysis using a sample project. 
   - title: HybridSynchAADL Modeling Language
     image:
       src: /assets/img/work/study.png
       alt: study 
-    download: docs/techrep.pdf
+    download: docs/hybridsynchaadl_language.pdf
     description: Instructions explaining how to model a valid HybridSynchAADL model. 
   - title: Technical Report 
     image:
@@ -25,7 +25,7 @@ items:
     image:
       src: /assets/img/work/study.png
       alt: study 
-    download: docs/tutorial.pdf
+    download: docs/techrep.pdf
     description: Installation guideline from the source code. 
 ---
 The documents about HybridSynchAADL are described by the following documents.
