@@ -7,7 +7,7 @@ items:
     image:
       src: /assets/img/work/report.png
       alt: report 
-    download: docs/hybridsynchaadl_language.pdf
+    download: docs/manual.pdf
     description: Instructions explaining how to model a valid HybridSynchAADL model, what are the functionality of the tool, and how to analyze sample examples
   - title: Technical Report 
     image:
