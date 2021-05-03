@@ -20,11 +20,11 @@ installation process is explained below section 'Installtion' for operating
 system. The OSATE2 tool including our plugin version also can be downloaded.
 
 HybridSynchAADL 1.0 source:
-* [Source](https://hybridsynchaadl.github.io/source/source.zip)
+* [Source](https://tinyurl.com/xfsyrfz8)
 
 
 HybridSynchAADL 1.0 plugin:
-* [Plugin](https://hybridsynchaadl.github.io/plugins/plugins.zip)
+* [Plugin](https://tinyurl.com/4v6d46ue)
 
 
 OSATE2 including HybridSynchAADL 1.0:
