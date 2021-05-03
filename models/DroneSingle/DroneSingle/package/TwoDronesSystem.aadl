@@ -1,0 +1,71 @@
+package TwoDronesSystem
+public
+	with Drone;
+	with RefDrone;
+	with Data_Model;
+	with Hybrid_SynchAADL;
+	
+	system TwoDronesSystem
+		properties
+			Hybrid_SynchAADL::Synchronous => true;
+			Classifier_Substitution_Rule => Type_Extension;
+	end TwoDronesSystem;
+	
+	system implementation TwoDronesSystem.revu1D
+		subcomponents
+			drone1: system Drone::RevuDrone.simple;
+			drone2: system Drone::RevuDrone.simple;
+		connections
+			d12x: port drone1.outX -> drone2.inX;
+			d21x: port drone2.outX -> drone1.inX;
+		properties
+    		Data_Model::Initial_Value => ("param") applies to
+    			drone1.environment.x, drone2.environment.x; 
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone1.environment.dotx, drone2.environment.dotx;			
+    					
+			Period => 100ms;
+    		
+   			Hybrid_SynchAADL::Max_Clock_Deviation => 5ms; 		
+    			
+			Timing => Delayed applies to 
+				d12x,  d21x;
+			
+			Hybrid_SynchAADL::Sampling_Time => 20ms .. 30ms applies to 
+				drone1.drone, drone2.drone;
+				
+			Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
+				drone1.drone, drone2.drone;
+	end TwoDronesSystem.revu1D;
+	
+	
+	system implementation TwoDronesSystem.form1D extends TwoDronesSystem.revu1D
+		subcomponents
+			drone1: refined to system Drone::FormDrone.simple;
+			drone2: refined to system Drone::FormDrone.simple;
+			refDrone: system RefDrone::RefDroneControl.formation;
+		connections
+			r1x: port refDrone.outX -> drone1.refX;
+			r2x: port refDrone.outX -> drone2.refX;
+		properties
+			Data_Model::Initial_Value => ("-0.5") applies to
+    			drone1.drone.droneProc.droneThread.offsetX;
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone2.drone.droneProc.droneThread.offsetX;			
+    			
+    		Data_Model::Initial_Value => ("param") applies to
+    			refDrone.env.x;
+    		Data_Model::Initial_Value => ("0") applies to
+    			refDrone.env.dotx;			
+    			
+			Timing => Delayed applies to 
+				r1x,  r2x;	
+				
+			Hybrid_SynchAADL::Sampling_Time => 20ms .. 30ms applies to refDrone.refDrone;
+				
+			Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to refDrone.refDrone;	
+    			
+	end TwoDronesSystem.form1D;
+	
+	
+end TwoDronesSystem;

@@ -1,0 +1,19 @@
+name: FourDronesSystem_form1D_Instance;
+
+model: FourDronesSystem::FourDronesSystem.form1D;
+
+instance: "/DroneSingle/package/instances/FourDronesSystem_FourDronesSystem_form1D_Instance.aaxl2";
+
+proposition [initial] : abs(drone1.environment.x - 1.00) < 0.1 and
+						abs(drone2.environment.x - 2.00) < 0.1 and
+						abs(drone3.environment.x - 1.00) < 0.1 and
+						abs(drone4.environment.x - 2.00) < 0.1 and
+						abs(refDrone.env.x - 2.00) < 0.1;
+						
+proposition [falseProp] : drone1.environment.dotx > 1000.0;						
+						
+invariant [tb_100] : ?initial ==> not(?falseProp) in time 100;			
+invariant [tb_200] : ?initial ==> not(?falseProp) in time 200;			
+invariant [tb_300] : ?initial ==> not(?falseProp) in time 300;			
+invariant [tb_400] : ?initial ==> not(?falseProp) in time 400;			
+invariant [tb_500] : ?initial ==> not(?falseProp) in time 500;

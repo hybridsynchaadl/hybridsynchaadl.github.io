@@ -1,0 +1,34 @@
+I"Ñ<p>This benchmark model represents the rendezvous and formation control of
+distributed drones with double-integroator dynamics. Each drone communicates
+its own position and velocity and sets the proper acceleration which do not
+lead to collision to other drones.</p>
+
+<h3 id="continuous-dynamics">Continuous Dynamics</h3>
+<p>The continuous dynamics of the drone component is as follows:</p>
+<p align="center">
+   <img src="../../images/dronedouble_ode.png" alt="ode" width="50%" height="50%" />
+</p>
+
+<h3 id="diagram">Diagram</h3>
+
+<h3 id="safety-property">Safety Property</h3>
+
+<p>We verify safety invariant property which represents that drones do not collide. We analyze them up to
+bound 500 ms.</p>
+
+<p>The example of PSPC file containing safety invariant property is as follows:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>proposition [initial] : abs(drone1.environment.x - 2.8) &lt; 0.1 and abs(drone1.environment.y - 2.8) and
+                        abs(drone2.environment.x - 1.5) &lt; 0.1 and abs(drone2.environment.y - 1.5);
+
+proposition [twoclose] : abs(drone1.environment.x - drone2.environment.x) &lt; 0.5 and
+                         abs(drone1.environment.y - drone2.environment.y) &lt; 0.5
+
+invariant [tb_500]: ?initial ==&gt; not(?twoclose) in time 500;
+</code></pre></div></div>
+
+<h3 id="download">Download</h3>
+<p>You can download the benchmark model: <a href="../DroneDouble.zip">DroneDouble.zip</a></p>
+
+<p><br />
+<br /></p>
+:ET

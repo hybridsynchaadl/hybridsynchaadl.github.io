@@ -1,0 +1,88 @@
+package RefDrone
+public
+	with Base_Types;
+	with Environment;
+	with Data_Model;
+
+	system RefDroneControl
+		features
+			outX: out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
+	end RefDroneControl;
+	system implementation RefDroneControl.formation
+		subcomponents
+			refDrone: system RefDrone.formation;
+			env: system Environment::Environment.simple;
+		connections
+			C1: port refDrone.velX -> env.velX;
+			C2: port env.currX -> refDrone.currX;
+			C3: port refDrone.outX -> outX;
+	end RefDroneControl.formation;
+	
+	
+	system RefDrone
+		features
+			velX: out data port Base_Types::Float;
+			outX : out data port Base_Types::Float;
+			currX: in data port Base_Types::Float;
+	end refDrone;
+	system implementation RefDrone.formation
+		subcomponents
+			refProc: process refProc.formation;
+		connections
+			C1: port refProc.velX -> velX;
+			C2: port currX -> refProc.currX;
+			C3: port refProc.outX -> outX;
+	end RefDrone.formation;
+	
+	
+	process RefProc
+		features
+			velX: out data port Base_Types::Float;
+			outX : out data port Base_Types::Float;
+			currX: in data port Base_Types::Float;
+	end RefProc;
+	process implementation RefProc.formation
+		subcomponents
+			refThread: thread RefThread.formation;
+		connections
+			C1: port refThread.velX -> velX;
+			C2: port currX -> refThread.currX;
+			C3: port refThread.outX -> outX;
+	end RefProc.formation;
+	
+
+    thread RefThread
+        features
+            velX: out data port Base_Types::Float;
+            outX : out data port Base_Types::Float;
+            currX: in data port Base_Types::Float;
+        properties
+            Dispatch_Protocol => Periodic;
+    end RefThread;
+    thread implementation RefThread.formation
+    	subcomponents
+			nx : data Base_Types::Float {Data_Model::Initial_Value => ("0");};
+        annex behavior_specification {**		
+        	states
+            	init : initial complete state;
+            	exec, output : state;
+        	transitions
+            	init -[ on dispatch ]-> exec;
+            	exec -[ nx = 0]-> output {
+            		nx := 1
+            	}; 
+            	exec -[ nx = 1]-> output {
+            		nx := 2
+            	}; 
+            	exec -[ nx = 2]-> output {
+            		nx := 0
+            	};            
+            	output -[ ]-> init {
+            		velX := nx;
+                	outX := currX
+            	};
+    	**};
+    end RefThread.formation;
+    
+    
+end RefDrone;

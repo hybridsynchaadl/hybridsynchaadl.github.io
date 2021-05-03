@@ -1,0 +1,33 @@
+load ../../../../../3rdParty/maude/prelude.maude
+load ../../../../../3rdParty/maude/smt.maude
+load ../../../../../3rdParty/maude/semantics/interpreter-symbolic2-merge.maude
+load ../instance/ThreeDronesSystem_form1D_Instance-symbolic.maude
+mod TEST-THREEDRONESSYSTEM_FORM1D_INSTANCE is
+  including THREEDRONESSYSTEM_FORM1D_INSTANCE-MODEL-SYMBOLIC .
+  including REACHABILITY-ANALYSIS .
+  including SPECIFICATION-LANGUAGE-SEMANTICS .
+
+  op initState : -> Object .
+  eq initState = initialize(collapse(initial)) .
+  
+  eq loopBoundNum = 10 .
+  eq transBoundNum = 10 .
+  
+  
+  eq @m@ = ['TEST-THREEDRONESSYSTEM_FORM1D_INSTANCE] .
+  
+  op initial : -> PropSpec .
+  eq initial = ((((abs(((drone1 . environment | c[x] ) - [[0.4]])) < [[0.1]]) and (abs(((drone2 . environment | c[x] ) - [[1.0]])) < [[0.1]])) and (abs(((drone3 . environment | c[x] ) - [[1.0]])) < [[0.1]])) and (abs(((refDrone . env | c[x] ) - [[1.0]])) < [[0.1]])) .
+  op falseProp : -> PropSpec .
+  eq falseProp = ((drone1 . environment | c[dotx] ) > [[1000.0]]) .
+  
+endm
+	  
+red reachAnalysis(
+    initState,
+    (ThreeDronesSystemform1DInstance | initial),
+    ThreeDronesSystemform1DInstance | not(not(falseProp)),
+    100
+    ) .
+
+quit

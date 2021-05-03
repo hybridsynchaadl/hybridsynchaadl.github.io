@@ -1,0 +1,37 @@
+package Drone
+public
+	with Environment;
+	with Base_Types;
+	with Data_Model;
+	with DroneControl;
+
+	system RevuDrone
+		features
+			inX: in data port Base_Types::Float;
+			outX: out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
+	end RevuDrone;
+	system implementation RevuDrone.simple
+		subcomponents
+			drone: system DroneControl::RevuDroneControl.impl;
+			environment: system Environment::Environment.simple;
+		connections
+			C1: port drone.outX -> outX;
+			C2: port inX -> drone.inX;
+			C3: port drone.velX -> environment.velX;
+			C4: port environment.currX -> drone.currX;
+	end RevuDrone.simple;
+
+	
+	system FormDrone extends RevuDrone
+		features
+			refX: in data port Base_Types::Float;
+	end FormDrone;
+	system implementation FormDrone.simple extends RevuDrone.simple
+		subcomponents
+			drone: refined to system DroneControl::FormDroneControl.impl;
+			environment: refined to system Environment::Environment.simple;
+		connections
+			C5: port refX -> drone.refX;
+	end FormDrone.simple;
+	
+end Drone;

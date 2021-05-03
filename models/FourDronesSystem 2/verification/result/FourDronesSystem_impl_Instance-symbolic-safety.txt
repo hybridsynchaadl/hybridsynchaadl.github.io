@@ -1,0 +1,70 @@
+(
+Time: 0
+FourDronesSystemimplInstance ->[
+  dr1 ->[
+    (ctrl . ctrlProc . cThread) ->[
+      variables: none
+      currState: 'init]
+    env ->[
+      variables: (velx |=> -6.9e+1),(vely |=> -9.6e+1),(x |=> 1.09375),y |=>
+    1.5
+      currMode: '@@default@loc@@]]
+  dr3 ->[
+    (ctrl . ctrlProc . cThread) ->[
+      variables: none
+      currState: 'init]
+    env ->[
+      variables: (velx |=> -9.0514285714285705e+1),(vely |=> -6.6e+1),(x |=>
+    1.5),y |=> 1.09375
+      currMode: '@@default@loc@@]]
+  dr2 ->[
+    (ctrl . ctrlProc . cThread) ->[
+      variables: none
+      currState: 'init]
+    env ->[
+      variables: (velx |=> 6.4e+1),(vely |=> 4.6666666666666664e+1),(x |=>
+    -1.5),y |=> -1.09375
+      currMode: '@@default@loc@@]]
+  dr4 ->[
+    (ctrl . ctrlProc . cThread) ->[
+      variables: none
+      currState: 'init]
+    env ->[
+      variables: (velx |=> 4.6666666666666664e+1),(vely |=> 6.4e+1),(x |=>
+    -1.09375),y |=> -1.5
+      currMode: '@@default@loc@@]]])
+
+Time: 100
+FourDronesSystemimplInstance ->[
+  dr1 ->[
+    (ctrl . ctrlProc . cThread) ->[
+      variables: none
+      currState: 'init]
+    env ->[
+      variables: (velx |=> 0.0),(vely |=> 0.0),(x |=> -7.9250000000000015e-2),y
+    |=> -1.3200000000000003e-1
+      currMode: '@@default@loc@@]]
+  dr3 ->[
+    (ctrl . ctrlProc . cThread) ->[
+      variables: none
+      currState: 'init]
+    env ->[
+      variables: (velx |=> 0.0),(vely |=> 0.0),(x |=> -3.8742857142857169e-2),y
+    |=> -2.8250000000000022e-2
+      currMode: '@@default@loc@@]]
+  dr2 ->[
+    (ctrl . ctrlProc . cThread) ->[
+      variables: none
+      currState: 'init]
+    env ->[
+      variables: (velx |=> 0.0),(vely |=> 0.0),(x |=> 1.6400000000000003e-1),y
+    |=> 1.1958333333333335e-1
+      currMode: '@@default@loc@@]]
+  dr4 ->[
+    (ctrl . ctrlProc . cThread) ->[
+      variables: none
+      currState: 'init]
+    env ->[
+      variables: (velx |=> 0.0),(vely |=> 0.0),(x |=> 1.1958333333333335e-1),y
+    |=> 1.6400000000000003e-1
+      currMode: '@@default@loc@@]]]

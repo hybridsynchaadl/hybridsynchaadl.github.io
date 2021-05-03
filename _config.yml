@@ -15,9 +15,9 @@ header:
     - name: Download
       slug: /download
     - name: Benchmarks 
-      slug: /blog
+      slug: /benchmark
     - name: Documentation
-      slug: /work
+      slug: /document
     - name: Artifact 
       slug: /artifact_cav2021
 

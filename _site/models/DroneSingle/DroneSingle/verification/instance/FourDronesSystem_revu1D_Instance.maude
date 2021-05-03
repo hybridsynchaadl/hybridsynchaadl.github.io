@@ -1,0 +1,838 @@
+mod FOURDRONESSYSTEM_REVU1D_INSTANCE-MODEL is
+	including MODEL-TRANSITION-SYSTEM .
+	
+	--- AADL identifiers
+	ops t nx : -> VarId [ctor] .
+	ops inX currX velX outX : -> FeatureId [ctor] .
+	ops droneThread dotx droneProc environment drone4 drone3 drone2 drone1 x FourDronesSystemrevu1DInstance drone : -> ComponentId [ctor] .
+	ops output init exec : -> Location [ctor] .
+	ops loopBoundNum transBoundNum : -> Nat .
+	--- the initial state
+	op initial : -> Object .
+	eq initial = < FourDronesSystemrevu1DInstance : System |
+		features : (
+			none),
+		subcomponents : (
+			< drone1 : System |
+				features : (
+					< inX : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< outX : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >),
+				subcomponents : (
+					< drone : System |
+						features : (
+							< inX : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< outX : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< currX : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< velX : DataOutPort | 
+								content : null(Real) ,
+								properties : none >),
+						subcomponents : (
+							< droneProc : Process |
+								features : (
+									< inX : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< outX : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< currX : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< velX : DataOutPort | 
+										content : null(Real) ,
+										properties : none >),
+								subcomponents : (
+									< droneThread : Thread |
+										features : (
+											< inX : DataInPort | 
+												cache : null(Real),
+												content : null(Real) ,
+												properties : none >
+											< outX : DataOutPort | 
+												content : null(Real) ,
+												properties : none >
+											< currX : DataInPort | 
+												cache : null(Real),
+												content : null(Real) ,
+												properties : none >
+											< velX : DataOutPort | 
+												content : null(Real) ,
+												properties : none >),
+										subcomponents : (
+											none),
+										currState : (
+											init),
+										completeStates : (
+											init),
+										variables : (
+											( nx : Real )),
+										transitions : (
+											(init -[ on dispatch ]-> exec {
+												skip
+											}) ;
+											(exec -[ (abs((f[currX] - f[inX])) < [[0.1]]) ]-> output {
+												(f{velX} := [[0]])
+											}) ;
+											(exec -[ otherwise ]-> output {
+												(v{nx} := minus(([[1.0]] * (f[currX] - f[inX])))) ;
+												if ((v[nx] > [[1]])){
+													(f{velX} := [[2]])
+												}
+												(
+												(elsif ((v[nx] > minus([[0.1]]))){
+													(f{velX} := [[0]])
+												})
+												)
+												else {
+													(f{velX} := minus([[2]]))
+												}
+												end if
+											}) ;
+											(output -[ [[true]] ]-> init {
+												(f{outX} := f[currX])
+											})),
+										loopBound : (
+											loopBoundNum),
+										transBound : (
+											transBoundNum),
+										varGen : (
+											< "FourDronesSystemrevu1DInstance.drone1.drone.droneProc.droneThread" >
+											),
+										properties : (
+											(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+											(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+											(HybridSynchAADL::Synchronous => {{true}}) ;
+											(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+											(TimingProperties::Period => {{100.0}})),
+										connections : (
+											empty) 
+										> ),
+								properties : (
+									(HybridSynchAADL::Synchronous => {{true}}) ;
+									(TimingProperties::Period => {{100.0}})),
+								connections : (
+									(inX --> droneThread .. inX) ;
+									(droneThread .. velX --> velX) ;
+									(currX --> droneThread .. currX) ;
+									(droneThread .. outX --> outX)) 
+								> ),
+						properties : (
+							(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+							(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+							(HybridSynchAADL::Synchronous => {{true}}) ;
+							(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+							(TimingProperties::Period => {{100.0}})),
+						connections : (
+							(droneProc .. velX --> velX) ;
+							(inX --> droneProc .. inX) ;
+							(droneProc .. outX --> outX) ;
+							(currX --> droneProc .. currX)) 
+						> 
+					< environment : Env |
+						features : (
+							< currX : EnvOutPort | 
+								target : droneThread,
+								envCache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< velX : EnvInPort | 
+								target : droneThread,
+								envCache : null(Real),
+								content : null(Real) ,
+								properties : none >),
+						subcomponents : (
+							< dotx : Data |
+								features : (
+									none),
+								subcomponents : (
+									none),
+								value : null(Real),
+								properties : (
+									(DataModel::InitialValue => {{0}})),
+								connections : (
+									empty) 
+								> 
+							< x : Data |
+								features : (
+									none),
+								subcomponents : (
+									none),
+								value : param(Real),
+								properties : (
+									none),
+								connections : (
+									empty) 
+								> ),
+						currMode : (
+							@@default@loc@@
+							),
+						jumps : (
+							empty
+							),
+						flows : (
+							((@@default@loc@@)[(x(t) = ((([[0.001]] * c[dotx]) * v[t]) + c[x])) ] )
+							),
+						sampling : (
+							(droneThread : (rat(20.0),rat(30.0)))
+							),
+						response : (
+							(droneThread : (rat(60.0),rat(80.0)))
+							),
+						varGen : (
+							< "FourDronesSystemrevu1DInstance.drone1.environment" >
+							),
+						properties : (
+							(HybridSynchAADL::Synchronous => {{true}}) ;
+							(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+							(TimingProperties::Period => {{100.0}}) ;
+							(HybridSynchAADL::ContinuousDynamics => {{"x(t) = ((0.001) * dotx * t) + x(0);"}}) ;
+							(HybridSynchAADL::isEnvironment => {{true}})),
+						connections : (
+							(x ==> currX) ;
+							(velX =>> dotx)) 
+						> ),
+				properties : (
+					(HybridSynchAADL::Synchronous => {{true}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+					(TimingProperties::Period => {{100.0}})),
+				connections : (
+					(inX --> drone .. inX) ;
+					(environment .. currX --> drone .. currX) ;
+					(drone .. velX --> environment .. velX) ;
+					(drone .. outX --> outX)) 
+				> 
+			< drone2 : System |
+				features : (
+					< inX : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< outX : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >),
+				subcomponents : (
+					< drone : System |
+						features : (
+							< inX : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< outX : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< currX : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< velX : DataOutPort | 
+								content : null(Real) ,
+								properties : none >),
+						subcomponents : (
+							< droneProc : Process |
+								features : (
+									< inX : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< outX : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< currX : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< velX : DataOutPort | 
+										content : null(Real) ,
+										properties : none >),
+								subcomponents : (
+									< droneThread : Thread |
+										features : (
+											< inX : DataInPort | 
+												cache : null(Real),
+												content : null(Real) ,
+												properties : none >
+											< outX : DataOutPort | 
+												content : null(Real) ,
+												properties : none >
+											< currX : DataInPort | 
+												cache : null(Real),
+												content : null(Real) ,
+												properties : none >
+											< velX : DataOutPort | 
+												content : null(Real) ,
+												properties : none >),
+										subcomponents : (
+											none),
+										currState : (
+											init),
+										completeStates : (
+											init),
+										variables : (
+											( nx : Real )),
+										transitions : (
+											(init -[ on dispatch ]-> exec {
+												skip
+											}) ;
+											(exec -[ (abs((f[currX] - f[inX])) < [[0.1]]) ]-> output {
+												(f{velX} := [[0]])
+											}) ;
+											(exec -[ otherwise ]-> output {
+												(v{nx} := minus(([[1.0]] * (f[currX] - f[inX])))) ;
+												if ((v[nx] > [[1]])){
+													(f{velX} := [[2]])
+												}
+												(
+												(elsif ((v[nx] > minus([[0.1]]))){
+													(f{velX} := [[0]])
+												})
+												)
+												else {
+													(f{velX} := minus([[2]]))
+												}
+												end if
+											}) ;
+											(output -[ [[true]] ]-> init {
+												(f{outX} := f[currX])
+											})),
+										loopBound : (
+											loopBoundNum),
+										transBound : (
+											transBoundNum),
+										varGen : (
+											< "FourDronesSystemrevu1DInstance.drone2.drone.droneProc.droneThread" >
+											),
+										properties : (
+											(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+											(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+											(HybridSynchAADL::Synchronous => {{true}}) ;
+											(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+											(TimingProperties::Period => {{100.0}})),
+										connections : (
+											empty) 
+										> ),
+								properties : (
+									(HybridSynchAADL::Synchronous => {{true}}) ;
+									(TimingProperties::Period => {{100.0}})),
+								connections : (
+									(droneThread .. outX --> outX) ;
+									(droneThread .. velX --> velX) ;
+									(inX --> droneThread .. inX) ;
+									(currX --> droneThread .. currX)) 
+								> ),
+						properties : (
+							(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+							(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+							(HybridSynchAADL::Synchronous => {{true}}) ;
+							(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+							(TimingProperties::Period => {{100.0}})),
+						connections : (
+							(droneProc .. outX --> outX) ;
+							(droneProc .. velX --> velX) ;
+							(currX --> droneProc .. currX) ;
+							(inX --> droneProc .. inX)) 
+						> 
+					< environment : Env |
+						features : (
+							< currX : EnvOutPort | 
+								target : droneThread,
+								envCache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< velX : EnvInPort | 
+								target : droneThread,
+								envCache : null(Real),
+								content : null(Real) ,
+								properties : none >),
+						subcomponents : (
+							< dotx : Data |
+								features : (
+									none),
+								subcomponents : (
+									none),
+								value : null(Real),
+								properties : (
+									(DataModel::InitialValue => {{0}})),
+								connections : (
+									empty) 
+								> 
+							< x : Data |
+								features : (
+									none),
+								subcomponents : (
+									none),
+								value : param(Real),
+								properties : (
+									none),
+								connections : (
+									empty) 
+								> ),
+						currMode : (
+							@@default@loc@@
+							),
+						jumps : (
+							empty
+							),
+						flows : (
+							((@@default@loc@@)[(x(t) = ((([[0.001]] * c[dotx]) * v[t]) + c[x])) ] )
+							),
+						sampling : (
+							(droneThread : (rat(20.0),rat(30.0)))
+							),
+						response : (
+							(droneThread : (rat(60.0),rat(80.0)))
+							),
+						varGen : (
+							< "FourDronesSystemrevu1DInstance.drone2.environment" >
+							),
+						properties : (
+							(HybridSynchAADL::Synchronous => {{true}}) ;
+							(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+							(TimingProperties::Period => {{100.0}}) ;
+							(HybridSynchAADL::ContinuousDynamics => {{"x(t) = ((0.001) * dotx * t) + x(0);"}}) ;
+							(HybridSynchAADL::isEnvironment => {{true}})),
+						connections : (
+							(velX =>> dotx) ;
+							(x ==> currX)) 
+						> ),
+				properties : (
+					(HybridSynchAADL::Synchronous => {{true}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+					(TimingProperties::Period => {{100.0}})),
+				connections : (
+					(environment .. currX --> drone .. currX) ;
+					(drone .. outX --> outX) ;
+					(inX --> drone .. inX) ;
+					(drone .. velX --> environment .. velX)) 
+				> 
+			< drone3 : System |
+				features : (
+					< inX : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< outX : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >),
+				subcomponents : (
+					< drone : System |
+						features : (
+							< inX : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< outX : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< currX : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< velX : DataOutPort | 
+								content : null(Real) ,
+								properties : none >),
+						subcomponents : (
+							< droneProc : Process |
+								features : (
+									< inX : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< outX : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< currX : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< velX : DataOutPort | 
+										content : null(Real) ,
+										properties : none >),
+								subcomponents : (
+									< droneThread : Thread |
+										features : (
+											< inX : DataInPort | 
+												cache : null(Real),
+												content : null(Real) ,
+												properties : none >
+											< outX : DataOutPort | 
+												content : null(Real) ,
+												properties : none >
+											< currX : DataInPort | 
+												cache : null(Real),
+												content : null(Real) ,
+												properties : none >
+											< velX : DataOutPort | 
+												content : null(Real) ,
+												properties : none >),
+										subcomponents : (
+											none),
+										currState : (
+											init),
+										completeStates : (
+											init),
+										variables : (
+											( nx : Real )),
+										transitions : (
+											(init -[ on dispatch ]-> exec {
+												skip
+											}) ;
+											(exec -[ (abs((f[currX] - f[inX])) < [[0.1]]) ]-> output {
+												(f{velX} := [[0]])
+											}) ;
+											(exec -[ otherwise ]-> output {
+												(v{nx} := minus(([[1.0]] * (f[currX] - f[inX])))) ;
+												if ((v[nx] > [[1]])){
+													(f{velX} := [[2]])
+												}
+												(
+												(elsif ((v[nx] > minus([[0.1]]))){
+													(f{velX} := [[0]])
+												})
+												)
+												else {
+													(f{velX} := minus([[2]]))
+												}
+												end if
+											}) ;
+											(output -[ [[true]] ]-> init {
+												(f{outX} := f[currX])
+											})),
+										loopBound : (
+											loopBoundNum),
+										transBound : (
+											transBoundNum),
+										varGen : (
+											< "FourDronesSystemrevu1DInstance.drone3.drone.droneProc.droneThread" >
+											),
+										properties : (
+											(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+											(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+											(HybridSynchAADL::Synchronous => {{true}}) ;
+											(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+											(TimingProperties::Period => {{100.0}})),
+										connections : (
+											empty) 
+										> ),
+								properties : (
+									(HybridSynchAADL::Synchronous => {{true}}) ;
+									(TimingProperties::Period => {{100.0}})),
+								connections : (
+									(droneThread .. velX --> velX) ;
+									(inX --> droneThread .. inX) ;
+									(droneThread .. outX --> outX) ;
+									(currX --> droneThread .. currX)) 
+								> ),
+						properties : (
+							(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+							(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+							(HybridSynchAADL::Synchronous => {{true}}) ;
+							(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+							(TimingProperties::Period => {{100.0}})),
+						connections : (
+							(droneProc .. velX --> velX) ;
+							(droneProc .. outX --> outX) ;
+							(inX --> droneProc .. inX) ;
+							(currX --> droneProc .. currX)) 
+						> 
+					< environment : Env |
+						features : (
+							< currX : EnvOutPort | 
+								target : droneThread,
+								envCache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< velX : EnvInPort | 
+								target : droneThread,
+								envCache : null(Real),
+								content : null(Real) ,
+								properties : none >),
+						subcomponents : (
+							< dotx : Data |
+								features : (
+									none),
+								subcomponents : (
+									none),
+								value : null(Real),
+								properties : (
+									(DataModel::InitialValue => {{0}})),
+								connections : (
+									empty) 
+								> 
+							< x : Data |
+								features : (
+									none),
+								subcomponents : (
+									none),
+								value : param(Real),
+								properties : (
+									none),
+								connections : (
+									empty) 
+								> ),
+						currMode : (
+							@@default@loc@@
+							),
+						jumps : (
+							empty
+							),
+						flows : (
+							((@@default@loc@@)[(x(t) = ((([[0.001]] * c[dotx]) * v[t]) + c[x])) ] )
+							),
+						sampling : (
+							(droneThread : (rat(20.0),rat(30.0)))
+							),
+						response : (
+							(droneThread : (rat(60.0),rat(80.0)))
+							),
+						varGen : (
+							< "FourDronesSystemrevu1DInstance.drone3.environment" >
+							),
+						properties : (
+							(HybridSynchAADL::Synchronous => {{true}}) ;
+							(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+							(TimingProperties::Period => {{100.0}}) ;
+							(HybridSynchAADL::ContinuousDynamics => {{"x(t) = ((0.001) * dotx * t) + x(0);"}}) ;
+							(HybridSynchAADL::isEnvironment => {{true}})),
+						connections : (
+							(x ==> currX) ;
+							(velX =>> dotx)) 
+						> ),
+				properties : (
+					(HybridSynchAADL::Synchronous => {{true}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+					(TimingProperties::Period => {{100.0}})),
+				connections : (
+					(drone .. velX --> environment .. velX) ;
+					(environment .. currX --> drone .. currX) ;
+					(inX --> drone .. inX) ;
+					(drone .. outX --> outX)) 
+				> 
+			< drone4 : System |
+				features : (
+					< inX : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< outX : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >),
+				subcomponents : (
+					< drone : System |
+						features : (
+							< inX : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< outX : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< currX : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< velX : DataOutPort | 
+								content : null(Real) ,
+								properties : none >),
+						subcomponents : (
+							< droneProc : Process |
+								features : (
+									< inX : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< outX : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< currX : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< velX : DataOutPort | 
+										content : null(Real) ,
+										properties : none >),
+								subcomponents : (
+									< droneThread : Thread |
+										features : (
+											< inX : DataInPort | 
+												cache : null(Real),
+												content : null(Real) ,
+												properties : none >
+											< outX : DataOutPort | 
+												content : null(Real) ,
+												properties : none >
+											< currX : DataInPort | 
+												cache : null(Real),
+												content : null(Real) ,
+												properties : none >
+											< velX : DataOutPort | 
+												content : null(Real) ,
+												properties : none >),
+										subcomponents : (
+											none),
+										currState : (
+											init),
+										completeStates : (
+											init),
+										variables : (
+											( nx : Real )),
+										transitions : (
+											(init -[ on dispatch ]-> exec {
+												skip
+											}) ;
+											(exec -[ (abs((f[currX] - f[inX])) < [[0.1]]) ]-> output {
+												(f{velX} := [[0]])
+											}) ;
+											(exec -[ otherwise ]-> output {
+												(v{nx} := minus(([[1.0]] * (f[currX] - f[inX])))) ;
+												if ((v[nx] > [[1]])){
+													(f{velX} := [[2]])
+												}
+												(
+												(elsif ((v[nx] > minus([[0.1]]))){
+													(f{velX} := [[0]])
+												})
+												)
+												else {
+													(f{velX} := minus([[2]]))
+												}
+												end if
+											}) ;
+											(output -[ [[true]] ]-> init {
+												(f{outX} := f[currX])
+											})),
+										loopBound : (
+											loopBoundNum),
+										transBound : (
+											transBoundNum),
+										varGen : (
+											< "FourDronesSystemrevu1DInstance.drone4.drone.droneProc.droneThread" >
+											),
+										properties : (
+											(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+											(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+											(HybridSynchAADL::Synchronous => {{true}}) ;
+											(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+											(TimingProperties::Period => {{100.0}})),
+										connections : (
+											empty) 
+										> ),
+								properties : (
+									(HybridSynchAADL::Synchronous => {{true}}) ;
+									(TimingProperties::Period => {{100.0}})),
+								connections : (
+									(droneThread .. outX --> outX) ;
+									(droneThread .. velX --> velX) ;
+									(inX --> droneThread .. inX) ;
+									(currX --> droneThread .. currX)) 
+								> ),
+						properties : (
+							(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+							(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+							(HybridSynchAADL::Synchronous => {{true}}) ;
+							(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+							(TimingProperties::Period => {{100.0}})),
+						connections : (
+							(currX --> droneProc .. currX) ;
+							(droneProc .. velX --> velX) ;
+							(inX --> droneProc .. inX) ;
+							(droneProc .. outX --> outX)) 
+						> 
+					< environment : Env |
+						features : (
+							< currX : EnvOutPort | 
+								target : droneThread,
+								envCache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< velX : EnvInPort | 
+								target : droneThread,
+								envCache : null(Real),
+								content : null(Real) ,
+								properties : none >),
+						subcomponents : (
+							< dotx : Data |
+								features : (
+									none),
+								subcomponents : (
+									none),
+								value : null(Real),
+								properties : (
+									(DataModel::InitialValue => {{0}})),
+								connections : (
+									empty) 
+								> 
+							< x : Data |
+								features : (
+									none),
+								subcomponents : (
+									none),
+								value : param(Real),
+								properties : (
+									none),
+								connections : (
+									empty) 
+								> ),
+						currMode : (
+							@@default@loc@@
+							),
+						jumps : (
+							empty
+							),
+						flows : (
+							((@@default@loc@@)[(x(t) = ((([[0.001]] * c[dotx]) * v[t]) + c[x])) ] )
+							),
+						sampling : (
+							(droneThread : (rat(20.0),rat(30.0)))
+							),
+						response : (
+							(droneThread : (rat(60.0),rat(80.0)))
+							),
+						varGen : (
+							< "FourDronesSystemrevu1DInstance.drone4.environment" >
+							),
+						properties : (
+							(HybridSynchAADL::Synchronous => {{true}}) ;
+							(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+							(TimingProperties::Period => {{100.0}}) ;
+							(HybridSynchAADL::ContinuousDynamics => {{"x(t) = ((0.001) * dotx * t) + x(0);"}}) ;
+							(HybridSynchAADL::isEnvironment => {{true}})),
+						connections : (
+							(velX =>> dotx) ;
+							(x ==> currX)) 
+						> ),
+				properties : (
+					(HybridSynchAADL::Synchronous => {{true}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+					(TimingProperties::Period => {{100.0}})),
+				connections : (
+					(environment .. currX --> drone .. currX) ;
+					(drone .. outX --> outX) ;
+					(drone .. velX --> environment .. velX) ;
+					(inX --> drone .. inX)) 
+				> ),
+		properties : (
+			(HybridSynchAADL::Synchronous => {{true}}) ;
+			(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+			(TimingProperties::Period => {{100.0}})),
+		connections : (
+			(drone1 .. outX --> drone2 .. inX) ;
+			(drone3 .. outX --> drone4 .. inX) ;
+			(drone2 .. outX --> drone3 .. inX) ;
+			(drone4 .. outX --> drone1 .. inX)) 
+		>  .
+endm

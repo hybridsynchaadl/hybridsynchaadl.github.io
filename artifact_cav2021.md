@@ -7,7 +7,7 @@ slug: /artifact_cav2021
 The artifact is same as the 'CAV2021-AeC' directory in the <a href="http://doi.org/10.5281/zenodo.4699760">VM image</a> 
 excpet for the <i>setup.sh</i> script. Tools and scripts in the artifact runs on
 Ubuntu. To run the HybridSynchAADL tool and experiments, you need to install
-additional software. 
+additional software: JDK8 and GNU parallel
 </p>
 
 <h2> Download</h2>
@@ -24,7 +24,7 @@ environment so that it downloads the software using apt (Advanced Package Tool).
 
 <h2>How to run artifact in the non VM</h2>
 <p>
-Unzip the downloaded 'artifact.zip' in your Desktop directory.
+Unzip the downloaded 'artifact.zip' in your home directory.
 To run the HybridSynchAADL tool, it needs JDK8. Refer to the
 following web site: 'https://openjdk.java.net/install/'. The script
 'run_expr' performs an analysis using GNU parallel. To execute the script,

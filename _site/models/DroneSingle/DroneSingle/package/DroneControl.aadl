@@ -1,0 +1,143 @@
+package DroneControl
+public
+	with Base_Types;
+	with DroneSpec;
+	with Data_Model;
+        
+	system RevuDroneControl
+		features
+			inX: in data port Base_Types::Float;
+			outX : out data port Base_Types::Float;
+			currX: in data port Base_Types::Float;
+			velX : out data port Base_Types::Float;
+	end RevuDroneControl;
+	system implementation RevuDroneControl.impl
+		subcomponents
+			droneProc: process RevuDroneControlProc.impl;
+		connections
+			C1: port currX -> droneProc.currX;
+			C2: port inX -> droneProc.inX;
+			C3: port droneProc.velX -> velX;
+			C4: port droneProc.outX -> outX;
+	end RevuDroneControl.impl;
+	
+	
+	process RevuDroneControlProc
+		features
+			inX: in data port Base_Types::Float;
+			outX : out data port Base_Types::Float;
+			currX: in data port Base_Types::Float;
+			velX : out data port Base_Types::Float;
+	end RevuDroneControlProc;
+	process implementation RevuDroneControlProc.impl
+		subcomponents
+			droneThread: thread RevuDroneControlThread.impl;
+		connections
+			C1: port currX -> droneThread.currX;
+			C2: port inX -> droneThread.inX;
+			C3: port droneThread.velX -> velX;
+			C4: port droneThread.outX -> outX;
+	end RevuDroneControlProc.impl;
+	
+	
+	thread RevuDroneControlThread
+		features
+			inX: in data port Base_Types::Float;
+			outX : out data port Base_Types::Float;
+			currX: in data port Base_Types::Float;
+			velX : out data port Base_Types::Float;
+		properties
+			Dispatch_Protocol => Periodic;
+	end RevuDroneControlThread;
+	thread implementation RevuDroneControlThread.impl
+		annex behavior_specification {**
+			variables
+				nx : Base_Types::Float;
+			states
+				init : initial complete state;
+				exec, output : state;
+			transitions
+				init -[on dispatch]-> exec;
+				exec -[abs(currX - inX) < 0.1]-> output {
+					velX := 0
+				};
+				exec -[otherwise]-> output {
+					nx := - #DroneSpec::A * (currX - inX); 
+					if (nx > 1)			velX := 2
+					elsif (nx > -0.1)	velX := 0
+					else				velX := -2
+					end if
+				};
+				output -[ ]-> init {
+					outX := currX
+				};
+	**};
+	end RevuDroneControlThread.impl;
+	
+	
+	system FormDroneControl extends RevuDroneControl
+		features
+			refX: in data port Base_Types::Float;
+		properties
+			Classifier_Substitution_Rule => Type_Extension;
+	end FormDroneControl;
+	system implementation FormDroneControl.impl extends RevuDroneControl.impl
+		subcomponents
+			droneProc: refined to process FormDroneControlProc.impl;
+		connections
+			C5: port refX -> droneProc.refX;
+	end FormDroneControl.impl;
+	
+	
+	process FormDroneControlProc extends RevuDroneControlProc
+		features
+			refX: in data port Base_Types::Float;
+		properties
+			Classifier_Substitution_Rule => Type_Extension;
+	end FormDroneControlProc;
+	process implementation FormDroneControlProc.impl extends RevuDroneControlProc.impl
+		subcomponents
+			droneThread: refined to thread FormDroneControlThread.impl;
+		connections
+			C5: port refX -> droneThread.refX;
+	end FormDroneControlProc.impl;
+	
+	
+	thread FormDroneControlThread extends RevuDroneControlThread
+		features
+			refX: in data port Base_Types::Float;
+		properties
+			Dispatch_Protocol => Periodic;
+	end FormDroneControlThread;
+	thread implementation FormDroneControlThread.impl extends RevuDroneControlThread.impl
+		subcomponents
+			offsetX: data Base_Types::Float;
+			refX0: data Base_Types::Float {Data_Model::Initial_Value => ("0");};
+		annex behavior_specification {**
+			variables
+				nx, refvX : Base_Types::Float;
+			states
+				init : initial complete state;
+				exec, output : state;
+			transitions
+				init -[on dispatch]-> exec;
+				exec -[abs(currX - inX) < 0.1]-> output {
+					velX := 0
+				};
+				exec -[otherwise]-> output {
+					refvX := (refX-refX0);
+					nx := refvX - #DroneSpec::alpha * (currX - offsetX - refX) - #DroneSpec::A * (currX - offsetX - inX);
+					if (nx > 1)			velX := 2
+					elsif (nx > -0.5)	velX := 0
+					else				velX := -2
+					end if
+				};
+				output -[ ]-> init {
+					outX := currX - offsetX;
+					refX0 := refX
+				};
+	**};
+	end FormDroneControlThread.impl;
+	
+	
+end DroneControl;
