@@ -1,0 +1,26 @@
+I"�<p>
+This web page contains artifacts for our paper “HYBRIDSYNCHAADL: Modeling and
+Formal Analysis of Virtually Synchronous CPSs in AADL” by J. Lee, S. Kim, K.
+Bae, P. C. Ölveczky, and M. Kang.
+</p>
+<h2> Download artifact.zip</h2>
+<p>To run the HybridSynchAADL tool and experiments, download the artifact.zip in this <a href="https://tinyurl.com/cpsuef5h">link</a>.</p>
+<h2>How to run artifact in the VM</h2>
+<p>
+Unzip the downloaded 'artifact.zip' in your home directory.
+There is set-up.sh script which downloads the JDK8 and GNU parallel
+automatically. The script is assumed to be executed in the Ubuntu
+environment so that it downloads the software using apt (Advanced Package Tool).
+</p>
+<h2>How to run artifact in the non VM</h2>
+<p>
+Unzip the downloaded 'artifact.zip' in your Desktop directory.
+To run the HybridSynchAADL tool, it needs JDK8. Refer to the
+following web site: 'https://openjdk.java.net/install/'. The script
+'run_expr' performs an analysis using GNU parallel. To execute the script,
+download GNU parallel using your package installer or refer to the following
+website 'https://www.gnu.org/software/parallel/'
+</p>
+<p><br />
+<br /></p>
+:ET

@@ -18,12 +18,14 @@ header:
       slug: /blog
     - name: Documentation
       slug: /work
+    - name: Artifact 
+      slug: /artifact_cav2021
 
 footer:
   show_powered_by: false
   contact:
-	- name: Jaehun Lee
-	- link: thkighie1224@postech.ac.kr
+    - name: Jaehun Lee
+    - link: thkighie1224@postech.ac.kr
 
 # Build settings
 markdown: kramdown
