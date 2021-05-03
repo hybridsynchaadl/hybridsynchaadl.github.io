@@ -4,19 +4,24 @@ title: Artifact
 slug: /artifact_cav2021
 ---
 <p>
-This web page contains artifacts for our paper “HYBRIDSYNCHAADL: Modeling and
-Formal Analysis of Virtually Synchronous CPSs in AADL” by J. Lee, S. Kim, K.
-Bae, P. C. Ölveczky, and M. Kang.
+The artifact is same as the 'CAV2021-AeC' directory in the <a href="http://doi.org/10.5281/zenodo.4699760">VM image</a> 
+excpet for the <i>setup.sh</i> script. Tools and scripts in the artifact runs on
+Ubuntu. To run the HybridSynchAADL tool and experiments, you need to install
+additional software. 
 </p>
-<h2> Download artifact.zip</h2>
-To run the HybridSynchAADL tool and experiments, download the artifact.zip in this <a href="https://tinyurl.com/cpsuef5h">link</a>.
-<h2>How to run artifact in the VM</h2>
+
+<h2> Download</h2>
+Download 'artifact.zip' in this <a href="https://tinyurl.com/cpsuef5h">link</a>.
+
+<h2>How to run artifact in the empty VM</h2>
 <p>
 Unzip the downloaded 'artifact.zip' in your home directory.
 There is set-up.sh script which downloads the JDK8 and GNU parallel
 automatically. The script is assumed to be executed in the Ubuntu
 environment so that it downloads the software using apt (Advanced Package Tool).
 </p>
+
+
 <h2>How to run artifact in the non VM</h2>
 <p>
 Unzip the downloaded 'artifact.zip' in your Desktop directory.

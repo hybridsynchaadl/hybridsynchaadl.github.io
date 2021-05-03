@@ -1,10 +1,14 @@
-I"�<p>
+I"�<p>
+The artifact is same as the 'CAV2021-AeC' directory in the <a href="http://doi.org/10.5281/zenodo.4699760">VM image</a> 
+excpet the 'setup.sh' script.  
+
+
 This web page contains artifacts for our paper “HYBRIDSYNCHAADL: Modeling and
 Formal Analysis of Virtually Synchronous CPSs in AADL” by J. Lee, S. Kim, K.
 Bae, P. C. Ölveczky, and M. Kang.
 </p>
-<h2> Download artifact.zip</h2>
-<p>To run the HybridSynchAADL tool and experiments, download the artifact.zip in this <a href="https://tinyurl.com/cpsuef5h">link</a>.</p>
+<h2> Download</h2>
+<p>Download ‘artifact.zip’ in this <a href="https://tinyurl.com/cpsuef5h">link</a>.</p>
 <h2>How to run artifact in the VM</h2>
 <p>
 Unzip the downloaded 'artifact.zip' in your home directory.

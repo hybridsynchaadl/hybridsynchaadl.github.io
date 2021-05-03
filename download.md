@@ -3,10 +3,10 @@ layout: download
 title: Download 
 slug: /download
 ---
-The HybridSynchAADL tool is an [OSATE2](https://osate.org/) plugin. The tool runs in
-<b>Java1.8</b> and is available for Linux(Ubuntu). Check whether Java1.8 is
-installed in your local machine or not. If it is not installed, go
-to this
+The HybridSynchAADL tool is an [OSATE2](https://osate.org/) plugin. The tool
+runs in <b>Java1.8</b> and is available for Linux(Ubuntu) and macOS. Check
+whether Java1.8 is installed in your local machine or not. If it is not
+installed, go to this
 [link](https://www.oracle.com/kr/java/technologies/javase/javase-jdk8-downloads.html),
 and download Java1.8.
 
@@ -14,64 +14,51 @@ The HybridSynchAADL tool also uses Maude with SMT solver which is a rewriting
 modulo SMT extension of Maude 3.0 at C++ level. You can download it in this
 [link](https://maude-se.github.io/)
 
-
-You can download HybridSynchAADL tool as plugin projcect (three jar files). The
-installation process is explained below the 'Installation' section. The OSATE2
-tool including our plugin version is also provided: 
-
-HybridSynchAADL 1.0 source:
-* [Source](https://hybridsynchaadl.github.io/source/source.zip)
+The HybridSynchAADL tool integrated with OSATE2 can be downloaded on the following links:
+* [HybridSynchAADL 1.0 for Linux64](https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0)
+* [HybridSynchAADL 1.0 for macOS](https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0)
 
 
-HybridSynchAADL 1.0 plugin:
-* [Plugin](https://tinyurl.com/4v6d46ue)
+Note that OSATE2 binary for macOS is not signed. This can result in an error message when starting OSATE.
+To correct this issue, run the following command to allow OSATE2 execution:
+> $ sudo xattr -rd com.apple.quarantine osate2.app/ 
+
+When you run the HybridSynchAADL tool, you can see the following window.
+
+![OSATE](https://raw.githubusercontent.com/hybridsynchaadl/HybridSynchAADL/master/images/start.png)
+
+## Installation from OSATE2 
+When you already have OSATE2 for Linux64 or macOS, you can integrate our tool
+into OSATE2. We provide our tool as plugin projects (three jar files). Download
+the 'plugins.zip' file in this [link](https://tinyurl.com/4v6d46ue) and unzip
+the file.
 
 
-OSATE2 including HybridSynchAADL 1.0:
-* [Linux(Ubuntu)](https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0)
+### 1. Create the "dropins" directory
+To include our plugin projects into OSATE2, create the directory named by
+<b>dropins</b> in the OSATE2 directory (for macOS, 'osate2.app/Contents/Eclipse/').
+Put three jar files into the <b>dropins</b> directory.
 
 
-## Installation  
-Download a latest version OSATE2 available for Linux(Ubuntu). Make the
-<b>dropins</b> directory in downloaded OSATE directory. Unzip the plugins.zip
-file and put the three jar files into the 'dropins' directory.  In the
-<b>configuration/org.eclipase.equinox.simpleconfigurator</b> directory, there
-is a <b>bundles.info</b> file which contains a list of all plugins installed in
-the current OSATE2.
-
-
-
-Write the following lines under <b>#version=1</b> in the <b>bundles.info</b> file.
+### 2. Write our plugin information
+To notify that our plugin should be included into OSATE2, you need to write the
+following lines under <b>#version=1</b> in the <b>bundles.info</b> file.
 
 > edu.postech.aadl.synch,1.0.0.202104261605,dropins/edu.postech.aadl.synch_1.0.0.202104261605.jar,4,false
 > edu.postech.aadl.xtext.propspec,1.0.0.202104261605,dropins/edu.postech.aadl.xtext.propspec_1.0.0.202104261605.jar,4,false
 > edu.postech.aadl.xtext.propspec.ui,1.0.0.202104261605,dropins/edu.postech.aadl.xtext.propspec.ui_1.0.0.202104261605.jar,4,false
 
-You can now run <b>OSATE2</b> and perform an analysis. If you successfully execute
-<b>OSATE2</b> with our plugins, you can see the following window.
-
-![OSATE](https://raw.githubusercontent.com/hybridsynchaadl/HybridSynchAADL/master/images/start.png)
-
-There must be the menu named by "HybridSynchAADL" when our plugins are
-successfullly included in OSATE2.
-
-## Getting Started + Example
-
-The easiest way to get started is to run some of the simple HybridSynchAADL
-models. Follow the step-by-step instruction guideline at Section 6 in <b>User
-Manual</b> in the 'Documentation' menu. 
+The <b>bundles.info</b> file is located in:
+* OSATE2/configuration/org.eclipse.equinox.simpleconfigurator (for Linux64)
+* osate2.app/Contents/Eclipse/org.eclipse.equinox.simpleconfigurator (for macOS)
 
 
+### 3. Run OSATE2 integrated with our tool
 
-## HybridSynchAADL Property Set
+You can now run <b>OSATE2</b> and perform an analysis. There must be the menu
+named by "HybridSynchAADL" when our plugins are successfullly included in
+OSATE2.
 
-The tool provides HybridSynchAADL language for modeling virtually synchronous
-CPSs in AADL. The HybridSynchAADL language is a subset of AADL extended with
-the following property set 'Hybrid_SynchAADL'. We use a subset of AADL without
-changing the meaning of AADL constructs or adding a new annex so that AADL
-experts can easily develop and understand HybridSynchAADL models. Download the
-AADL file specifying the 'Hybrid_SynchAADL' property and put it into the
-'propertysets' directory in your AADL project:
-
-HybridSynchAADL property set:
-* [property_set](https://hybridsynchaadl.github.io/assets/HybridSynchAADL.aadl)
+## Source Code
+There is a github webpage maintaining current release version of our tool.
+Go to the following github page to get the source code of our tool: [Source](https://github.com/hybridsynchaadl/HybridSynchAADL)
