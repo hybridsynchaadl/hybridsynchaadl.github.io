@@ -20,7 +20,7 @@ installation process is explained below the 'Installation' section. The OSATE2
 tool including our plugin version is also provided: 
 
 HybridSynchAADL 1.0 source:
-* [Source](https://tinyurl.com/xfsyrfz8)
+* [Source](https://hybridsynchaadl.github.io/source/source.zip)
 
 
 HybridSynchAADL 1.0 plugin:
