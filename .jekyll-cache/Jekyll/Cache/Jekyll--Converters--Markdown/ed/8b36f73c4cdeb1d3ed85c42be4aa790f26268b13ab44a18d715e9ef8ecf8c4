@@ -1,4 +1,5 @@
-I"×	<p>
+I"±
+<p>
 This page shows the artifact for our paper: "HYBRIDSYNCHAADL: Modeling and
 Formal Analysis of Virtually Synchronous CPSs in AADL" by J. Lee, S. Kim, K.
 Bae, and P. C. Ã–lveczky. The artifact includes the HybridSynchAADL tool and the
@@ -59,7 +60,14 @@ In the artifact, the HybridSynchAADL tool is located in the directory
 executable Maude file.
 </p>
 
-<p><img src="images/maude_preferences.png" /></p>
+<figure>
+<img src="images/workspace.png" width="80%" height="80%" />
+<figcaption style="font-size: 20px">workspace</figcaption>
+</figure>
+<figure>
+<img src="images/maude_preferences.png" width="80%" height="80%" />
+<figcaption>Maude Preferences</figcaption>
+</figure>
 
 <p><br />
 <br /></p>
