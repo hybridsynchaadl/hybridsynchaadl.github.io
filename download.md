@@ -16,7 +16,7 @@ modulo SMT extension of Maude 3.0 at C++ level. You can download it in this
 
 The HybridSynchAADL tool integrated with OSATE2 can be downloaded on the following links:
 * [HybridSynchAADL 1.0 for Linux64](https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0)
-* [HybridSynchAADL 1.0 for macOS](https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0)
+* [HybridSynchAADL 1.0 for macOS](https://www.dropbox.com/sh/ua5zds97b2j7n01/AAAjLUBHNAzb7impOw99ryAfa?dl=0)
 
 
 Note that OSATE2 binary for macOS is not signed. This can result in an error message when starting OSATE.
