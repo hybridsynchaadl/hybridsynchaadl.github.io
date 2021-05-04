@@ -15,9 +15,3 @@ slug: /benchmark
 
 [WaterTank](models/WaterTank/watertank.html): watertank system with pump
 <br />
-
-[FourDronesSystem_Rendezvous](models/FourDronesSystem/fourdronessystem.html): rendezvous control of drones with single-integrator dynamics
-<br />
-
-[FourDronesSystem_Formation](models/FourDronesSystem_Formation/fourdronessystem_formation.html): formation control of drones with single-integrator dynamics
-<br />
