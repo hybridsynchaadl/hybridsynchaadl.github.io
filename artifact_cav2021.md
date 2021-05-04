@@ -4,85 +4,75 @@ title: Artifact
 slug: artifact_cav2021
 ---
 <p>
-This page contains the artifact for our paper: "HYBRIDSYNCHAADL: Modeling and
+This page explains the artifact for our paper: "HYBRIDSYNCHAADL: Modeling and
 Formal Analysis of Virtually Synchronous CPSs in AADL" by J. Lee, S. Kim, K.
-Bae, P. C. Ölveczky, and M. Kang. The artifact consists of the HybridSynchAADL
-tool, scripts for the experiments, and reachability analysis tools. 
+Bae, and P. C. Ölveczky. The artifact consists of the HybridSynchAADL tool and 
+scripts for the experiments. 
 </p>
 <p>
 We provide the VM image which contains the artifact in this 
-<a href="http://doi.org/10.5281/zenodo.4699760">link</a>. In the VM image, the
-required software to run the tool and experiments are already installed. The
-minimum resource to run the artifact is a Quad-Core CPU with 4GB memory. In the
-VM image, there is the 'Readme.txt' file which explains how to reproduce our results
-in our paper.  The 'Readme.txt' file is located in the '/home/user/CAV2021-AeC'
-directory.
+<a href="http://doi.org/10.5281/zenodo.4699760">link</a>. A minimum resource to
+run the artifact is a Quad-Core CPU with 4GB memory. In the VM, the artifact is
+located in the 'home/user/CAV2021-AeC' directory. See 'Readme.txt' in the
+directory for more details about the tool and experiments.
 </p>
-
-<h2> Download</h2>
-Download 'artifact.zip' in this <a href="https://tinyurl.com/cpsuef5h">link</a>.
 
 <h2>Running the artifact in a non-VM environment</h2>
 <p>
-In this section, we explain how to run the artifact in the Ubuntu environment
-which is a non-VM environment. There is required software to run the
-HybridSynchAADL tool and experiments which are already installed in the VM
-environment: Java1.8 and GNU parallel. To install this software, refer to the
-following website:
+We explain how to install and run the artifact in a non-VM environment.
+Download 'artifact.zip' in this <a href="https://tinyurl.com/cpsuef5h">link</a> 
+and unzip the archive file. There is a directory 'CAV2021-AeC'. The directory
+already contains the following software:
 </p>
 
-* https://openjdk.java.net/install/ (for Java1.8)
-* https://www.gnu.org/software/parallel/ (for GNU parallel)
+* Maude with SMT: https://maude-se.github.io/
+* SpaceEx: http://spaceex.imag.fr/
+* Flow\*: https://flowstar.org/
+* HyComp: https://es-static.fbk.eu/tools/hycomp/
+* dReach: http://dreal.github.io/
+
+<p>
+You can also install them manually by referring to the given official website.
+In addition to the above software, you have to install the following software
+to run the artifact:
+</p>
+
+* JAVA8: https://openjdk.java.net/install/ 
+* GNU parallel: https://www.gnu.org/software/parallel/ 
 
 
 <p>
-Download 'artifact.zip' and unzip it in your local machine. Unlike the artifact
-directory in the VM image, there is the script 'set-up.sh' which automatically
-installs required software in case of a specific operating system such as Ubuntu.
-To run the HybridSynchAADL tool and experiments, see the 'Readme.txt' file in
-the artifact directory. 
+There is the script 'set-up.sh' which automatically installs JAVA8 and GNU
+parallel for Ubuntu. When your operating system is not Ubuntu, install them
+manually. After successfully setting up the artifact, see 'Readme.txt' in
+'CAV2021-AeC' to run the HybridSynchAADL tool and experiments.
 </p>
 
 <p>
-The process of running the artifact in an empty VM environment is the same as
-the above process. When you have a VM environment, download the artifact from
-the browser installed in the VM, or use 'Shared Folder' to move the downloaded
-artifact directory into the VM from your local machine.
+The above instructions can be also applied to a VM environment. Create a
+virtual machine running on Ubuntu. Download the artifact, and run the script
+'set-up.sh'. The VM can reproduce our artifact results.
 </p>
-
-
 
 
 <h2>Setting up the HybridSynchAADL tool</h2>
-The script 'set-up.sh' only sets up the environment for running the
-HybridSynchAADL tool and experiments. To analyze the case study model using the
-HybridSynchAADL tool, you need to follow additional steps.
+The script 'set-up.sh' only sets up the artifact for running the
+HybridSynchAADL tool and experiments. There are additional steps which sets a
+workspace and preferences.
 
 
-In the artifact directory, the HybridSynchAADL tool has to create a workspace
-and set Maude preferences. Double click 'osate' in the 'hybridsynchaadl'
-directory. In OSATE2 Launcher, choose the workspace directory wherever you want
-(It is recommended to choose the default workspace direcory). There is an empty
-project in the AADL Navigator window of OSATE2.
+The HybridSynchAADL tool is located in the 'CAV2021-AeC/hybridsynchaadl'
+directory. To run the tool, double click 'osate' in the directory. OSATE2
+Launcher pops up to set the workspace. Set the workspace to
+'CAV2021-AeC/hybridsynchaadl/workspace' which contains the case study project
+'FourDronesSystem'.
 
 
-The HybridSynchAADL tool uses Maude-SE so that the configuration for Maude is
-needed. Check whether Maude with SMT is installed on your local machine or not. When
-you want to install Maude with SMT, refer to this [link](https://maude-se.github.io).
-Open the Preferences dialog by clicking 'Window' -> 'Preferences' in the top
-menu.
-
-
-In the preferences dialog, you can locate 'Maude Preferences' category on the
+In order to use Maude with SMT, you need to set configurations.  Open the
+Preferences dialog by clicking 'Window/Preferences' in the top menu.  In the
+preferences dialog, you can locate 'Maude Preferences' category on the
 left-hand side of the dialog box. In the 'Maude Preferences' page, set the
-installed Maude directory and executable file 'maude-se-yices2' properly. Click
-on the 'Apply and Close' button to save and close the dialog box.
-
-
-Now you can use our tool to analyze a HybridSynchAADL model. Import an existing
-project in models directory such as 'FourDronesSystem'. The process is similar
-to the one used in Eclipse IDE. You can find the step-by-step process to
-analyze our case study model in the 'User Manual' documentation.
-
+Maude directory and executable Maude file. Click on the 'Apply and Close'
+button to save and close the dialog box.
 <br />
 <br />
