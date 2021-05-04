@@ -113,41 +113,54 @@
         <div class="work">
           <h1 class="page-heading">Artifact</h1>
           <p>
-The artifact is same as the 'CAV2021-AeC' directory in the <a href="http://doi.org/10.5281/zenodo.4699760">VM image</a> 
-excpet for the <i>set-up.sh</i> script. Tools and scripts in the artifact runs on
-Ubuntu. To run the HybridSynchAADL tool and experiments, you need to install
-additional software: JDK8 and GNU parallel
+This page contains the artifact for our paper: "HYBRIDSYNCHAADL: Modeling and
+Formal Analysis of Virtually Synchronous CPSs in AADL" by J. Lee, S. Kim, K.
+Bae, P. C. Ölveczky, and M. Kang. The artifact consists of the HybridSynchAADL
+tool, scripts for the experiments, and reachability analysis tools. 
+</p>
+<p>
+We provide the VM image which contains the artifact in this 
+<a href="http://doi.org/10.5281/zenodo.4699760">link</a>. In the VM image, the
+required software to run the tool and experiments are already installed. The
+minimum resource to run the artifact is Quad-Core CPU with 4GB memory. In the
+VM image, there is Readme.txt file which explains how to reproduce our results
+in our paper.  The 'Readme.txt' file is located in the '/home/user/CAV2021-AeC'
+directory.
 </p>
 
 <h2> Download</h2>
 <p>Download ‘artifact.zip’ in this <a href="https://tinyurl.com/cpsuef5h">link</a>.</p>
 
-<h2>How to run artifact in the empty VM</h2>
-<p> 
-To run artifact in the empty VM, the minimum resource of the VM is
-Quad-Core CPU and 4GB memory. Download 'artifact.zip' using the browser in the
-VM. You can also download 'artifact.zip' file, and then move it into the VM
-using the shared folder.
+<h2>Running the artifact in a non-VM environment</h2>
+<p>
+In this section, we explains how to run the artifact in the Ubuntu environment
+which is non-VM environment. There are required software to run the
+HybridSynchAADL tool and experiments which are already installed in the VM
+environment: Java1.8 and GNU parallel. To install these software, refer to the
+following website:
+</p>
+
+<ul>
+  <li>https://openjdk.java.net/install/ (for Java1.8)</li>
+  <li>https://www.gnu.org/software/parallel/ (for GNU parallel)</li>
+</ul>
+
+<p>
+Download 'artifact.zip' and unzip it in your local machine. Unlike the artifact
+directory in the VM image, there is the script 'set-up.sh' which automatically
+installs required software in case of specific operating system such as Ubuntu.
+To run the HybridSynchAADL tool and experiments, see the 'Readme.txt' file in
+the artifact directory. 
 </p>
 
 <p>
-Unzip the downloaded 'artifact.zip' in your home directory.  There is set-up.sh
-script which downloads the JDK8 and GNU parallel automatically. The script is
-assumed to be executed in the Ubuntu environment so that it downloads required
-software using apt (Advanced Package Tool).
+The process of running the artifact in a empty VM environment is same as the
+above process. When you have a VM environment, download the artifact from the
+browser installed in the VM, or use shared folder to move the downloaded
+artifact directory into the VM from your local machine.
 </p>
 
-<h2>How to run artifact in the non VM</h2>
-<p>
-Unzip the downloaded 'artifact.zip' in your home directory.
-To run the HybridSynchAADL tool, it needs JDK8. Refer to the
-following web site: 'https://openjdk.java.net/install/'. The script
-'run_expr' performs an analysis using GNU parallel. To execute the script,
-download GNU parallel using your package installer or refer to the following
-website 'https://www.gnu.org/software/parallel/'
-</p>
-
-<h2>Set up the HybridSynchAADL tool</h2>
+<h2>Setting up the HybridSynchAADL tool</h2>
 <p>The script ‘set-up.sh’ only sets up the environment for running the
 HybridSynchAADL tool and experiments. To analyze case study model using the
 HybridSynchAADL tool, you need to follow additional steps.</p>
