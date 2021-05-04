@@ -13,8 +13,8 @@ tool, scripts for the experiments, and reachability analysis tools.
 We provide the VM image which contains the artifact in this 
 <a href="http://doi.org/10.5281/zenodo.4699760">link</a>. In the VM image, the
 required software to run the tool and experiments are already installed. The
-minimum resource to run the artifact is Quad-Core CPU with 4GB memory. In the
-VM image, there is Readme.txt file which explains how to reproduce our results
+minimum resource to run the artifact is a Quad-Core CPU with 4GB memory. In the
+VM image, there is the 'Readme.txt' file which explains how to reproduce our results
 in our paper.  The 'Readme.txt' file is located in the '/home/user/CAV2021-AeC'
 directory.
 </p>
@@ -24,10 +24,10 @@ Download 'artifact.zip' in this <a href="https://tinyurl.com/cpsuef5h">link</a>.
 
 <h2>Running the artifact in a non-VM environment</h2>
 <p>
-In this section, we explains how to run the artifact in the Ubuntu environment
-which is non-VM environment. There are required software to run the
+In this section, we explain how to run the artifact in the Ubuntu environment
+which is a non-VM environment. There is required software to run the
 HybridSynchAADL tool and experiments which are already installed in the VM
-environment: Java1.8 and GNU parallel. To install these software, refer to the
+environment: Java1.8 and GNU parallel. To install this software, refer to the
 following website:
 </p>
 
@@ -38,15 +38,15 @@ following website:
 <p>
 Download 'artifact.zip' and unzip it in your local machine. Unlike the artifact
 directory in the VM image, there is the script 'set-up.sh' which automatically
-installs required software in case of specific operating system such as Ubuntu.
+installs required software in case of a specific operating system such as Ubuntu.
 To run the HybridSynchAADL tool and experiments, see the 'Readme.txt' file in
 the artifact directory. 
 </p>
 
 <p>
-The process of running the artifact in a empty VM environment is same as the
-above process. When you have a VM environment, download the artifact from the
-browser installed in the VM, or use shared folder to move the downloaded
+The process of running the artifact in an empty VM environment is the same as
+the above process. When you have a VM environment, download the artifact from
+the browser installed in the VM, or use 'Shared Folder' to move the downloaded
 artifact directory into the VM from your local machine.
 </p>
 
@@ -55,14 +55,14 @@ artifact directory into the VM from your local machine.
 
 <h2>Setting up the HybridSynchAADL tool</h2>
 The script 'set-up.sh' only sets up the environment for running the
-HybridSynchAADL tool and experiments. To analyze case study model using the
+HybridSynchAADL tool and experiments. To analyze the case study model using the
 HybridSynchAADL tool, you need to follow additional steps.
 
 
 In the artifact directory, the HybridSynchAADL tool has to create a workspace
 and set Maude preferences. Double click 'osate' in the 'hybridsynchaadl'
 directory. In OSATE2 Launcher, choose the workspace directory wherever you want
-(It is recommended to choose the default workspace direcory). There is empty
+(It is recommended to choose the default workspace direcory). There is an empty
 project in the AADL Navigator window of OSATE2.
 
 
@@ -74,12 +74,12 @@ menu.
 
 
 In the preferences dialog, you can locate 'Maude Preferences' category on the
-left hand side of the dialog box. In the 'Maude Preferences' page, set the
+left-hand side of the dialog box. In the 'Maude Preferences' page, set the
 installed Maude directory and executable file 'maude-se-yices2' properly. Click
 on the 'Apply and Close' button to save and close the dialog box.
 
 
-Now you can use our tool to analyze a HybridSynchAADL model. Import an exsiting
+Now you can use our tool to analyze a HybridSynchAADL model. Import an existing
 project in models directory such as 'FourDronesSystem'. The process is similar
 to the one used in Eclipse IDE. You can find the step-by-step process to
 analyze our case study model in the 'User Manual' documentation.
