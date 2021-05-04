@@ -24,7 +24,7 @@ We explain how to install and run the artifact in a non-VM environment. The arti
 * JAVA 8: https://openjdk.java.net/install/ 
 * GNU parallel: https://www.gnu.org/software/parallel/ 
 <p>
-To install our artifact, download and unzip the following archive file which contains the benchmark models and scripts in the directory 'CAV2021-AeC': artifact.zip 
+To install our artifact, download and unzip the following archive file which contains the benchmark models and scripts in the directory 'CAV2021-AeC': <a href="https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0">artifact.zip</a>
 </p>
 
 <p>
@@ -60,5 +60,8 @@ In the artifact, the HybridSynchAADL tool is located in the directory
 'Window => Preferences => Maude Preferences', and fill the Maude directory and
 executable Maude file.
 </p>
+
+
+
 <br />
 <br />
