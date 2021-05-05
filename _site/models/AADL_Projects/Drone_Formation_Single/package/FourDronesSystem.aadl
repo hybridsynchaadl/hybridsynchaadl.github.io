@@ -1,0 +1,59 @@
+package FourDronesSystem
+public
+	with Drone;
+	with RefDrone;
+	with Data_Model;
+	with Hybrid_SynchAADL;
+	
+	system FourDronesSystem
+		properties
+			Hybrid_SynchAADL::Synchronous => true;
+	end FourDronesSystem;
+	
+	system implementation FourDronesSystem.form1D
+		subcomponents
+			drone1: system Drone::FormDrone.simple;
+			drone2: system Drone::FormDrone.simple;
+			drone3: system Drone::FormDrone.simple;
+			drone4: system Drone::FormDrone.simple;
+			refDrone: system RefDrone::RefDroneControl.formation;			
+		connections
+			d12x: port drone1.outX -> drone2.inX;
+			d23x: port drone2.outX -> drone3.inX;
+			d34x: port drone3.outX -> drone4.inX;
+			d41x: port drone4.outX -> drone1.inX;
+			r1x: port refDrone.outX -> drone1.refX;
+			r2x: port refDrone.outX -> drone2.refX;
+			r3x: port refDrone.outX -> drone3.refX;
+			r4x: port refDrone.outX -> drone4.refX;			
+		properties
+    		Data_Model::Initial_Value => ("param") applies to
+    			drone1.env.x, drone2.env.x, 
+    			drone3.env.x, drone4.env.x, 
+    			refDrone.env.x; 
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone1.env.dotx, drone2.env.dotx, 
+    			drone3.env.dotx, drone4.env.dotx,
+    			refDrone.env.dotx;
+    			
+			Data_Model::Initial_Value => ("-0.5") applies to
+    			drone1.drone.droneProc.droneThread.offsetX,
+    			drone3.drone.droneProc.droneThread.offsetX;   			
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone2.drone.droneProc.droneThread.offsetX,  			
+    			drone4.drone.droneProc.droneThread.offsetX;    						
+	
+			Timing => Delayed applies to 
+				d12x,  d23x,  d34x, d41x,
+				r1x,  r2x,  r3x, r4x;
+				
+			Hybrid_SynchAADL::Max_Clock_Deviation => 5ms;
+			Period => 100ms;				
+			
+			Hybrid_SynchAADL::Sampling_Time => 20ms .. 30ms applies to 
+				drone1.drone, drone2.drone, drone3.drone, drone4.drone, refDrone.refDrone;
+				
+			Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
+				drone1.drone, drone2.drone, drone3.drone, drone4.drone, refDrone.refDrone;
+	end FourDronesSystem.form1D;
+end FourDronesSystem;

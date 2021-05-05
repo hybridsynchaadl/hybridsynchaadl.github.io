@@ -1,0 +1,86 @@
+package DroneControl
+public
+	with Base_Types;
+	with DroneSpec;
+	with Data_Model;
+        
+	system DroneControl
+		features
+			inX: in data port Base_Types::Float;
+			outX : out data port Base_Types::Float;
+			currX: in data port Base_Types::Float;
+			velX : out data port Base_Types::Float;
+			refX: in data port Base_Types::Float;			
+	end DroneControl;
+	system implementation DroneControl.impl
+		subcomponents
+			droneProc: process DroneControlProc.impl;
+		connections
+			C1: port currX -> droneProc.currX;
+			C2: port inX -> droneProc.inX;
+			C3: port droneProc.velX -> velX;
+			C4: port droneProc.outX -> outX;
+			C5: port refX -> droneProc.refX;			
+	end DroneControl.impl;
+	
+	
+	process DroneControlProc
+		features
+			inX: in data port Base_Types::Float;
+			outX : out data port Base_Types::Float;
+			currX: in data port Base_Types::Float;
+			velX : out data port Base_Types::Float;
+			refX: in data port Base_Types::Float;
+	end DroneControlProc;
+	process implementation DroneControlProc.impl
+		subcomponents
+			droneThread: thread DroneControlThread.impl;
+		connections
+			C1: port currX -> droneThread.currX;
+			C2: port inX -> droneThread.inX;
+			C3: port droneThread.velX -> velX;
+			C4: port droneThread.outX -> outX;
+			C5: port refX -> droneThread.refX;
+	end DroneControlProc.impl;
+	
+	
+	thread DroneControlThread
+		features
+			inX: in data port Base_Types::Float;
+			outX : out data port Base_Types::Float;
+			currX: in data port Base_Types::Float;
+			velX : out data port Base_Types::Float;
+			refX: in data port Base_Types::Float;
+		properties
+			Dispatch_Protocol => Periodic;
+	end DroneControlThread;
+	thread implementation DroneControlThread.impl
+		subcomponents
+			offsetX: data Base_Types::Float;
+			refX0: data Base_Types::Float {Data_Model::Initial_Value => ("0");};
+		annex behavior_specification {**
+			variables
+				nx, refvX : Base_Types::Float;
+			states
+				init : initial complete state;
+				exec, output : state;
+			transitions
+				init -[on dispatch]-> exec;
+				exec -[abs(currX - inX) < 0.1]-> output {
+					velX := 0
+				};
+				exec -[otherwise]-> output {
+					refvX := (refX-refX0);
+					nx := refvX - #DroneSpec::alpha * (currX - offsetX - refX) - #DroneSpec::A * (currX - offsetX - inX);
+					if (nx > 1)			velX := 2
+					elsif (nx > -0.5)	velX := 0
+					else				velX := -2
+					end if
+				};
+				output -[ ]-> init {
+					outX := currX - offsetX;
+					refX0 := refX
+				};
+	**};
+	end DroneControlThread.impl;	
+end DroneControl;

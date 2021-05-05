@@ -12,22 +12,22 @@ public
 			Classifier_Substitution_Rule => Type_Extension;
 	end ThreeDronesSystem;
 	
-	system implementation ThreeDronesSystem.revu1D
+	system implementation ThreeDronesSystem.simple
 		subcomponents
-			drone1: system Drone::RevuDrone.simple;
-			drone2: system Drone::RevuDrone.simple;
-			drone3: system Drone::RevuDrone.simple;
+			drone1: system Drone::Drone1D.impl;
+			drone2: system Drone::Drone1D.impl;
+			drone3: system Drone::Drone1D.impl;
 		connections
 			d12x: port drone1.outX -> drone2.inX;
 			d23x: port drone2.outX -> drone3.inX;
 			d31x: port drone3.outX -> drone1.inX;
 		properties
     		Data_Model::Initial_Value => ("param") applies to
-    			drone1.environment.x, drone2.environment.x,
-    			drone3.environment.x; 
+    			drone1.env.x, drone2.env.x,
+    			drone3.env.x; 
     		Data_Model::Initial_Value => ("0") applies to
-    			drone1.environment.dotx, drone2.environment.dotx, 
-    			drone3.environment.dotx;			
+    			drone1.env.dotx, drone2.env.dotx, 
+    			drone3.env.dotx;			
     			
 			Timing => Delayed applies to 
 				d12x,  d23x,  d31x;
@@ -37,5 +37,37 @@ public
 				
 			Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
 				drone1.drone, drone2.drone, drone3.drone;
-	end ThreeDronesSystem.revu1D;
+	end ThreeDronesSystem.simple;
+	
+	system implementation ThreeDronesSystem.complex
+		subcomponents
+			drone1: system Drone::Drone2D.impl;
+			drone2: system Drone::Drone2D.impl;
+			drone3: system Drone::Drone2D.impl;
+		connections
+			d12x: port drone1.outX -> drone2.inX;
+			d23x: port drone2.outX -> drone3.inX;
+			d31x: port drone3.outX -> drone1.inX;
+			d12y: port drone1.outY -> drone2.inY;
+			d23y: port drone2.outY -> drone3.inY;
+			d31y: port drone3.outY -> drone1.inY;			
+		properties
+    		Data_Model::Initial_Value => ("param") applies to
+    			drone1.env.x, drone2.env.x, drone3.env.x,
+    			drone1.env.y, drone2.env.y, drone3.env.y; 
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone1.env.dotx, drone2.env.dotx, drone3.env.dotx,
+    			drone1.env.doty, drone2.env.doty, drone3.env.doty;			
+    			
+			Timing => Delayed applies to 
+				d12x,  d23x,  d31x, d12y, d23y, d31y;
+			
+			Hybrid_SynchAADL::Sampling_Time => 20ms .. 30ms applies to 
+				drone1.drone, drone2.drone, drone3.drone;
+				
+			Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
+				drone1.drone, drone2.drone, drone3.drone;
+	end ThreeDronesSystem.complex;
+	
+		
 end ThreeDronesSystem;

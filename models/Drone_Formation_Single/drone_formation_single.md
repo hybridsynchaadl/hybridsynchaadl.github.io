@@ -1,38 +1,39 @@
 ---
 layout: drone_formation_single
-title: Drone Formation Single
 slug: /models/Drone_Formation_Single
 ---
-This benchmark model represents the rendezvous and formation control of
-distributed drones with single-integroator dynamics. Each
-drone communicates its own position and sets the proper velocity which do not
-lead to collision to other drones. 
 
-### Continuous Dynamics
-The continuous dynamics of the drone component is as follows:
-<p align="center">
-   <img src="../../images/dronesingle_ode.png" alt="ode" >
-</p>
+# Drone Formation Models with Single-Integrator Dynamics
 
-### Safety Property
-
-We verify safety invariant property which represents that drones do not collide. We analyze them up to
-bound 500 ms. 
-
-The example of PSPC file containing safety invariant property is as follows:
-```
-proposition [initial] : abs(drone1.environment.x - 2.8) < 0.1 and abs(drone1.environment.y - 2.8) and
-                        abs(drone2.environment.x - 1.5) < 0.1 and abs(drone2.environment.y - 1.5);
-
-proposition [twoclose] : abs(drone1.environment.x - drone2.environment.x) < 0.5 and
-                         abs(drone1.environment.y - drone2.environment.y) < 0.5
-
-invariant [tb_500]: ?initial ==> not(?twoclose) in time 500;
-```
+This benchmark models represent the rendezvous control of distributed drones
+with single-integrator dynamics. Each drone communicates its own position and
+sets a proper velocity. The goal of these models is for all drones maintains a
+formation tracing the reference drone without any collision.
 
 ### Download
 You can download the benchmark model: [Drone_Formation_Single.zip](../Drone_Formation_Single.zip)
 
+## Top-Level Components
+We provide six cases of benchmark model: two, three and four drone components
+moving in one or two dimensional plane.
+
+## Architecture
+<img src="../../images/architecture_rendezvous_single.png" width="80%" height="80%">
+
+
+## HybridSynchAADL Model: Controller and Environment
+Controller.aadl
+
+## Safety Requirement
+
+We analyze the safety invariant property where drones do not collide up to
+bound 500 ms.
+four-2d-inv-false.pspc
+```
+```
+
+## Analysis Results
+<img src="../../images/results_rendezvous_single.png">
 
 <br />
 <br />

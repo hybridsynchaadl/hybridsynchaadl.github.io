@@ -10,21 +10,20 @@ public
 			Classifier_Substitution_Rule => Type_Extension;
 	end TwoDronesSystem;
 	
-	system implementation TwoDronesSystem.revu1D
+	system implementation TwoDronesSystem.simple
 		subcomponents
-			drone1: system Drone::RevuDrone.simple;
-			drone2: system Drone::RevuDrone.simple;
+			drone1: system Drone::Drone1D.impl;
+			drone2: system Drone::Drone1D.impl;
 		connections
 			d12x: port drone1.outX -> drone2.inX;
 			d21x: port drone2.outX -> drone1.inX;
 		properties
     		Data_Model::Initial_Value => ("param") applies to
-    			drone1.environment.x, drone2.environment.x; 
+    			drone1.env.x, drone2.env.x; 
     		Data_Model::Initial_Value => ("0") applies to
-    			drone1.environment.dotx, drone2.environment.dotx;			
+    			drone1.env.dotx, drone2.env.dotx;			
     					
 			Period => 100ms;
-    		
    			Hybrid_SynchAADL::Max_Clock_Deviation => 5ms; 		
     			
 			Timing => Delayed applies to 
@@ -35,5 +34,35 @@ public
 				
 			Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
 				drone1.drone, drone2.drone;
-	end TwoDronesSystem.revu1D;
+	end TwoDronesSystem.simple;
+
+	system implementation TwoDronesSystem.complex
+		subcomponents
+			drone1: system Drone::Drone2D.impl;
+			drone2: system Drone::Drone2D.impl;
+		connections
+			d12x: port drone1.outX -> drone2.inX;
+			d21x: port drone2.outX -> drone1.inX;
+			d12y: port drone1.outY -> drone2.inY;
+			d21y: port drone2.outY -> drone1.inY;			
+		properties
+    		Data_Model::Initial_Value => ("param") applies to
+    			drone1.env.x, drone2.env.x,
+    			drone1.env.y, drone2.env.y; 
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone1.env.dotx, drone2.env.dotx,
+    			drone1.env.doty, drone2.env.doty;			
+    					
+			Period => 100ms;
+   			Hybrid_SynchAADL::Max_Clock_Deviation => 5ms; 		
+    			
+			Timing => Delayed applies to 
+				d12x,  d21x, d12y, d21y;
+			
+			Hybrid_SynchAADL::Sampling_Time => 20ms .. 30ms applies to 
+				drone1.drone, drone2.drone;
+				
+			Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
+				drone1.drone, drone2.drone;
+	end TwoDronesSystem.complex;	
 end TwoDronesSystem;
