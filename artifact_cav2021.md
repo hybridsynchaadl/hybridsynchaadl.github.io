@@ -16,13 +16,13 @@ located in the directory <code>home/user/CAV2021-AeC</code>. See <code>Readme.tx
 directory for more details about the tool and experiments.
 </p>
 
-<h2>Running the Artifact in a non-VM environment</h2>
+<h2>Running the Artifact in a non-VM Environment</h2>
 <p>
 We explain how to install and run the artifact in a non-VM environment. The artifact requires the following libraries:
 </p>
 
-* JAVA 8: https://openjdk.java.net/install/ 
-* GNU parallel: https://www.gnu.org/software/parallel/ 
+* JAVA 8: <a href="https://openjdk.java.net/install/">https://openjdk.java.net/install/</a>
+* GNU parallel: <a href="https://www.gnu.org/software/parallel/">https://www.gnu.org/software/parallel/</a>
 <p>
 To install our artifact, download and unzip the following archive file which
 contains the benchmark models and scripts in the directory <code>CAV2021-AeC</code>: 
@@ -36,11 +36,11 @@ The archive file already contains the following tools. Maude-SE is needed for
 the HybridSynchAADL tool, and the other tools are used for the experiments.
 </p>
 
-* Maude-SE: https://maude-se.github.io/
-* SpaceEx: http://spaceex.imag.fr/
-* Flow\*: https://flowstar.org/
-* HyComp: https://es-static.fbk.eu/tools/hycomp/
-* dReach: http://dreal.github.io/
+* Maude-SE: <a href="https://maude-se.github.io/">https://maude-se.github.io/</a>
+* SpaceEx: <a href="http://spaceex.imag.fr/">http://spaceex.imag.fr/</a>
+* Flow\*: <a href="https://flowstar.org/">https://flowstar.org/</a>
+* HyComp: <a href="https://es-static.fbk.eu/tools/hycomp/">https://es-static.fbk.eu/tools/hycomp/</a>
+* dReach: <a href="http://dreal.github.io/">http://dreal.github.io/</a>
 
 <p>
 For Ubuntu, We provide the script  <code>set-up.sh</code> to install Java 8 and GNU
