@@ -1,0 +1,53 @@
+package TwoDronesSystem
+public
+	with Drone;
+	with RefDrone;
+	with Data_Model;
+	with Hybrid_SynchAADL;
+	
+	system TwoDronesSystem
+		properties
+			Hybrid_SynchAADL::Synchronous => true;
+			Hybrid_SynchAADL::Max_Clock_Deviation => 5ms;
+			Period => 100ms;
+			Classifier_Substitution_Rule => Type_Extension;
+	end TwoDronesSystem;
+	
+	system implementation TwoDronesSystem.form1D
+		subcomponents
+			drone1: system Drone::FormDrone.impl;
+			drone2: system Drone::FormDrone.impl;
+			refDrone: system RefDrone::RefDroneControl.formation;			
+		connections
+			d12x: port drone1.outX -> drone2.inX;
+			d21x: port drone2.outX -> drone1.inX;
+			d12vx: port drone1.outVX -> drone2.inVX;
+			d21vx: port drone2.outVX -> drone1.inVX;
+			r1x: port refDrone.outX -> drone1.refX;
+			r2x: port refDrone.outX -> drone2.refX;
+			r1vx: port refDrone.outVX -> drone1.refVX;
+			r2vx: port refDrone.outVX -> drone2.refVX;			
+		properties
+    		Data_Model::Initial_Value => ("param") applies to
+    			drone1.environment.x, drone2.environment.x, refDrone.env.x;
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone1.environment.dotx, drone2.environment.dotx, refDrone.env.dotx; 
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone1.environment.dotdotx, drone2.environment.dotdotx, refDrone.env.dotdotx;
+	
+			Data_Model::Initial_Value => ("-0.5") applies to
+    			drone1.drone.droneProc.droneThread.offsetX;
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone2.drone.droneProc.droneThread.offsetX;	
+	
+	
+			Timing => Delayed applies to 
+				d12x,  d21x, d12vx, d21vx, r1x,  r2x, r1vx, r2vx;
+			
+			Hybrid_SynchAADL::Sampling_Time => 20ms .. 30ms applies to 
+				drone1.drone, drone2.drone, refDrone.refDrone;
+				
+			Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
+				drone1.drone, drone2.drone, refDrone.refDrone;
+	end TwoDronesSystem.form1D;
+end TwoDronesSystem;

@@ -1,0 +1,25 @@
+package Drone
+public
+	with Environment;
+	with Base_Types;
+	with Data_Model;
+	with DroneControl;
+
+	system FormDrone
+		features
+			inX: in data port Base_Types::Float;
+			refX: in data port Base_Types::Float;
+			outX: out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
+	end FormDrone;
+	system implementation FormDrone.simple
+		subcomponents
+			drone: system DroneControl::FormDroneControl.impl;
+			environment: system Environment::Environment.simple;
+		connections
+			C1: port drone.outX -> outX;
+			C2: port inX -> drone.inX;
+			C3: port drone.velX -> environment.velX;
+			C4: port environment.currX -> drone.currX;			
+			C5: port refX -> drone.refX;
+	end FormDrone.simple;
+end Drone;

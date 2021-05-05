@@ -1,0 +1,94 @@
+package DroneControl
+public
+	with Base_Types;
+	with DroneSpec;
+	with Data_Model;
+        
+	system RevuDroneControl
+		features
+			currX: in data port Base_Types::Float;
+			currVX: in data port Base_Types::Float;
+			inX: in data port Base_Types::Float;
+			inVX: in data port Base_Types::Float;		
+			outX : out data port Base_Types::Float;
+			outVX: out data port Base_Types::Float;	
+			accX: out data port Base_Types::Float;
+	end RevuDroneControl;
+	system implementation RevuDroneControl.impl
+		subcomponents
+			droneProc: process RevuDroneControlProc.impl;
+		connections
+			C1: port currX -> droneProc.currX;
+			C2: port currVX -> droneProc.currVX;
+			C3: port inX -> droneProc.inX;
+			C4: port inVX -> droneProc.inVX;
+			C5: port droneProc.outX -> outX;
+			C6: port droneProc.outVX -> outVX;
+			C7: port droneProc.accX -> accX;
+	end RevuDroneControl.impl;
+	
+	
+	process RevuDroneControlProc
+		features
+			currX: in data port Base_Types::Float;
+			currVX: in data port Base_Types::Float;
+			inX: in data port Base_Types::Float;
+			inVX: in data port Base_Types::Float;		
+			outX : out data port Base_Types::Float;
+			outVX: out data port Base_Types::Float; 	
+			accX: out data port Base_Types::Float;
+	end RevuDroneControlProc;
+	process implementation RevuDroneControlProc.impl
+		subcomponents
+			droneThread: thread RevuDroneControlThread.impl;
+		connections
+			C1: port currX -> droneThread.currX;
+			C2: port currVX -> droneThread.currVX;
+			C3: port inX -> droneThread.inX;
+			C4: port inVX -> droneThread.inVX;
+			C5: port droneThread.outX -> outX;
+			C6: port droneThread.outVX -> outVX;
+			C7: port droneThread.accX -> accX;
+	end RevuDroneControlProc.impl;
+	
+	
+	thread RevuDroneControlThread
+		features
+			currX: in data port Base_Types::Float;
+			currVX: in data port Base_Types::Float;
+			inX: in data port Base_Types::Float;
+			inVX: in data port Base_Types::Float;		
+			outX : out data port Base_Types::Float;
+			outVX: out data port Base_Types::Float; 	
+			accX: out data port Base_Types::Float;
+		properties
+			Dispatch_Protocol => Periodic;
+	end RevuDroneControlThread;
+	thread implementation RevuDroneControlThread.impl
+		annex behavior_specification {**
+			variables
+				nx : Base_Types::Float;
+			states
+				init : initial complete state;
+				exec, output : state;
+			transitions
+				init -[on dispatch]-> exec;
+                exec -[abs(currX - inX) < 0.3]-> output{
+                	accX := -currVX
+                };
+              	exec -[otherwise]-> output {
+                   	nx := - #DroneSpec::A * (currX - inX + #DroneSpec::gamma * (currVX - inVX));
+					if (nx > 0.5)		accX := 40
+					elsif (nx > 0)		accX := 0
+					else				accX := -40
+					end if
+               	};
+                output -[ ]-> init {
+                  	outX := currX;
+                  	outVX := currVX
+             	};
+	**};
+	end RevuDroneControlThread.impl;
+	
+	
+end DroneControl;

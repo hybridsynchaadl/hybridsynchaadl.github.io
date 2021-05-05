@@ -1,0 +1,39 @@
+package TwoDronesSystem
+public
+	with Drone;
+	with Data_Model;
+	with Hybrid_SynchAADL;
+	
+	system TwoDronesSystem
+		properties
+			Hybrid_SynchAADL::Synchronous => true;
+			Classifier_Substitution_Rule => Type_Extension;
+	end TwoDronesSystem;
+	
+	system implementation TwoDronesSystem.revu1D
+		subcomponents
+			drone1: system Drone::RevuDrone.simple;
+			drone2: system Drone::RevuDrone.simple;
+		connections
+			d12x: port drone1.outX -> drone2.inX;
+			d21x: port drone2.outX -> drone1.inX;
+		properties
+    		Data_Model::Initial_Value => ("param") applies to
+    			drone1.environment.x, drone2.environment.x; 
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone1.environment.dotx, drone2.environment.dotx;			
+    					
+			Period => 100ms;
+    		
+   			Hybrid_SynchAADL::Max_Clock_Deviation => 5ms; 		
+    			
+			Timing => Delayed applies to 
+				d12x,  d21x;
+			
+			Hybrid_SynchAADL::Sampling_Time => 20ms .. 30ms applies to 
+				drone1.drone, drone2.drone;
+				
+			Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
+				drone1.drone, drone2.drone;
+	end TwoDronesSystem.revu1D;
+end TwoDronesSystem;

@@ -1,0 +1,16 @@
+name: TwoDronesSystem_revu1D_Instance;
+
+model: TwoDronesSystem::TwoDronesSystem.revu1D;
+
+instance: "/Drone_Rendezvous_Single/package/instances/TwoDronesSystem_TwoDronesSystem_revu1D_Instance.aaxl2";
+
+proposition [initial] : abs(drone1.environment.x - 2.87) < 0.1 and
+						abs(drone2.environment.x - 2.40) < 0.1;
+						
+proposition [falseProp] : drone1.environment.dotx > 1000.0;						
+
+invariant [tb_100] : ?initial ==> not(?falseProp) in time 100;			
+invariant [tb_200] : ?initial ==> not(?falseProp) in time 200;			
+invariant [tb_300] : ?initial ==> not(?falseProp) in time 300;			
+invariant [tb_400] : ?initial ==> not(?falseProp) in time 400;			
+invariant [tb_500] : ?initial ==> not(?falseProp) in time 500;		

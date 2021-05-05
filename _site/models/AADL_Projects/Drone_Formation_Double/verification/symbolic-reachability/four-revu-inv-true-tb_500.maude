@@ -1,0 +1,33 @@
+load /Users/jaehun/Documents/HybridSynchAADL/maude/prelude.maude
+load /Users/jaehun/Documents/HybridSynchAADL/maude/smt.maude
+load ../semantics/interpreter-symbolic2-merge.maude
+load ../instance/FourDronesSystem_revu1D_Instance-symbolic.maude
+mod TEST-FOURDRONESSYSTEM_REVU1D_INSTANCE is
+  including FOURDRONESSYSTEM_REVU1D_INSTANCE-MODEL-SYMBOLIC .
+  including REACHABILITY-ANALYSIS .
+  including SPECIFICATION-LANGUAGE-SEMANTICS .
+
+  op initState : -> Object .
+  eq initState = initialize(collapse(initial)) .
+  
+  eq loopBoundNum = 10 .
+  eq transBoundNum = 10 .
+  
+  
+  eq @m@ = ['TEST-FOURDRONESSYSTEM_REVU1D_INSTANCE] .
+  
+  op initial : -> PropSpec .
+  eq initial = ((((abs(((drone1 . environment | c[x] ) - [[0.0]])) < [[0.1]]) and (abs(((drone2 . environment | c[x] ) - [[0.5]])) < [[0.1]])) and (abs(((drone3 . environment | c[x] ) - [[0.5]])) < [[0.1]])) and (abs(((drone4 . environment | c[x] ) - [[0.0]])) < [[0.1]])) .
+  op falseProp : -> PropSpec .
+  eq falseProp = ((drone2 . environment | c[dotdotx] ) > [[1000.0]]) .
+  
+endm
+	  
+red reachAnalysis(
+    initState,
+    (FourDronesSystemrevu1DInstance | initial),
+    FourDronesSystemrevu1DInstance | not(not(falseProp)),
+    500
+    ) .
+
+quit

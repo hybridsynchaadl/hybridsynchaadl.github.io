@@ -1,0 +1,52 @@
+package FourDronesSystem
+public
+	with Drone;
+	with Data_Model;
+	with Hybrid_SynchAADL;
+	
+	system FourDronesSystem
+		properties
+			Hybrid_SynchAADL::Synchronous => true;
+			Hybrid_SynchAADL::Max_Clock_Deviation => 5ms;
+			Period => 100ms;
+			Classifier_Substitution_Rule => Type_Extension;
+	end FourDronesSystem;
+	
+	system implementation FourDronesSystem.revu1D
+		subcomponents
+			drone1: system Drone::RevuDrone.impl;
+			drone2: system Drone::RevuDrone.impl;
+			drone3: system Drone::RevuDrone.impl;
+			drone4: system Drone::RevuDrone.impl;
+		connections
+			d12x: port drone1.outX -> drone2.inX;
+			d23x: port drone2.outX -> drone3.inX;
+			d34x: port drone3.outX -> drone4.inX;
+			d41x: port drone4.outX -> drone1.inX;
+			d12vx: port drone1.outVX -> drone2.inVX;
+			d23vx: port drone2.outVX -> drone3.inVX;
+			d34vx: port drone3.outVX -> drone4.inVX;
+			d41vx: port drone4.outVX -> drone1.inVX;
+		properties
+    		Data_Model::Initial_Value => ("param") applies to
+    			drone1.environment.x, drone2.environment.x, 
+    			drone3.environment.x, drone4.environment.x; 
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone1.environment.dotx, drone2.environment.dotx, 
+    			drone3.environment.dotx, drone4.environment.dotx;	
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone1.environment.dotdotx, drone2.environment.dotdotx, 
+    			drone3.environment.dotdotx, drone4.environment.dotdotx;			
+	
+			Timing => Delayed applies to 
+				d12x,  d23x, d34x, d41x, d12vx, d23vx, d34vx, d41vx;
+			
+			Hybrid_SynchAADL::Sampling_Time => 20ms .. 30ms applies to 
+				drone1.drone, drone2.drone, drone3.drone, drone4.drone;
+				
+			Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
+				drone1.drone, drone2.drone, drone3.drone, drone4.drone;
+	end FourDronesSystem.revu1D;
+	
+	
+end FourDronesSystem;

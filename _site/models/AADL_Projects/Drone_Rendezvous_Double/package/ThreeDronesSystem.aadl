@@ -1,0 +1,49 @@
+package ThreeDronesSystem 
+public
+	with Drone;
+	with Data_Model;
+	with Hybrid_SynchAADL;
+	
+	system ThreeDronesSystem
+		properties
+			Hybrid_SynchAADL::Synchronous => true;
+			Hybrid_SynchAADL::Max_Clock_Deviation => 5ms;
+			Period => 100ms;
+			Classifier_Substitution_Rule => Type_Extension;
+	end ThreeDronesSystem;
+	
+	system implementation ThreeDronesSystem.revu1D
+		subcomponents
+			drone1: system Drone::RevuDrone.impl;
+			drone2: system Drone::RevuDrone.impl;
+			drone3: system Drone::RevuDrone.impl;
+		connections
+			d12x: port drone1.outX -> drone2.inX;
+			d23x: port drone2.outX -> drone3.inX;
+			d31x: port drone3.outX -> drone1.inX;
+			d12vx: port drone1.outVX -> drone2.inVX;
+			d23vx: port drone2.outVX -> drone3.inVX;
+			d31vx: port drone3.outVX -> drone1.inVX;
+		properties
+    		Data_Model::Initial_Value => ("param") applies to
+    			drone1.environment.x, drone2.environment.x, 
+    			drone3.environment.x;
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone1.environment.dotx, drone2.environment.dotx, 
+    			drone3.environment.dotx;	
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone1.environment.dotdotx, drone2.environment.dotdotx, 
+    			drone3.environment.dotdotx;			
+	
+			Timing => Delayed applies to 
+				d12x,  d23x, d31x, d12vx, d23vx, d31vx;
+			
+			Hybrid_SynchAADL::Sampling_Time => 20ms .. 30ms applies to 
+				drone1.drone, drone2.drone, drone3.drone;
+				
+			Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
+				drone1.drone, drone2.drone, drone3.drone;
+	end ThreeDronesSystem.revu1D;
+	
+	
+end ThreeDronesSystem;

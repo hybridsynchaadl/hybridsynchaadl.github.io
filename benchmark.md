@@ -4,14 +4,21 @@ title: Benchmarks
 slug: /benchmark
 ---
 
-[DroneSingle](models/DroneSingle/dronesingle.html): rendezvous and formation control of drones with single-integrator dynamics
+[Drone Rendezvous Models with Single-Integrator](models/Drone_Rendezvous_Single/drone_rendezvous_single.html)
 <br />
 
-[DroneDouble](models/DroneDouble/dronedouble.html): rendezvous and formation control of drones with double-integrator dynamics
+[Drone Rendezvous Models with Double-Integrator](models/Drone_Rendezvous_Double/drone_rendezvous_double.html)
 <br />
 
-[Thermostat](models/Thermostat/thermostat.html): networked thermostat system
+[Drone Formation Models with Single-Integrator](models/Drone_Formation_Single/drone_formation_single.html)
 <br />
 
-[WaterTank](models/WaterTank/watertank.html): watertank system with pump
+
+[Drone Formation Models with Double-Integrator](models/Drone_Formation_Double/drone_formation_double.html)
+<br />
+
+[Networked Thermostat Controllers](models/Thermostat/thermostat.html)
+<br />
+
+[Networked Water Tank Systems](models/WaterTank/watertank.html)
 <br />
