@@ -43,7 +43,7 @@ the HybridSynchAADL tool, and the other tools are used for the experiments.
 * dReach: <a href="http://dreal.github.io/">http://dreal.github.io/</a>
 
 <p>
-For Ubuntu, We provide the script  <code>set-up.sh</code> to install Java 8 and GNU
+For Ubuntu, we provide a script (<code>set-up.sh</code>) to install Java 8 and GNU
 parallel, if not already installed.
 </p>
 
@@ -55,7 +55,7 @@ you can create a new VirtualBox image with Ubuntu installed,  unzip
 </p>
 
 
-<h2>Setting up the HybridSynchAADL tool</h2>
+<h2>Setting up the HybridSynchAADL Tool</h2>
 <p>
 In the artifact, the HybridSynchAADL tool is located in the directory
 <code>CAV2021-AeC/hybridsynchaadl/osate</code>. For the workspace, use the directory
