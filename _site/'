@@ -111,7 +111,6 @@
     <div class="page-content">
       <div class="wrapper">
         <div class="work">
-          <h1 class="page-heading">Download</h1>
           HybridSynchAADL tool is an [OSATE](https://osate.org/) plugin. The tool runs in
 <b>Java1.8</b> and is available for Linux(Ubuntu). Check whether java1.8 is
 installed in your local machine or not. If it is not installed, go

@@ -1,0 +1,58 @@
+I"L<h2 id="download-hybridsynchaadl-tool">Download HybridSynchAADL Tool</h2>
+
+<p>The HybridSynchAADL tool is an <a href="https://osate.org/">OSATE2</a> plugin. The tool is
+available for Linux (64-bit) and macOS (64-bit). As a prerequisite the following libraries
+are required.</p>
+
+<ul>
+  <li>JAVA 8: <a href="https://openjdk.java.net/install/">https://openjdk.java.net/install/</a></li>
+  <li>Maude-SE: <a href="https://maude-se.github.io/">https://maude-se.github.io/</a></li>
+</ul>
+
+<p>There are <b>two ways</b> to download the HybridSynchAADL tool:</p>
+
+<h3 id="1-the-hybridsynchaadl-tool-integrated-with-osate2">1. The HybridSynchAADL Tool Integrated with OSATE2</h3>
+<ul>
+  <li><a href="https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0">HybridSynchAADL 1.0 for Linux (64-bit)</a></li>
+  <li><a href="https://www.dropbox.com/sh/ua5zds97b2j7n01/AAAjLUBHNAzb7impOw99ryAfa?dl=0">HybridSynchAADL 1.0 for macOS (64-bit)</a></li>
+</ul>
+
+<p>Note that the OSATE2 binary for macOS is not signed. To correct this issue, run
+the following command:</p>
+
+<p><code class="highlighter-rouge">$ sudo xattr -rd com.apple.quarantine osate2.app/</code></p>
+
+<h3 id="2-the-hybridsynchaadl-tool-as-plugin-packages">2. The HybridSynchAADL Tool as Plugin Packages</h3>
+
+<p>
+The HybridSynchAADL tool is composed of three plugin packages (three jar files). Download 
+<a href="https://tinyurl.com/4v6d46ue">plugins.zip</a> and unzip the archive
+file.
+</p>
+
+<p>To install the plugin packages in OSATE2, create a directory <code>dropins</code> in the OSATE2 directory (for
+macOS, <code>osate2.app/Contents/Eclipse/</code>). Move the three plugin packages into 
+<code>dropins</code>.</p>
+
+<p>The plugin packages can be detected by OSATE2 by inserting the
+following lines after <code>#version=1</code> in the <code>bundles.info</code> file.</p>
+
+<blockquote>
+  <p>edu.postech.aadl.synch,1.0.0.202104261605,dropins/edu.postech.aadl.synch_1.0.0.202104261605.jar,4,false
+edu.postech.aadl.xtext.propspec,1.0.0.202104261605,dropins/edu.postech.aadl.xtext.propspec_1.0.0.202104261605.jar,4,false
+edu.postech.aadl.xtext.propspec.ui,1.0.0.202104261605,dropins/edu.postech.aadl.xtext.propspec.ui_1.0.0.202104261605.jar,4,false</p>
+</blockquote>
+
+<p>The <code>bundles.info</code> file is located in:</p>
+<ul>
+  <li>Linux : OSATE2/configuration/org.eclipse.equinox.simpleconfigurator</li>
+  <li>macOS : osate2.app/Contents/Eclipse/configuration/org.eclipse.equinox.simpleconfigurator</li>
+</ul>
+
+<p>When you run the HybridSynchAADL tool, you can see the following window.</p>
+
+<p><img src="https://raw.githubusercontent.com/hybridsynchaadl/HybridSynchAADL/master/images/start.png" alt="OSATE" /></p>
+
+<h2 id="download-source-code">Download Source Code</h2>
+<p>The current version of the source code is available at the <a href="https://github.com/hybridsynchaadl/HybridSynchAADL">Github repository</a></p>
+:ET
