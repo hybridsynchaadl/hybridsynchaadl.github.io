@@ -1,0 +1,78 @@
+package ThreeWaterTankSystem
+public
+	with Hybrid_SynchAADL;
+	with WaterTank;
+	with Environment;
+	with LeftWaterTank;
+	with LeftEnvironment;
+	with RightWaterTank;
+	with RightEnvironment;
+	with Data_Model;
+	
+	system ThreeWaterTankSystem
+		properties
+			Hybrid_SynchAADL::Synchronous => true;
+	end ThreeWaterTankSystem;
+	
+	system implementation ThreeWaterTankSystem.simple
+		subcomponents
+			waterTank1: system LeftWaterTank::LeftWaterTank.simple;
+			waterTank2: system WaterTank::WaterTank.simple;
+			waterTank3: system RightWaterTank::RightWaterTank.simple;
+			
+			env1: system LeftEnvironment::LeftEnvironment.impl;
+			env2: system Environment::Environment.impl;
+			env3: system RightEnvironment::RightEnvironment.impl;
+		connections
+			C11: port waterTank1.on_control -> env1.on_control;
+			C12: port waterTank1.off_control -> env1.off_control;
+			C13: port waterTank1.power -> env1.power;
+			C14: port env1.decreased_water -> waterTank1.decreased_water;
+			C15: port env1.curr_water -> waterTank1.curr_water;
+			C16: port waterTank1.released_water -> waterTank2.incoming_water;
+			
+			C21: port waterTank2.on_control -> env2.on_control;
+			C22: port waterTank2.off_control -> env2.off_control;
+			C23: port waterTank2.increased_water -> env2.increased_water;
+			C24: port waterTank2.power -> env2.power;
+			C25: port env2.decreased_water -> waterTank2.decreased_water;
+			C26: port env2.curr_water -> waterTank2.curr_water;
+			C27: port waterTank2.released_water -> waterTank3.incoming_water;
+			
+			C31: port waterTank3.on_control -> env3.on_control;
+			C32: port waterTank3.off_control -> env3.off_control;
+			C33: port waterTank3.power -> env3.power;
+			C34: port env3.curr_water -> waterTank3.curr_water;
+			C35: port waterTank3.increased_water -> env3.increased_water;
+			
+		properties
+			Period => 100ms;
+			
+            Timing => Delayed applies to C16, C27;
+            
+           Hybrid_SynchAADL::Max_Clock_Deviation => 5ms;
+            
+            Hybrid_SynchAADL::Sampling_Time => 20ms .. 30ms applies to 
+                waterTank1, waterTank2, waterTank3;
+                
+            Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
+                waterTank1, waterTank2, waterTank3;
+            
+            Data_Model::Initial_Value => ("param") applies to 
+            	env1.water, env2.water, env3.water;
+            Data_Model::Initial_Value => ("0") applies to 
+            	env1.decrease, env2.decrease, env3.decrease;
+            Data_Model::Initial_Value => ("0") applies to 
+            	env1.pump_power, env2.pump_power, env3.pump_power;
+            Data_Model::Initial_Value => ("0") applies to 
+            	env2.increase, env3.increase;
+            
+	end ThreeWaterTankSystem.simple;
+	system implementation ThreeWaterTankSystem.complex extends ThreeWaterTankSystem.simple
+		subcomponents
+			waterTank1: refined to system LeftWaterTank::LeftWaterTank.complex;
+			waterTank2: refined to system WaterTank::WaterTank.complex;
+			waterTank3: refined to system RightWaterTank::RightWaterTank.complex;
+	end ThreeWaterTankSystem.complex;
+	
+end ThreeWaterTankSystem;

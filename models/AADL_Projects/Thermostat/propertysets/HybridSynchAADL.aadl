@@ -1,0 +1,9 @@
+property set Hybrid_SynchAADL is
+  Synchronous: inherit aadlboolean applies to (system, process, thread group, thread);
+  isEnvironment: inherit aadlboolean applies to (system);
+  ContinuousDynamics: aadlstring applies to (system);
+  Max_Clock_Deviation: inherit Time applies to (system, process, thread group, thread);
+  Sampling_Time: inherit Time_Range applies to (system, process, thread group, thread);
+  Response_Time: inherit Time_Range applies to (system, process, thread group, thread);
+end Hybrid_SynchAADL;
+

@@ -1,0 +1,37 @@
+load /Users/jaehun/Documents/HybridSynchAADL/maude/prelude.maude
+load /Users/jaehun/Documents/HybridSynchAADL/maude/smt.maude
+load ../semantics/interpreter-symbolic2-merge.maude
+load ../instance/ThreeRoomTherm_simple_Instance-symbolic.maude
+mod TEST-THREEROOMTHERM_SIMPLE_INSTANCE is
+  including THREEROOMTHERM_SIMPLE_INSTANCE-MODEL-SYMBOLIC .
+  including REACHABILITY-ANALYSIS .
+  including SPECIFICATION-LANGUAGE-SEMANTICS .
+
+  op initState : -> Object .
+  eq initState = initialize(collapse(initial)) .
+  
+  eq loopBoundNum = 10 .
+  eq transBoundNum = 10 .
+  
+  
+  eq @m@ = ['TEST-THREEROOMTHERM_SIMPLE_INSTANCE] .
+  
+  op initial : -> PropSpec .
+  eq initial = (((abs(((env1 | c[x] ) - [[40.2]])) < [[0.1]]) and (abs(((env2 | c[x] ) - [[49.48]])) < [[0.1]])) and (abs(((env3 | c[x] ) - [[32.19]])) < [[0.1]])) .
+  op withinBound1 : -> PropSpec .
+  eq withinBound1 = (([[20.0]] < (env1 | c[x] )) and ((env1 | c[x] ) < [[50.0]])) .
+  op withinBound2 : -> PropSpec .
+  eq withinBound2 = (([[20.0]] < (env2 | c[x] )) and ((env2 | c[x] ) < [[50.0]])) .
+  op withinBound3 : -> PropSpec .
+  eq withinBound3 = (([[20.0]] < (env3 | c[x] )) and ((env3 | c[x] ) < [[50.0]])) .
+  
+endm
+	  
+red reachAnalysis(
+    initState,
+    (ThreeRoomThermsimpleInstance | initial),
+    ThreeRoomThermsimpleInstance | not(((withinBound1 and withinBound2) and withinBound3)),
+    400
+    ) .
+
+quit

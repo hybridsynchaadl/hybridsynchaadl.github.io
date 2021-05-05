@@ -1,0 +1,42 @@
+package LeftEnvironment
+public
+	with Base_Types;
+	with Data_Model;
+	with Hybrid_SynchAADL;
+	
+	system LeftEnvironment
+		features
+			decreased_water : out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
+			curr_water : out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
+			power : in data port Base_Types::Float;
+			on_control : in event port;
+			off_control : in event port;
+		properties
+			Hybrid_SynchAADL::isEnvironment => true;
+	end LeftEnvironment;
+	
+	system implementation LeftEnvironment.impl
+		subcomponents
+			water: data Base_Types::Float;
+			pump_power: data Base_Types::Float;
+			decrease: data Base_Types::Float;
+		connections
+			C1: port decrease -> decreased_water;
+			C2: port water -> curr_water;
+			C3: port power -> pump_power;
+		modes
+			off: initial mode;
+			on: mode;
+			
+			off -[on_control]-> on;
+			off -[off_control]-> off;
+			
+			on -[on_control]-> on;
+			on -[off_control]-> off;
+		
+		properties
+			Hybrid_SynchAADL::ContinuousDynamics =>
+				"decrease(t) = (50 * 0.001 * t) ; water(t) = water(0) + pump_power - (50 * 0.001 * t)" in modes(on),
+				"decrease(t) = (50 * 0.001 * t) ; water(t) = water(0) - (50 * 0.001 * t)" in modes(off);
+	end LeftEnvironment.impl;
+end LeftEnvironment;

@@ -1,0 +1,16 @@
+name: TwoWaterTankSystem_simple_Instance;
+
+model: TwoWaterTankSystem::TwoWaterTankSystem.simple;
+
+instance: "/WaterTank/package/instances/TwoWaterTankSystem_TwoWaterTankSystem_simple_Instance.aaxl2";
+
+proposition [initial]: abs(env1.water - 55.0) < 0.1 and
+					   abs(env2.water - 42.0) < 0.1;				   
+
+proposition [falseProp] : env1.power > 1000.0;
+
+invariant [tb_100] : ?initial ==> not(?falseProp) in time 100;
+invariant [tb_200] : ?initial ==> not(?falseProp) in time 200;
+invariant [tb_300] : ?initial ==> not(?falseProp) in time 300;
+invariant [tb_400] : ?initial ==> not(?falseProp) in time 400;
+invariant [tb_500] : ?initial ==> not(?falseProp) in time 500;

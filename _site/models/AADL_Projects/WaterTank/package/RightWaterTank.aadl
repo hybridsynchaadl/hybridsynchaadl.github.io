@@ -1,0 +1,127 @@
+package RightWaterTank
+public
+	with Base_Types;
+	with Data_Model;
+	
+	system RightWaterTank
+		features
+			on_control: out event port;
+			off_control: out event port;
+			curr_water: in data port Base_Types::Float;
+			incoming_water: in data port Base_Types::Float;
+			increased_water: out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
+			power: out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
+	end RightWaterTank;
+	
+	system implementation RightWaterTank.simple
+		subcomponents
+			ctrlProc: process RightWaterTankProc.simple;
+		connections
+			C1: port ctrlProc.on_control -> on_control;
+			C2: port ctrlProc.off_control -> off_control;
+			C3: port curr_water -> ctrlProc.curr_water;
+			C4: port incoming_water -> ctrlProc.incoming_water;
+			C5: port ctrlProc.increased_water -> increased_water;
+			C6: PORT ctrlProc.power -> power;
+	end RightWaterTank.simple;
+	
+	system implementation RightWaterTank.complex extends RightWaterTank.simple
+		subcomponents
+			ctrlProc: refined to process RightWaterTankProc.complex;		
+	end RightWaterTank.complex;
+	
+	process RightWaterTankProc
+		features
+			on_control: out event port;
+			off_control: out event port;
+			curr_water: in data port Base_Types::Float;
+			incoming_water: in data port Base_Types::Float;
+			increased_water: out data port Base_Types::Float;
+			power: out data port Base_Types::Float;
+	end RightWaterTankProc;
+	
+	process implementation RightWaterTankProc.simple
+		subcomponents
+			ctrlThread: thread RightWaterTankThread.simple;
+		connections
+			C1: port ctrlThread.on_control -> on_control;
+			C2: port ctrlThread.off_control -> off_control;
+			C3: port curr_water -> ctrlThread.curr_water;
+			C4: port incoming_water -> ctrlThread.incoming_water;
+			C5: port ctrlThread.increased_water -> increased_water;
+			C6: port ctrlThread.power -> power;
+	end RightWaterTankProc.simple;
+	
+	process implementation RightWaterTankProc.complex extends RightWaterTankProc.simple
+		subcomponents
+			ctrlThread: refined to thread RightWaterTankThread.complex;		
+	end RightWaterTankProc.complex;
+	
+	thread RightWaterTankThread
+		features
+			on_control: out event port;
+			off_control: out event port;
+			curr_water: in data port Base_Types::Float;
+			incoming_water: in data port Base_Types::Float;
+			increased_water: out data port Base_Types::Float;
+			power: out data port Base_Types::Float;
+		properties
+			Dispatch_Protocol => Periodic;
+	end RightWaterTankThread;
+	
+	thread implementation RightWaterTankThread.simple
+		annex behavior_specification{**
+			states
+				init : initial complete state;
+				exec : state;
+			transitions
+				init -[ on dispatch ]-> exec {
+					increased_water := incoming_water	
+				};
+				exec -[ true ]-> init {
+					if (curr_water <= 33)
+						power := 0.5;
+						on_control!
+					elsif (curr_water <= 39)
+						power := 0.3;
+						on_control!
+					else {
+						power := 0.0;
+						off_control!
+					}
+					end if
+				};
+		**};
+	end RightWaterTankThread.simple;
+	
+	thread implementation RightWaterTankThread.complex extends RightWaterTankThread.simple
+        annex behavior_specification{**
+            states
+                init : initial complete state;
+                exec : state;
+            transitions
+                init -[ on dispatch ]-> exec {
+					increased_water := incoming_water	
+                };
+                exec -[curr_water <= 42]-> init {
+                    if (curr_water <= 30)
+                        power := 0.5
+                    elsif (curr_water <= 33)
+                        power := 0.4
+                    elsif (curr_water <= 36)
+                        power := 0.3
+                    elsif (curr_water <= 39)
+                        power := 0.2
+                    else {
+                        power := 0.1
+                    }
+                    end if;
+                    on_control!
+                };
+                exec -[otherwise]-> init {
+                    off_control!
+                };
+        **};
+	end RightWaterTankThread.complex;	
+	
+end RightWaterTank;

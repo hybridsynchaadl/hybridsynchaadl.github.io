@@ -1,0 +1,1080 @@
+mod FOURWATERTANKSYSTEM_SIMPLE_INSTANCE-MODEL is
+	including MODEL-TRANSITION-SYSTEM .
+	
+	--- AADL identifiers
+	ops t : -> VarId [ctor] .
+	ops decreasedwater releasedwater incomingwater offcontrol increasedwater oncontrol power currwater : -> FeatureId [ctor] .
+	ops FourWaterTankSystemsimpleInstance ctrlThread pumppower ctrlProc env4 env3 env2 env1 increase water decrease waterTank2 waterTank1 waterTank4 waterTank3 : -> ComponentId [ctor] .
+	ops init exec off on : -> Location [ctor] .
+	ops loopBoundNum transBoundNum : -> Nat .
+	--- the initial state
+	op initial : -> Object .
+	eq initial = < FourWaterTankSystemsimpleInstance : System |
+		features : (
+			none),
+		subcomponents : (
+			< waterTank1 : System |
+				features : (
+					< releasedwater : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< power : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< decreasedwater : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< currwater : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< oncontrol : DataOutPort | 
+						content : null(Unit) ,
+						properties : none >
+					< offcontrol : DataOutPort | 
+						content : null(Unit) ,
+						properties : none >),
+				subcomponents : (
+					< ctrlProc : Process |
+						features : (
+							< releasedwater : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< power : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< decreasedwater : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< currwater : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< oncontrol : DataOutPort | 
+								content : null(Unit) ,
+								properties : none >
+							< offcontrol : DataOutPort | 
+								content : null(Unit) ,
+								properties : none >),
+						subcomponents : (
+							< ctrlThread : Thread |
+								features : (
+									< releasedwater : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< decreasedwater : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< currwater : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< power : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< oncontrol : DataOutPort | 
+										content : null(Unit) ,
+										properties : none >
+									< offcontrol : DataOutPort | 
+										content : null(Unit) ,
+										properties : none >),
+								subcomponents : (
+									none),
+								currState : (
+									init),
+								completeStates : (
+									init),
+								variables : (
+									empty),
+								transitions : (
+									(init -[ on dispatch ]-> exec {
+										(f{releasedwater} := f[decreasedwater])
+									}) ;
+									(exec -[ [[true]] ]-> init {
+										if ((f[currwater] <= [[33]])){
+											(f{power} := [[0.5]]) ;
+											(oncontrol !)
+										}
+										(
+										(elsif ((f[currwater] <= [[39]])){
+											(f{power} := [[0.3]]) ;
+											(oncontrol !)
+										})
+										)
+										else {
+											{
+												(f{power} := [[0.0]]) ;
+												(offcontrol !)
+											}
+										}
+										end if
+									})),
+								loopBound : (
+									loopBoundNum),
+								transBound : (
+									transBoundNum),
+								varGen : (
+									< "FourWaterTankSystemsimpleInstance.waterTank1.ctrlProc.ctrlThread" >
+									),
+								properties : (
+									(TimingProperties::Period => {{100.0}}) ;
+									(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+									(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+									(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+									(HybridSynchAADL::Synchronous => {{true}})),
+								connections : (
+									empty) 
+								> ),
+						properties : (
+							(TimingProperties::Period => {{100.0}}) ;
+							(HybridSynchAADL::Synchronous => {{true}})),
+						connections : (
+							(ctrlThread .. oncontrol --> oncontrol) ;
+							(ctrlThread .. power --> power) ;
+							(ctrlThread .. offcontrol --> offcontrol) ;
+							(ctrlThread .. releasedwater --> releasedwater) ;
+							(currwater --> ctrlThread .. currwater) ;
+							(decreasedwater --> ctrlThread .. decreasedwater)) 
+						> ),
+				properties : (
+					(TimingProperties::Period => {{100.0}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+					(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+					(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+					(HybridSynchAADL::Synchronous => {{true}})),
+				connections : (
+					(ctrlProc .. oncontrol --> oncontrol) ;
+					(currwater --> ctrlProc .. currwater) ;
+					(decreasedwater --> ctrlProc .. decreasedwater) ;
+					(ctrlProc .. releasedwater --> releasedwater) ;
+					(ctrlProc .. offcontrol --> offcontrol) ;
+					(ctrlProc .. power --> power)) 
+				> 
+			< waterTank2 : System |
+				features : (
+					< currwater : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< incomingwater : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< increasedwater : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< releasedwater : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< power : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< decreasedwater : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< oncontrol : DataOutPort | 
+						content : null(Unit) ,
+						properties : none >
+					< offcontrol : DataOutPort | 
+						content : null(Unit) ,
+						properties : none >),
+				subcomponents : (
+					< ctrlProc : Process |
+						features : (
+							< currwater : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< incomingwater : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< increasedwater : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< releasedwater : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< decreasedwater : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< power : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< oncontrol : DataOutPort | 
+								content : null(Unit) ,
+								properties : none >
+							< offcontrol : DataOutPort | 
+								content : null(Unit) ,
+								properties : none >),
+						subcomponents : (
+							< ctrlThread : Thread |
+								features : (
+									< currwater : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< incomingwater : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< increasedwater : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< releasedwater : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< power : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< decreasedwater : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< oncontrol : DataOutPort | 
+										content : null(Unit) ,
+										properties : none >
+									< offcontrol : DataOutPort | 
+										content : null(Unit) ,
+										properties : none >),
+								subcomponents : (
+									none),
+								currState : (
+									init),
+								completeStates : (
+									init),
+								variables : (
+									empty),
+								transitions : (
+									(init -[ on dispatch ]-> exec {
+										(f{increasedwater} := f[incomingwater]) ;
+										(f{releasedwater} := f[decreasedwater])
+									}) ;
+									(exec -[ [[true]] ]-> init {
+										if ((f[currwater] <= [[33]])){
+											(f{power} := [[0.5]]) ;
+											(oncontrol !)
+										}
+										(
+										(elsif ((f[currwater] <= [[39]])){
+											(f{power} := [[0.3]]) ;
+											(oncontrol !)
+										})
+										)
+										else {
+											{
+												(f{power} := [[0.0]]) ;
+												(offcontrol !)
+											}
+										}
+										end if
+									})),
+								loopBound : (
+									loopBoundNum),
+								transBound : (
+									transBoundNum),
+								varGen : (
+									< "FourWaterTankSystemsimpleInstance.waterTank2.ctrlProc.ctrlThread" >
+									),
+								properties : (
+									(TimingProperties::Period => {{100.0}}) ;
+									(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+									(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+									(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+									(HybridSynchAADL::Synchronous => {{true}})),
+								connections : (
+									empty) 
+								> ),
+						properties : (
+							(TimingProperties::Period => {{100.0}}) ;
+							(HybridSynchAADL::Synchronous => {{true}})),
+						connections : (
+							(ctrlThread .. releasedwater --> releasedwater) ;
+							(incomingwater --> ctrlThread .. incomingwater) ;
+							(ctrlThread .. offcontrol --> offcontrol) ;
+							(ctrlThread .. power --> power) ;
+							(decreasedwater --> ctrlThread .. decreasedwater) ;
+							(ctrlThread .. increasedwater --> increasedwater) ;
+							(ctrlThread .. oncontrol --> oncontrol) ;
+							(currwater --> ctrlThread .. currwater)) 
+						> ),
+				properties : (
+					(TimingProperties::Period => {{100.0}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+					(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+					(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+					(HybridSynchAADL::Synchronous => {{true}})),
+				connections : (
+					(ctrlProc .. increasedwater --> increasedwater) ;
+					(ctrlProc .. releasedwater --> releasedwater) ;
+					(ctrlProc .. power --> power) ;
+					(ctrlProc .. offcontrol --> offcontrol) ;
+					(ctrlProc .. oncontrol --> oncontrol) ;
+					(decreasedwater --> ctrlProc .. decreasedwater) ;
+					(currwater --> ctrlProc .. currwater) ;
+					(incomingwater --> ctrlProc .. incomingwater)) 
+				> 
+			< waterTank3 : System |
+				features : (
+					< currwater : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< incomingwater : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< increasedwater : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< releasedwater : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< power : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< decreasedwater : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< oncontrol : DataOutPort | 
+						content : null(Unit) ,
+						properties : none >
+					< offcontrol : DataOutPort | 
+						content : null(Unit) ,
+						properties : none >),
+				subcomponents : (
+					< ctrlProc : Process |
+						features : (
+							< currwater : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< incomingwater : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< increasedwater : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< releasedwater : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< decreasedwater : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< power : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< oncontrol : DataOutPort | 
+								content : null(Unit) ,
+								properties : none >
+							< offcontrol : DataOutPort | 
+								content : null(Unit) ,
+								properties : none >),
+						subcomponents : (
+							< ctrlThread : Thread |
+								features : (
+									< currwater : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< incomingwater : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< increasedwater : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< releasedwater : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< power : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< decreasedwater : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< oncontrol : DataOutPort | 
+										content : null(Unit) ,
+										properties : none >
+									< offcontrol : DataOutPort | 
+										content : null(Unit) ,
+										properties : none >),
+								subcomponents : (
+									none),
+								currState : (
+									init),
+								completeStates : (
+									init),
+								variables : (
+									empty),
+								transitions : (
+									(init -[ on dispatch ]-> exec {
+										(f{increasedwater} := f[incomingwater]) ;
+										(f{releasedwater} := f[decreasedwater])
+									}) ;
+									(exec -[ [[true]] ]-> init {
+										if ((f[currwater] <= [[33]])){
+											(f{power} := [[0.5]]) ;
+											(oncontrol !)
+										}
+										(
+										(elsif ((f[currwater] <= [[39]])){
+											(f{power} := [[0.3]]) ;
+											(oncontrol !)
+										})
+										)
+										else {
+											{
+												(f{power} := [[0.0]]) ;
+												(offcontrol !)
+											}
+										}
+										end if
+									})),
+								loopBound : (
+									loopBoundNum),
+								transBound : (
+									transBoundNum),
+								varGen : (
+									< "FourWaterTankSystemsimpleInstance.waterTank3.ctrlProc.ctrlThread" >
+									),
+								properties : (
+									(TimingProperties::Period => {{100.0}}) ;
+									(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+									(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+									(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+									(HybridSynchAADL::Synchronous => {{true}})),
+								connections : (
+									empty) 
+								> ),
+						properties : (
+							(TimingProperties::Period => {{100.0}}) ;
+							(HybridSynchAADL::Synchronous => {{true}})),
+						connections : (
+							(ctrlThread .. oncontrol --> oncontrol) ;
+							(ctrlThread .. offcontrol --> offcontrol) ;
+							(currwater --> ctrlThread .. currwater) ;
+							(ctrlThread .. increasedwater --> increasedwater) ;
+							(incomingwater --> ctrlThread .. incomingwater) ;
+							(decreasedwater --> ctrlThread .. decreasedwater) ;
+							(ctrlThread .. releasedwater --> releasedwater) ;
+							(ctrlThread .. power --> power)) 
+						> ),
+				properties : (
+					(TimingProperties::Period => {{100.0}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+					(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+					(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+					(HybridSynchAADL::Synchronous => {{true}})),
+				connections : (
+					(ctrlProc .. increasedwater --> increasedwater) ;
+					(ctrlProc .. power --> power) ;
+					(ctrlProc .. oncontrol --> oncontrol) ;
+					(currwater --> ctrlProc .. currwater) ;
+					(ctrlProc .. offcontrol --> offcontrol) ;
+					(incomingwater --> ctrlProc .. incomingwater) ;
+					(ctrlProc .. releasedwater --> releasedwater) ;
+					(decreasedwater --> ctrlProc .. decreasedwater)) 
+				> 
+			< waterTank4 : System |
+				features : (
+					< currwater : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< incomingwater : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< increasedwater : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< power : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< oncontrol : DataOutPort | 
+						content : null(Unit) ,
+						properties : none >
+					< offcontrol : DataOutPort | 
+						content : null(Unit) ,
+						properties : none >),
+				subcomponents : (
+					< ctrlProc : Process |
+						features : (
+							< currwater : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< incomingwater : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< increasedwater : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< power : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< oncontrol : DataOutPort | 
+								content : null(Unit) ,
+								properties : none >
+							< offcontrol : DataOutPort | 
+								content : null(Unit) ,
+								properties : none >),
+						subcomponents : (
+							< ctrlThread : Thread |
+								features : (
+									< currwater : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< incomingwater : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< increasedwater : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< power : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< oncontrol : DataOutPort | 
+										content : null(Unit) ,
+										properties : none >
+									< offcontrol : DataOutPort | 
+										content : null(Unit) ,
+										properties : none >),
+								subcomponents : (
+									none),
+								currState : (
+									init),
+								completeStates : (
+									init),
+								variables : (
+									empty),
+								transitions : (
+									(init -[ on dispatch ]-> exec {
+										(f{increasedwater} := f[incomingwater])
+									}) ;
+									(exec -[ [[true]] ]-> init {
+										if ((f[currwater] <= [[33]])){
+											(f{power} := [[0.5]]) ;
+											(oncontrol !)
+										}
+										(
+										(elsif ((f[currwater] <= [[39]])){
+											(f{power} := [[0.3]]) ;
+											(oncontrol !)
+										})
+										)
+										else {
+											{
+												(f{power} := [[0.0]]) ;
+												(offcontrol !)
+											}
+										}
+										end if
+									})),
+								loopBound : (
+									loopBoundNum),
+								transBound : (
+									transBoundNum),
+								varGen : (
+									< "FourWaterTankSystemsimpleInstance.waterTank4.ctrlProc.ctrlThread" >
+									),
+								properties : (
+									(TimingProperties::Period => {{100.0}}) ;
+									(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+									(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+									(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+									(HybridSynchAADL::Synchronous => {{true}})),
+								connections : (
+									empty) 
+								> ),
+						properties : (
+							(TimingProperties::Period => {{100.0}}) ;
+							(HybridSynchAADL::Synchronous => {{true}})),
+						connections : (
+							(ctrlThread .. offcontrol --> offcontrol) ;
+							(currwater --> ctrlThread .. currwater) ;
+							(incomingwater --> ctrlThread .. incomingwater) ;
+							(ctrlThread .. increasedwater --> increasedwater) ;
+							(ctrlThread .. power --> power) ;
+							(ctrlThread .. oncontrol --> oncontrol)) 
+						> ),
+				properties : (
+					(TimingProperties::Period => {{100.0}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+					(HybridSynchAADL::SamplingTime => {{20.0 .. 30.0}}) ;
+					(HybridSynchAADL::ResponseTime => {{60.0 .. 80.0}}) ;
+					(HybridSynchAADL::Synchronous => {{true}})),
+				connections : (
+					(ctrlProc .. offcontrol --> offcontrol) ;
+					(currwater --> ctrlProc .. currwater) ;
+					(ctrlProc .. power --> power) ;
+					(ctrlProc .. oncontrol --> oncontrol) ;
+					(ctrlProc .. increasedwater --> increasedwater) ;
+					(incomingwater --> ctrlProc .. incomingwater)) 
+				> 
+			< env1 : Env |
+				features : (
+					< decreasedwater : EnvOutPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< currwater : EnvOutPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< power : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< oncontrol : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Unit),
+						content : null(Unit) ,
+						properties : none >
+					< offcontrol : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Unit),
+						content : null(Unit) ,
+						properties : none >),
+				subcomponents : (
+					< pumppower : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : null(Real),
+						properties : (
+							(DataModel::InitialValue => {{0}})),
+						connections : (
+							empty) 
+						> 
+					< decrease : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : null(Real),
+						properties : (
+							(DataModel::InitialValue => {{0}})),
+						connections : (
+							empty) 
+						> 
+					< water : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : param(Real),
+						properties : (
+							none),
+						connections : (
+							empty) 
+						> ),
+				currMode : (
+					off
+					),
+				jumps : (
+					(off -[ (oncontrol) ]-> on) ;
+					(off -[ (offcontrol) ]-> off) ;
+					(on -[ (oncontrol) ]-> on) ;
+					(on -[ (offcontrol) ]-> off)
+					),
+				flows : (
+					((on)[(decrease(t) = (([[50.0]] * [[0.001]]) * v[t])) ; (water(t) = ((c[water] + c[pumppower]) - (([[50.0]] * [[0.001]]) * v[t]))) ] ) ;
+					((off)[(decrease(t) = (([[50.0]] * [[0.001]]) * v[t])) ; (water(t) = (c[water] - (([[50.0]] * [[0.001]]) * v[t]))) ] )
+					),
+				sampling : (
+					(ctrlThread : (rat(20.0),rat(30.0)))
+					),
+				response : (
+					(ctrlThread : (rat(60.0),rat(80.0)))
+					),
+				varGen : (
+					< "FourWaterTankSystemsimpleInstance.env1" >
+					),
+				properties : (
+					(TimingProperties::Period => {{100.0}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+					(HybridSynchAADL::Synchronous => {{true}}) ;
+					(HybridSynchAADL::ContinuousDynamics => {{"decrease(t) = (50 * 0.001 * t) ; water(t) = water(0) - (50 * 0.001 * t)"}}) ;
+					(HybridSynchAADL::isEnvironment => {{true}})),
+				connections : (
+					(power =>> pumppower) ;
+					(decrease ==> decreasedwater) ;
+					(water ==> currwater)) 
+				> 
+			< env2 : Env |
+				features : (
+					< currwater : EnvOutPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< increasedwater : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< power : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< decreasedwater : EnvOutPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< oncontrol : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Unit),
+						content : null(Unit) ,
+						properties : none >
+					< offcontrol : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Unit),
+						content : null(Unit) ,
+						properties : none >),
+				subcomponents : (
+					< pumppower : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : null(Real),
+						properties : (
+							(DataModel::InitialValue => {{0}})),
+						connections : (
+							empty) 
+						> 
+					< decrease : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : null(Real),
+						properties : (
+							(DataModel::InitialValue => {{0}})),
+						connections : (
+							empty) 
+						> 
+					< increase : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : null(Real),
+						properties : (
+							(DataModel::InitialValue => {{0}})),
+						connections : (
+							empty) 
+						> 
+					< water : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : param(Real),
+						properties : (
+							none),
+						connections : (
+							empty) 
+						> ),
+				currMode : (
+					off
+					),
+				jumps : (
+					(off -[ (oncontrol) ]-> on) ;
+					(off -[ (offcontrol) ]-> off) ;
+					(on -[ (oncontrol) ]-> on) ;
+					(on -[ (offcontrol) ]-> off)
+					),
+				flows : (
+					((on)[(decrease(t) = (([[50.0]] * [[0.001]]) * v[t])) ; (water(t) = (((c[water] + c[pumppower]) - (([[50.0]] * [[0.001]]) * v[t])) + c[increase])) ] ) ;
+					((off)[(decrease(t) = (([[50.0]] * [[0.001]]) * v[t])) ; (water(t) = ((c[water] - (([[50.0]] * [[0.001]]) * v[t])) + c[increase])) ] )
+					),
+				sampling : (
+					(ctrlThread : (rat(20.0),rat(30.0)))
+					),
+				response : (
+					(ctrlThread : (rat(60.0),rat(80.0)))
+					),
+				varGen : (
+					< "FourWaterTankSystemsimpleInstance.env2" >
+					),
+				properties : (
+					(TimingProperties::Period => {{100.0}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+					(HybridSynchAADL::Synchronous => {{true}}) ;
+					(HybridSynchAADL::ContinuousDynamics => {{"decrease(t) = (50 * 0.001 * t) ; water(t) = water(0) - (50 * 0.001 * t) + increase"}}) ;
+					(HybridSynchAADL::isEnvironment => {{true}})),
+				connections : (
+					(water ==> currwater) ;
+					(power =>> pumppower) ;
+					(decrease ==> decreasedwater) ;
+					(increasedwater =>> increase)) 
+				> 
+			< env3 : Env |
+				features : (
+					< currwater : EnvOutPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< increasedwater : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< power : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< decreasedwater : EnvOutPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< oncontrol : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Unit),
+						content : null(Unit) ,
+						properties : none >
+					< offcontrol : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Unit),
+						content : null(Unit) ,
+						properties : none >),
+				subcomponents : (
+					< pumppower : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : null(Real),
+						properties : (
+							(DataModel::InitialValue => {{0}})),
+						connections : (
+							empty) 
+						> 
+					< decrease : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : null(Real),
+						properties : (
+							(DataModel::InitialValue => {{0}})),
+						connections : (
+							empty) 
+						> 
+					< increase : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : null(Real),
+						properties : (
+							(DataModel::InitialValue => {{0}})),
+						connections : (
+							empty) 
+						> 
+					< water : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : param(Real),
+						properties : (
+							none),
+						connections : (
+							empty) 
+						> ),
+				currMode : (
+					off
+					),
+				jumps : (
+					(off -[ (oncontrol) ]-> on) ;
+					(off -[ (offcontrol) ]-> off) ;
+					(on -[ (oncontrol) ]-> on) ;
+					(on -[ (offcontrol) ]-> off)
+					),
+				flows : (
+					((on)[(decrease(t) = (([[50.0]] * [[0.001]]) * v[t])) ; (water(t) = (((c[water] + c[pumppower]) - (([[50.0]] * [[0.001]]) * v[t])) + c[increase])) ] ) ;
+					((off)[(decrease(t) = (([[50.0]] * [[0.001]]) * v[t])) ; (water(t) = ((c[water] - (([[50.0]] * [[0.001]]) * v[t])) + c[increase])) ] )
+					),
+				sampling : (
+					(ctrlThread : (rat(20.0),rat(30.0)))
+					),
+				response : (
+					(ctrlThread : (rat(60.0),rat(80.0)))
+					),
+				varGen : (
+					< "FourWaterTankSystemsimpleInstance.env3" >
+					),
+				properties : (
+					(TimingProperties::Period => {{100.0}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+					(HybridSynchAADL::Synchronous => {{true}}) ;
+					(HybridSynchAADL::ContinuousDynamics => {{"decrease(t) = (50 * 0.001 * t) ; water(t) = water(0) - (50 * 0.001 * t) + increase"}}) ;
+					(HybridSynchAADL::isEnvironment => {{true}})),
+				connections : (
+					(increasedwater =>> increase) ;
+					(power =>> pumppower) ;
+					(water ==> currwater) ;
+					(decrease ==> decreasedwater)) 
+				> 
+			< env4 : Env |
+				features : (
+					< currwater : EnvOutPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< increasedwater : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< power : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< oncontrol : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Unit),
+						content : null(Unit) ,
+						properties : none >
+					< offcontrol : EnvInPort | 
+						target : ctrlThread,
+						envCache : null(Unit),
+						content : null(Unit) ,
+						properties : none >),
+				subcomponents : (
+					< pumppower : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : null(Real),
+						properties : (
+							(DataModel::InitialValue => {{0}})),
+						connections : (
+							empty) 
+						> 
+					< decrease : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : null(Real),
+						properties : (
+							(DataModel::InitialValue => {{0}})),
+						connections : (
+							empty) 
+						> 
+					< increase : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : null(Real),
+						properties : (
+							(DataModel::InitialValue => {{0}})),
+						connections : (
+							empty) 
+						> 
+					< water : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : param(Real),
+						properties : (
+							none),
+						connections : (
+							empty) 
+						> ),
+				currMode : (
+					off
+					),
+				jumps : (
+					(off -[ (oncontrol) ]-> on) ;
+					(off -[ (offcontrol) ]-> off) ;
+					(on -[ (oncontrol) ]-> on) ;
+					(on -[ (offcontrol) ]-> off)
+					),
+				flows : (
+					((on)[(decrease(t) = (([[50.0]] * [[0.001]]) * v[t])) ; (water(t) = (((c[water] + c[pumppower]) - (([[50.0]] * [[0.001]]) * v[t])) + c[increase])) ] ) ;
+					((off)[(decrease(t) = (([[50.0]] * [[0.001]]) * v[t])) ; (water(t) = ((c[water] - (([[50.0]] * [[0.001]]) * v[t])) + c[increase])) ] )
+					),
+				sampling : (
+					(ctrlThread : (rat(20.0),rat(30.0)))
+					),
+				response : (
+					(ctrlThread : (rat(60.0),rat(80.0)))
+					),
+				varGen : (
+					< "FourWaterTankSystemsimpleInstance.env4" >
+					),
+				properties : (
+					(TimingProperties::Period => {{100.0}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+					(HybridSynchAADL::Synchronous => {{true}}) ;
+					(HybridSynchAADL::ContinuousDynamics => {{"decrease(t) = (50 * 0.001 * t) ; water(t) = water(0) - (50 * 0.001 * t) + increase"}}) ;
+					(HybridSynchAADL::isEnvironment => {{true}})),
+				connections : (
+					(increasedwater =>> increase) ;
+					(water ==> currwater) ;
+					(power =>> pumppower)) 
+				> ),
+		properties : (
+			(TimingProperties::Period => {{100.0}}) ;
+			(HybridSynchAADL::MaxClockDeviation => {{5.0}}) ;
+			(HybridSynchAADL::Synchronous => {{true}})),
+		connections : (
+			(waterTank3 .. oncontrol --> env3 .. oncontrol) ;
+			(waterTank4 .. oncontrol --> env4 .. oncontrol) ;
+			(waterTank1 .. releasedwater --> waterTank2 .. incomingwater) ;
+			(env4 .. currwater --> waterTank4 .. currwater) ;
+			(env2 .. currwater --> waterTank2 .. currwater) ;
+			(waterTank2 .. offcontrol --> env2 .. offcontrol) ;
+			(env1 .. currwater --> waterTank1 .. currwater) ;
+			(waterTank3 .. power --> env3 .. power) ;
+			(waterTank2 .. increasedwater --> env2 .. increasedwater) ;
+			(waterTank3 .. offcontrol --> env3 .. offcontrol) ;
+			(env1 .. decreasedwater --> waterTank1 .. decreasedwater) ;
+			(waterTank3 .. increasedwater --> env3 .. increasedwater) ;
+			(env3 .. currwater --> waterTank3 .. currwater) ;
+			(waterTank1 .. offcontrol --> env1 .. offcontrol) ;
+			(waterTank1 .. oncontrol --> env1 .. oncontrol) ;
+			(waterTank3 .. releasedwater --> waterTank4 .. incomingwater) ;
+			(env3 .. decreasedwater --> waterTank3 .. decreasedwater) ;
+			(waterTank2 .. power --> env2 .. power) ;
+			(waterTank1 .. power --> env1 .. power) ;
+			(waterTank4 .. power --> env4 .. power) ;
+			(waterTank4 .. offcontrol --> env4 .. offcontrol) ;
+			(env2 .. decreasedwater --> waterTank2 .. decreasedwater) ;
+			(waterTank2 .. oncontrol --> env2 .. oncontrol) ;
+			(waterTank2 .. releasedwater --> waterTank3 .. incomingwater) ;
+			(waterTank4 .. increasedwater --> env4 .. increasedwater)) 
+		>  .
+endm
