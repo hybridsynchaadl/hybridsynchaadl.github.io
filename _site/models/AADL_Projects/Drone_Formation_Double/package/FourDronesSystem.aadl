@@ -39,16 +39,16 @@ public
 			r4vx: port refDrone.outVX -> drone4.refVX;				
 		properties
     		Data_Model::Initial_Value => ("param") applies to
-    			drone1.environment.x, drone2.environment.x, 
-    			drone3.environment.x, drone4.environment.x, 
+    			drone1.env.x, drone2.env.x, 
+    			drone3.env.x, drone4.env.x, 
     			refDrone.env.x; 
     		Data_Model::Initial_Value => ("0") applies to
-    			drone1.environment.dotx, drone2.environment.dotx, 
-    			drone3.environment.dotx, drone4.environment.dotx,
+    			drone1.env.dotx, drone2.env.dotx, 
+    			drone3.env.dotx, drone4.env.dotx,
     			refDrone.env.dotx;	
     		Data_Model::Initial_Value => ("0") applies to
-    			drone1.environment.dotdotx, drone2.environment.dotdotx, 
-    			drone3.environment.dotdotx, drone4.environment.dotdotx,
+    			drone1.env.dotdotx, drone2.env.dotdotx, 
+    			drone3.env.dotdotx, drone4.env.dotdotx,
     			refDrone.env.dotdotx;			
 
 			Data_Model::Initial_Value => ("-0.5") applies to
@@ -111,25 +111,25 @@ public
 			r4vy: port refDrone.outVY -> drone4.refVY;						
 		properties
     		Data_Model::Initial_Value => ("param") applies to
-    			drone1.environment.x, drone2.environment.x, 
-    			drone3.environment.x, drone4.environment.x, 
+    			drone1.env.x, drone2.env.x, 
+    			drone3.env.x, drone4.env.x, 
     			refDrone.env.x,
-    			drone1.environment.y, drone2.environment.y, 
-    			drone3.environment.y, drone4.environment.y, 
+    			drone1.env.y, drone2.env.y, 
+    			drone3.env.y, drone4.env.y, 
     			refDrone.env.y; 
     		Data_Model::Initial_Value => ("0") applies to
-    			drone1.environment.dotx, drone2.environment.dotx, 
-    			drone3.environment.dotx, drone4.environment.dotx,
+    			drone1.env.dotx, drone2.env.dotx, 
+    			drone3.env.dotx, drone4.env.dotx,
     			refDrone.env.dotx,
-     			drone1.environment.doty, drone2.environment.doty, 
-    			drone3.environment.doty, drone4.environment.doty,
+     			drone1.env.doty, drone2.env.doty, 
+    			drone3.env.doty, drone4.env.doty,
     			refDrone.env.doty;	
     		Data_Model::Initial_Value => ("0") applies to
-    			drone1.environment.dotdotx, drone2.environment.dotdotx, 
-    			drone3.environment.dotdotx, drone4.environment.dotdotx,
+    			drone1.env.dotdotx, drone2.env.dotdotx, 
+    			drone3.env.dotdotx, drone4.env.dotdotx,
     			refDrone.env.dotdotx,
-    			drone1.environment.dotdoty, drone2.environment.dotdoty, 
-    			drone3.environment.dotdoty, drone4.environment.dotdoty,
+    			drone1.env.dotdoty, drone2.env.dotdoty, 
+    			drone3.env.dotdoty, drone4.env.dotdoty,
     			refDrone.env.dotdoty;			
 
 			Data_Model::Initial_Value => ("-0.5") applies to

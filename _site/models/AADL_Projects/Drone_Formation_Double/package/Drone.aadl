@@ -17,15 +17,15 @@ public
 	system implementation Drone1D.impl
 		subcomponents
 			drone: system DroneControl::Drone1DControl.impl;
-			environment: system Environment::Environment1D.impl;
+			env: system Environment::Environment1D.impl;
 		connections
 			C1: port drone.outX -> outX;
 			C2: port drone.outVX -> outVX;
 			C3: port inX -> drone.inX;
 			C4: port inVX -> drone.inVX;
-			C5: port drone.accX -> environment.accX;
-			C6: port environment.currX -> drone.currX;
-			C7: port environment.currVX -> drone.currVX;
+			C5: port drone.accX -> env.accX;
+			C6: port env.currX -> drone.currX;
+			C7: port env.currVX -> drone.currVX;
 			C8: port refX -> drone.refX;
 			C9: port refVX -> drone.refVX;				
 	end Drone1D.impl;
@@ -44,15 +44,15 @@ public
 	system implementation Drone2D.impl extends Drone1D.impl
 		subcomponents
 			drone: refined to system DroneControl::Drone2DControl.impl;
-			environment: refined to system Environment::Environment2D.impl;
+			env: refined to system Environment::Environment2D.impl;
 		connections
 			C10: port drone.outY -> outY;
 			C11: port drone.outVY -> outVY;
 			C12: port inY -> drone.inY;
 			C13: port inVY -> drone.inVY;
-			C14: port drone.accY -> environment.accY;
-			C15: port environment.currY -> drone.currY;
-			C16: port environment.currVY -> drone.currVY;
+			C14: port drone.accY -> env.accY;
+			C15: port env.currY -> drone.currY;
+			C16: port env.currVY -> drone.currVY;
 			C17: port refY -> drone.refY;
 			C18: port refVY -> drone.refVY;				
 	end Drone2D.impl;	

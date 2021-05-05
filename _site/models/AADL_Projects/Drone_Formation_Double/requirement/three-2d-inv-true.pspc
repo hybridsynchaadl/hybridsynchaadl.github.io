@@ -4,12 +4,12 @@ model: ThreeDronesSystem::ThreeDronesSystem.complex;
 
 instance: "/Drone_Formation_Double/package/instances/ThreeDronesSystem_ThreeDronesSystem_complex_Instance.aaxl2";
 
-proposition [initial] : abs(drone1.environment.x - 0.0) < 0.1 and
-						abs(drone2.environment.x - 0.9) < 0.1 and
-						abs(drone3.environment.x - 0.0) < 0.1 and
-						abs(refDrone.env.x - 0.9) < 0.1;
+proposition [initial] : abs(drone1.env.x - 0.0) < 0.1 and abs(drone1.env.y - 0.0) < 0.1 and
+						abs(drone2.env.x - 0.9) < 0.1 and abs(drone2.env.y - 0.9) < 0.1 and
+						abs(drone3.env.x - 0.0) < 0.1 and abs(drone3.env.y - 0.0) < 0.1 and
+						abs(refDrone.env.x - 0.9) < 0.1 and abs(refDrone.env.y - 0.9) < 0.1;
 
-proposition [falseProp] : drone2.environment.dotdotx > 1000.0;
+proposition [falseProp] : drone2.env.dotdotx > 1000.0;
 
 invariant [tb_100] : ?initial ==> not(?falseProp) in time 100;
 invariant [tb_200] : ?initial ==> not(?falseProp) in time 200;

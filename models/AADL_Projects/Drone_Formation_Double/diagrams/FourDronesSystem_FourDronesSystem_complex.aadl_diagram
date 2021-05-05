@@ -103,8 +103,8 @@
         <seg>d23vx</seg>
       </bo>
       <bendpoints>
-        <point x="1153.0" y="574.0"/>
-        <point x="1152.0" y="732.0"/>
+        <point x="1113.0" y="574.0"/>
+        <point x="1113.0" y="732.0"/>
         <point x="648.0" y="732.0"/>
         <point x="649.0" y="708.0"/>
         <point x="609.0" y="708.0"/>
@@ -457,8 +457,8 @@
       <bendpoints>
         <point x="382.0" y="220.0"/>
         <point x="382.0" y="764.0"/>
-        <point x="1162.0" y="764.0"/>
-        <point x="1163.0" y="624.0"/>
+        <point x="1085.0" y="764.0"/>
+        <point x="1085.0" y="624.0"/>
       </bendpoints>
     </element>
     <element uuid="6049b7fd-32bb-4687-b974-078c5d020403" manual="true">
@@ -481,8 +481,8 @@
       <bendpoints>
         <point x="372.0" y="270.0"/>
         <point x="371.0" y="716.0"/>
-        <point x="1172.0" y="716.0"/>
-        <point x="1173.0" y="674.0"/>
+        <point x="1098.0" y="716.0"/>
+        <point x="1098.0" y="674.0"/>
       </bendpoints>
     </element>
     <element uuid="7440090d-a683-4f7d-8e38-90a56e758737" manual="true">
@@ -808,7 +808,7 @@
         <seg>subcomponent</seg>
         <seg>drone1</seg>
       </bo>
-      <position x="660.0" y="150.0"/>
+      <position x="620.0" y="150.0"/>
       <size width="123.0" height="410.0"/>
     </element>
     <element uuid="32262a37-07c4-44b8-9f30-9da43159a87f" manual="true">
@@ -900,7 +900,7 @@
         <seg>subcomponent</seg>
         <seg>drone2</seg>
       </bo>
-      <position x="870.0" y="42.0"/>
+      <position x="790.0" y="42.0"/>
       <size width="126.0" height="610.0"/>
     </element>
     <element uuid="144c9915-a3e7-4d53-9b0d-b85e608e98ee" manual="true">
@@ -992,7 +992,7 @@
         <seg>subcomponent</seg>
         <seg>drone3</seg>
       </bo>
-      <position x="270.0" y="260.0"/>
+      <position x="260.0" y="260.0"/>
       <size width="117.0" height="410.0"/>
     </element>
     <element uuid="f3002cc2-a89f-41c5-81ec-f1c01a9d7221" manual="true">
@@ -1084,7 +1084,7 @@
         <seg>subcomponent</seg>
         <seg>drone4</seg>
       </bo>
-      <position x="480.0" y="210.0"/>
+      <position x="440.0" y="210.0"/>
       <size width="120.0" height="410.0"/>
     </element>
     <element uuid="00914315-b439-4209-9185-4071a3493488" manual="true">
@@ -1120,7 +1120,7 @@
         <seg>subcomponent</seg>
         <seg>refDrone</seg>
       </bo>
-      <position x="40.0" y="42.0"/>
+      <position x="20.0" y="42.0"/>
       <size width="124.0" height="210.0"/>
     </element>
     <bo>

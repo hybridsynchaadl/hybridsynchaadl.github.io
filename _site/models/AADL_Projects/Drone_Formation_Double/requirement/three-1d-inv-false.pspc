@@ -4,14 +4,14 @@ model: ThreeDronesSystem::ThreeDronesSystem.simple;
 
 instance: "/Drone_Formation_Double/package/instances/ThreeDronesSystem_ThreeDronesSystem_simple_Instance.aaxl2";
 
-proposition [initial] : abs(drone1.environment.x + 0.1) < 0.01 and
-						abs(drone2.environment.x - 0.5) < 0.01 and
-						abs(drone3.environment.x - 1.5) < 0.01 and
+proposition [initial] : abs(drone1.env.x + 0.1) < 0.01 and
+						abs(drone2.env.x - 0.5) < 0.01 and
+						abs(drone3.env.x - 1.5) < 0.01 and
 						abs(refDrone.env.x - 0.3) < 0.01;
 
-proposition [someClose] : abs(drone1.environment.x-drone2.environment.x)<0.3 or
-						  abs(drone1.environment.x-drone3.environment.x)<0.3 or
-						  abs(drone2.environment.x-drone3.environment.x)<0.3;
+proposition [someClose] : abs(drone1.env.x-drone2.env.x)<0.3 or
+						  abs(drone1.env.x-drone3.env.x)<0.3 or
+						  abs(drone2.env.x-drone3.env.x)<0.3;
 
 invariant [tb_100] : ?initial ==> not(?someClose) in time 100;
 invariant [tb_200] : ?initial ==> not(?someClose) in time 200;
