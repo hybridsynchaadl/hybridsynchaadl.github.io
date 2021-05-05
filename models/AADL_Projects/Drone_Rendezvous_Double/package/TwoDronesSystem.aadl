@@ -7,15 +7,12 @@ public
 	system TwoDronesSystem
 		properties
 			Hybrid_SynchAADL::Synchronous => true;
-			Hybrid_SynchAADL::Max_Clock_Deviation => 5ms;
-			Period => 100ms;
-			Classifier_Substitution_Rule => Type_Extension;
 	end TwoDronesSystem;
 	
-	system implementation TwoDronesSystem.revu1D
+	system implementation TwoDronesSystem.simple
 		subcomponents
-			drone1: system Drone::RevuDrone.impl;
-			drone2: system Drone::RevuDrone.impl;
+			drone1: system Drone::Drone1D.impl;
+			drone2: system Drone::Drone1D.impl;
 		connections
 			d12x: port drone1.outX -> drone2.inX;
 			d21x: port drone2.outX -> drone1.inX;
@@ -28,7 +25,10 @@ public
     			drone1.environment.dotx, drone2.environment.dotx; 
     		Data_Model::Initial_Value => ("0") applies to
     			drone1.environment.dotdotx, drone2.environment.dotdotx;
-	
+
+			Hybrid_SynchAADL::Max_Clock_Deviation => 5ms;
+			Period => 100ms;
+				
 			Timing => Delayed applies to 
 				d12x,  d21x, d12vx, d21vx;
 			
@@ -37,7 +37,45 @@ public
 				
 			Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
 				drone1.drone, drone2.drone;
-	end TwoDronesSystem.revu1D;
+	end TwoDronesSystem.simple;
+	
+	system implementation TwoDronesSystem.complex
+		subcomponents
+			drone1: system Drone::Drone2D.impl;
+			drone2: system Drone::Drone2D.impl;
+		connections
+			d12x: port drone1.outX -> drone2.inX;
+			d21x: port drone2.outX -> drone1.inX;
+			d12y: port drone1.outY -> drone2.inY;
+			d21y: port drone2.outY -> drone1.inY;			
+			d12vx: port drone1.outVX -> drone2.inVX;
+			d21vx: port drone2.outVX -> drone1.inVX;
+			d12vy: port drone1.outVY -> drone2.inVY;
+			d21vy: port drone2.outVY -> drone1.inVY;			
+		properties
+    		Data_Model::Initial_Value => ("param") applies to
+    			drone1.environment.x, drone2.environment.x,
+    			drone1.environment.y, drone2.environment.y;
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone1.environment.dotx, drone2.environment.dotx,
+    			drone1.environment.doty, drone2.environment.doty; 
+    		Data_Model::Initial_Value => ("0") applies to
+    			drone1.environment.dotdotx, drone2.environment.dotdotx,
+    			drone1.environment.dotdoty, drone2.environment.dotdoty;
+
+			Hybrid_SynchAADL::Max_Clock_Deviation => 5ms;
+			Period => 100ms;
+				
+			Timing => Delayed applies to 
+				d12x, d21x, d12vx, d21vx,
+				d12y, d21y, d12vy, d21vy;
+			
+			Hybrid_SynchAADL::Sampling_Time => 20ms .. 30ms applies to 
+				drone1.drone, drone2.drone;
+				
+			Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
+				drone1.drone, drone2.drone;
+	end TwoDronesSystem.complex;	
 	
 	
 end TwoDronesSystem;

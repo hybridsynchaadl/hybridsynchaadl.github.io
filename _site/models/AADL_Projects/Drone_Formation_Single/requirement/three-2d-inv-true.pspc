@@ -4,10 +4,10 @@ model: ThreeDronesSystem::ThreeDronesSystem.complex;
 
 instance: "/Drone_Formation_Single/package/instances/ThreeDronesSystem_ThreeDronesSystem_complex_Instance.aaxl2";
 
-proposition [initial] : abs(drone1.env.x - 0.40) < 0.1 and
-						abs(drone2.env.x - 1.00) < 0.1 and
-						abs(drone3.env.x - 1.00) < 0.1 and
-						abs(refDrone.env.x - 1.00) < 0.1;
+proposition [initial] : abs(drone1.env.x - 0.40) < 0.1 and abs(drone1.env.y - 0.40) < 0.1 and
+						abs(drone2.env.x - 1.00) < 0.1 and abs(drone2.env.y - 1.00) < 0.1 and
+						abs(drone3.env.x - 1.00) < 0.1 and abs(drone3.env.y - 1.00) < 0.1 and
+						abs(refDrone.env.x - 1.00) < 0.1 and abs(refDrone.env.y - 1.00) < 0.1;
 						
 proposition [falseProp] : drone1.env.dotx > 1000.0;							
 						

@@ -4,9 +4,9 @@ model: TwoDronesSystem::TwoDronesSystem.complex;
 
 instance: "/Drone_Formation_Single/package/instances/TwoDronesSystem_TwoDronesSystem_complex_Instance.aaxl2";
 
-proposition [initial] : abs(drone1.env.x - 2.43) < 0.1 and
-						abs(drone2.env.x - 1.57) < 0.1 and
-						abs(refDrone.env.x - 2.12) < 0.1;
+proposition [initial] : abs(drone1.env.x - 2.43) < 0.1 and abs(drone1.env.y - 2.43) < 0.1 and
+						abs(drone2.env.x - 1.57) < 0.1 and abs(drone2.env.y - 1.57) < 0.1 and
+						abs(refDrone.env.x - 2.12) < 0.1 and abs(refDrone.env.y - 2.12) < 0.1;
 						
 proposition [falseProp] : drone1.env.dotx > 1000.0;						
 			
