@@ -1,0 +1,24 @@
+name: FourDronesSystem_simple_Instance;
+
+model: FourDronesSystem::FourDronesSystem.simple;
+
+instance: "/Drone_Formation_Single/package/instances/FourDronesSystem_FourDronesSystem_simple_Instance.aaxl2";
+
+proposition [initial] : abs(drone1.env.x - 0.2) < 0.1 and
+						abs(drone2.env.x - 1.4) < 0.1 and
+						abs(drone3.env.x - 2.1) < 0.1 and
+						abs(drone4.env.x - 5.7) < 0.1 and
+						abs(refDrone.env.x - 1.7) < 0.1;
+
+proposition [someClose] : abs(drone1.env.x-drone2.env.x)<0.3 or 
+						  abs(drone1.env.x-drone3.env.x)<0.3 or 
+						  abs(drone1.env.x-drone4.env.x)<0.3 or 
+						  abs(drone2.env.x-drone3.env.x)<0.3 or 
+						  abs(drone2.env.x-drone4.env.x)<0.3 or 
+						  abs(drone3.env.x-drone4.env.x)<0.3;
+						
+invariant [tb_100] : ?initial ==> not(?someClose) in time 100;			
+invariant [tb_200] : ?initial ==> not(?someClose) in time 200;			
+invariant [tb_300] : ?initial ==> not(?someClose) in time 300;			
+invariant [tb_400] : ?initial ==> not(?someClose) in time 400;			
+invariant [tb_500] : ?initial ==> not(?someClose) in time 500;	

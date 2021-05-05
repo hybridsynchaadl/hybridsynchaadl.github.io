@@ -4,47 +4,88 @@ public
 	with DroneSpec;
 	with Data_Model;
         
-	system DroneControl
+	system Drone1DControl
 		features
 			inX: in data port Base_Types::Float;
 			outX : out data port Base_Types::Float;
 			currX: in data port Base_Types::Float;
 			velX : out data port Base_Types::Float;
 			refX: in data port Base_Types::Float;			
-	end DroneControl;
-	system implementation DroneControl.impl
+	end Drone1DControl;
+	system implementation Drone1DControl.impl
 		subcomponents
-			droneProc: process DroneControlProc.impl;
+			droneProc: process Drone1DControlProc.impl;
 		connections
 			C1: port currX -> droneProc.currX;
 			C2: port inX -> droneProc.inX;
 			C3: port droneProc.velX -> velX;
 			C4: port droneProc.outX -> outX;
 			C5: port refX -> droneProc.refX;			
-	end DroneControl.impl;
+	end Drone1DControl.impl;
 	
+	system Drone2DControl extends Drone1DControl
+		features
+			inY: in data port Base_Types::Float;
+			outY : out data port Base_Types::Float;
+			currY: in data port Base_Types::Float;
+			velY : out data port Base_Types::Float;
+			refY: in data port Base_Types::Float;			
+		properties
+			Classifier_Substitution_Rule => Type_Extension;				
+	end Drone2DControl;
+	system implementation Drone2DControl.impl extends Drone1DControl.impl
+		subcomponents
+			droneProc: refined to process Drone2DControlProc.impl;
+		connections
+			C6 : port currY -> droneProc.currY;
+			C7 : port inY -> droneProc.inY;
+			C8 : port droneProc.velY -> velY;
+			C9 : port droneProc.outY -> outY;
+			C10: port refY -> droneProc.refY;			
+	end Drone2DControl.impl;	
 	
-	process DroneControlProc
+	process Drone1DControlProc
 		features
 			inX: in data port Base_Types::Float;
 			outX : out data port Base_Types::Float;
 			currX: in data port Base_Types::Float;
 			velX : out data port Base_Types::Float;
 			refX: in data port Base_Types::Float;
-	end DroneControlProc;
-	process implementation DroneControlProc.impl
+	end Drone1DControlProc;
+	process implementation Drone1DControlProc.impl
 		subcomponents
-			droneThread: thread DroneControlThread.impl;
+			droneThread: thread Drone1DControlThread.impl;
 		connections
 			C1: port currX -> droneThread.currX;
 			C2: port inX -> droneThread.inX;
 			C3: port droneThread.velX -> velX;
 			C4: port droneThread.outX -> outX;
 			C5: port refX -> droneThread.refX;
-	end DroneControlProc.impl;
+	end Drone1DControlProc.impl;
+	
+	process Drone2DControlProc extends Drone1DControlProc
+		features
+			inY: in data port Base_Types::Float;
+			outY : out data port Base_Types::Float;
+			currY: in data port Base_Types::Float;
+			velY : out data port Base_Types::Float;
+			refY: in data port Base_Types::Float;
+		properties
+			Classifier_Substitution_Rule => Type_Extension;				
+	end Drone2DControlProc;
+	process implementation Drone2DControlProc.impl extends Drone1DControlProc.impl
+		subcomponents
+			droneThread: refined to thread Drone2DControlThread.impl;
+		connections
+			C6 : port currY -> droneThread.currY;
+			C7 : port inY -> droneThread.inY;
+			C8 : port droneThread.velY -> velY;
+			C9 : port droneThread.outY -> outY;
+			C10: port refY -> droneThread.refY;
+	end Drone2DControlProc.impl;	
 	
 	
-	thread DroneControlThread
+	thread Drone1DControlThread
 		features
 			inX: in data port Base_Types::Float;
 			outX : out data port Base_Types::Float;
@@ -53,8 +94,8 @@ public
 			refX: in data port Base_Types::Float;
 		properties
 			Dispatch_Protocol => Periodic;
-	end DroneControlThread;
-	thread implementation DroneControlThread.impl
+	end Drone1DControlThread;
+	thread implementation Drone1DControlThread.impl
 		subcomponents
 			offsetX: data Base_Types::Float;
 			refX0: data Base_Types::Float {Data_Model::Initial_Value => ("0");};
@@ -82,5 +123,53 @@ public
 					refX0 := refX
 				};
 	**};
-	end DroneControlThread.impl;	
+	end Drone1DControlThread.impl;	
+	
+	thread Drone2DControlThread extends Drone1DControlThread
+		features
+			inY: in data port Base_Types::Float;
+			outY : out data port Base_Types::Float;
+			currY: in data port Base_Types::Float;
+			velY : out data port Base_Types::Float;
+			refY: in data port Base_Types::Float;
+		properties
+			Dispatch_Protocol => Periodic;
+	end Drone2DControlThread;
+	thread implementation Drone2DControlThread.impl extends Drone1DControlThread.impl
+		subcomponents
+			offsetY: data Base_Types::Float;			
+			refY0: data Base_Types::Float {Data_Model::Initial_Value => ("0");};			
+		annex behavior_specification {**
+			variables
+				nx, ny, refvX, refvY : Base_Types::Float;
+			states
+				init : initial complete state;
+				exec, output : state;
+			transitions
+				init -[on dispatch]-> exec;
+				exec -[abs(currX - inX) < 0.1 and abs(currY - inY) < 0.1]-> output {
+					velX := 0; velY := 0
+				};
+				exec -[otherwise]-> output {
+					refvX := (refX-refX0);
+					refvY := (refY-refY0);
+					nx := refvX - #DroneSpec::alpha * (currX - offsetX - refX) - #DroneSpec::A * (currX - offsetX - inX);
+					ny := refvY - #DroneSpec::alpha * (currY - offsetY - refY) - #DroneSpec::A * (currY - offsetY - inY);
+					if (nx > 1)			velX := 2
+					elsif (nx > -0.5)	velX := 0
+					else				velX := -2
+					end if;
+					if (ny > 1)			velY := 2
+					elsif (ny > -0.5)	velY := 0
+					else				velY := -2
+					end if					
+				};
+				output -[ ]-> init {
+					outX := currX - offsetX;
+					outY := currY - offsetY;
+					refX0 := refX;
+					refY0 := refY
+				};
+	**};
+	end Drone2DControlThread.impl;	
 end DroneControl;

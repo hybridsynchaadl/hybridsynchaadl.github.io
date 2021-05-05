@@ -5,21 +5,41 @@ public
 	with Data_Model;
 	with DroneControl;
 
-	system Drone
+	system Drone1D
 		features
 			inX: in data port Base_Types::Float;
 			refX: in data port Base_Types::Float;
 			outX: out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
-	end Drone;
-	system implementation Drone.simple
+	end Drone1D;
+	system implementation Drone1D.impl
 		subcomponents
-			drone: system DroneControl::DroneControl.impl;
-			env: system Environment::Environment.simple;
+			drone: system DroneControl::Drone1DControl.impl;
+			env: system Environment::Environment1D.impl;
 		connections
 			C1: port drone.outX -> outX;
 			C2: port inX -> drone.inX;
-			C3: port drone.velX -> environment.velX;
-			C4: port environment.currX -> drone.currX;			
+			C3: port drone.velX -> env.velX;
+			C4: port env.currX -> drone.currX;			
 			C5: port refX -> drone.refX;
-	end Drone.simple;
+	end Drone1D.impl;
+	
+	system Drone2D extends Drone1D
+		features
+			inY: in data port Base_Types::Float;
+			refY: in data port Base_Types::Float;
+			outY: out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
+		properties
+			Classifier_Substitution_Rule => Type_Extension;			
+	end Drone2D;
+	system implementation Drone2D.impl extends Drone1D.impl
+		subcomponents
+			drone: refined to system DroneControl::Drone2DControl.impl;
+			env: refined to system Environment::Environment2D.impl;
+		connections
+			C6 : port drone.outY -> outY;
+			C7 : port inY -> drone.inY;
+			C8 : port drone.velY -> env.velY;
+			C9 : port env.currY -> drone.currY;			
+			C10: port refY -> drone.refY;
+	end Drone2D.impl;	
 end Drone;
