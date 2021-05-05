@@ -515,7 +515,7 @@
       <index>0</index>
       <classifier xsi:type="aadl2:SystemImplementation" href="../DroneControl.aadl#DroneControl.Drone1DControl.impl"/>
     </componentInstance>
-    <componentInstance name="environment" category="system">
+    <componentInstance name="env" category="system">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
         <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Max_Clock_Deviation"/>
         <ownedValue>
@@ -664,7 +664,7 @@
       <index>0</index>
       <classifier xsi:type="aadl2:SystemImplementation" href="../Environment.aadl#Environment.Environment1D.impl"/>
     </componentInstance>
-    <connectionInstance name="drone.droneProc.droneThread.accX -> environment.dotdotx" complete="true" kind="portConnection" destination="//@componentInstance.0/@componentInstance.1/@componentInstance.2" source="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.6">
+    <connectionInstance name="drone.droneProc.droneThread.accX -> env.dotdotx" complete="true" kind="portConnection" destination="//@componentInstance.0/@componentInstance.1/@componentInstance.2" source="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.6">
       <connectionReference context="//@componentInstance.0/@componentInstance.0/@componentInstance.0" source="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.6" destination="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.6">
         <connection xsi:type="aadl2:PortConnection" href="../DroneControl.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPortConnection.6"/>
       </connectionReference>
@@ -678,7 +678,7 @@
         <connection xsi:type="aadl2:PortConnection" href="../Environment.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.2"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="environment.x -> drone.droneProc.droneThread.currX" complete="true" kind="portConnection" destination="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.0" source="//@componentInstance.0/@componentInstance.1/@componentInstance.0">
+    <connectionInstance name="env.x -> drone.droneProc.droneThread.currX" complete="true" kind="portConnection" destination="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.0" source="//@componentInstance.0/@componentInstance.1/@componentInstance.0">
       <connectionReference context="//@componentInstance.0/@componentInstance.1" source="//@componentInstance.0/@componentInstance.1/@componentInstance.0" destination="//@componentInstance.0/@componentInstance.1/@featureInstance.0">
         <connection xsi:type="aadl2:PortConnection" href="../Environment.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.1"/>
       </connectionReference>
@@ -692,7 +692,7 @@
         <connection xsi:type="aadl2:PortConnection" href="../DroneControl.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPortConnection.0"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="environment.dotx -> drone.droneProc.droneThread.currVX" complete="true" kind="portConnection" destination="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.1" source="//@componentInstance.0/@componentInstance.1/@componentInstance.1">
+    <connectionInstance name="env.dotx -> drone.droneProc.droneThread.currVX" complete="true" kind="portConnection" destination="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.1" source="//@componentInstance.0/@componentInstance.1/@componentInstance.1">
       <connectionReference context="//@componentInstance.0/@componentInstance.1" source="//@componentInstance.0/@componentInstance.1/@componentInstance.1" destination="//@componentInstance.0/@componentInstance.1/@featureInstance.1">
         <connection xsi:type="aadl2:PortConnection" href="../Environment.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.0"/>
       </connectionReference>
@@ -1200,7 +1200,7 @@
       <index>0</index>
       <classifier xsi:type="aadl2:SystemImplementation" href="../DroneControl.aadl#DroneControl.Drone1DControl.impl"/>
     </componentInstance>
-    <componentInstance name="environment" category="system">
+    <componentInstance name="env" category="system">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
         <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Max_Clock_Deviation"/>
         <ownedValue>
@@ -1349,7 +1349,7 @@
       <index>0</index>
       <classifier xsi:type="aadl2:SystemImplementation" href="../Environment.aadl#Environment.Environment1D.impl"/>
     </componentInstance>
-    <connectionInstance name="drone.droneProc.droneThread.accX -> environment.dotdotx" complete="true" kind="portConnection" destination="//@componentInstance.1/@componentInstance.1/@componentInstance.2" source="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.6">
+    <connectionInstance name="drone.droneProc.droneThread.accX -> env.dotdotx" complete="true" kind="portConnection" destination="//@componentInstance.1/@componentInstance.1/@componentInstance.2" source="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.6">
       <connectionReference context="//@componentInstance.1/@componentInstance.0/@componentInstance.0" source="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.6" destination="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@featureInstance.6">
         <connection xsi:type="aadl2:PortConnection" href="../DroneControl.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPortConnection.6"/>
       </connectionReference>
@@ -1363,7 +1363,7 @@
         <connection xsi:type="aadl2:PortConnection" href="../Environment.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.2"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="environment.x -> drone.droneProc.droneThread.currX" complete="true" kind="portConnection" destination="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.0" source="//@componentInstance.1/@componentInstance.1/@componentInstance.0">
+    <connectionInstance name="env.x -> drone.droneProc.droneThread.currX" complete="true" kind="portConnection" destination="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.0" source="//@componentInstance.1/@componentInstance.1/@componentInstance.0">
       <connectionReference context="//@componentInstance.1/@componentInstance.1" source="//@componentInstance.1/@componentInstance.1/@componentInstance.0" destination="//@componentInstance.1/@componentInstance.1/@featureInstance.0">
         <connection xsi:type="aadl2:PortConnection" href="../Environment.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.1"/>
       </connectionReference>
@@ -1377,7 +1377,7 @@
         <connection xsi:type="aadl2:PortConnection" href="../DroneControl.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPortConnection.0"/>
       </connectionReference>
     </connectionInstance>
-    <connectionInstance name="environment.dotx -> drone.droneProc.droneThread.currVX" complete="true" kind="portConnection" destination="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.1" source="//@componentInstance.1/@componentInstance.1/@componentInstance.1">
+    <connectionInstance name="env.dotx -> drone.droneProc.droneThread.currVX" complete="true" kind="portConnection" destination="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.1" source="//@componentInstance.1/@componentInstance.1/@componentInstance.1">
       <connectionReference context="//@componentInstance.1/@componentInstance.1" source="//@componentInstance.1/@componentInstance.1/@componentInstance.1" destination="//@componentInstance.1/@componentInstance.1/@featureInstance.1">
         <connection xsi:type="aadl2:PortConnection" href="../Environment.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.0"/>
       </connectionReference>

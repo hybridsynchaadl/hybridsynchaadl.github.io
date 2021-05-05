@@ -20,11 +20,11 @@ public
 			d21vx: port drone2.outVX -> drone1.inVX;
 		properties
     		Data_Model::Initial_Value => ("param") applies to
-    			drone1.environment.x, drone2.environment.x;
+    			drone1.env.x, drone2.env.x;
     		Data_Model::Initial_Value => ("0") applies to
-    			drone1.environment.dotx, drone2.environment.dotx; 
+    			drone1.env.dotx, drone2.env.dotx; 
     		Data_Model::Initial_Value => ("0") applies to
-    			drone1.environment.dotdotx, drone2.environment.dotdotx;
+    			drone1.env.dotdotx, drone2.env.dotdotx;
 
 			Hybrid_SynchAADL::Max_Clock_Deviation => 5ms;
 			Period => 100ms;
@@ -54,14 +54,14 @@ public
 			d21vy: port drone2.outVY -> drone1.inVY;			
 		properties
     		Data_Model::Initial_Value => ("param") applies to
-    			drone1.environment.x, drone2.environment.x,
-    			drone1.environment.y, drone2.environment.y;
+    			drone1.env.x, drone2.env.x,
+    			drone1.env.y, drone2.env.y;
     		Data_Model::Initial_Value => ("0") applies to
-    			drone1.environment.dotx, drone2.environment.dotx,
-    			drone1.environment.doty, drone2.environment.doty; 
+    			drone1.env.dotx, drone2.env.dotx,
+    			drone1.env.doty, drone2.env.doty; 
     		Data_Model::Initial_Value => ("0") applies to
-    			drone1.environment.dotdotx, drone2.environment.dotdotx,
-    			drone1.environment.dotdoty, drone2.environment.dotdoty;
+    			drone1.env.dotdotx, drone2.env.dotdotx,
+    			drone1.env.dotdoty, drone2.env.dotdoty;
 
 			Hybrid_SynchAADL::Max_Clock_Deviation => 5ms;
 			Period => 100ms;

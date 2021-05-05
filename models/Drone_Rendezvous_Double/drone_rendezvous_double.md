@@ -168,10 +168,10 @@ bound 500 ms.
 
 four-2d-inv-false.pspc:
 ```
-proposition [initial] : abs(drone1.env.x - 0.0) < 0.1 and abs(drone1.env.y - 0.0) < 0.1 and
-			abs(drone2.env.x - 1.0) < 0.1 and abs(drone2.env.y - 1.0) < 0.1 and
-			abs(drone3.env.x - 2.0) < 0.1 and abs(drone3.env.y - 2.0) < 0.1 and
-			abs(drone4.env.x - 3.0) < 0.1 and abs(drone4.env.y - 3.0) < 0.1;
+proposition [initial] : abs(drone1.env.x - 0.0) < 0.01 and abs(drone1.env.y - 0.0) < 0.01 and
+			abs(drone2.env.x - 0.6) < 0.01 and abs(drone2.env.y - 0.6) < 0.01 and
+			abs(drone3.env.x - 1.8) < 0.01 and abs(drone3.env.y - 1.8) < 0.01 and
+			abs(drone4.env.x - 2.7) < 0.01 and abs(drone4.env.y - 2.7) < 0.01 ;
 
 proposition [someClose] : (abs(drone1.env.x-drone2.env.x)<0.5 and abs(drone1.env.y-drone2.env.y)<0.5) or
 			  (abs(drone1.env.x-drone3.env.x)<0.5 and abs(drone1.env.y-drone3.env.y)<0.5) or
@@ -184,7 +184,7 @@ invariant [tb_500] : ?initial ==> not(?someClose) in time 500;
 ```
 
 ## Analysis Results
-<img src="../../images/results_rendezvous_single.png">
+<img src="../../images/results_rendezvous_double.png">
 
 <br />
 <br />

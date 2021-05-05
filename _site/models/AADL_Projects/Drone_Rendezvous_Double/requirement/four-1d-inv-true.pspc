@@ -1,15 +1,15 @@
-name: FourDronesSystem_revu1D_Instance;
+name: FourDronesSystem_simple_Instance;
 
-model: FourDronesSystem::FourDronesSystem.revu1D;
+model: FourDronesSystem::FourDronesSystem.simple;
 
-instance: "/Drone_Rendezvous_Double/package/instances/FourDronesSystem_FourDronesSystem_revu1D_Instance.aaxl2";
+instance: "/Drone_Rendezvous_Double/package/instances/FourDronesSystem_FourDronesSystem_simple_Instance.aaxl2";
 
-proposition [initial] : abs(drone1.environment.x - 0.0) < 0.1 and
-						abs(drone2.environment.x - 0.5) < 0.1 and
-						abs(drone3.environment.x - 0.5) < 0.1 and
-						abs(drone4.environment.x - 0.0) < 0.1;
+proposition [initial] : abs(drone1.env.x - 0.0) < 0.1 and
+						abs(drone2.env.x - 0.5) < 0.1 and
+						abs(drone3.env.x - 0.5) < 0.1 and
+						abs(drone4.env.x - 0.0) < 0.1;
 
-proposition [falseProp] : drone2.environment.dotdotx > 1000.0;
+proposition [falseProp] : drone2.env.dotdotx > 1000.0;
 
 invariant [tb_100] : ?initial ==> not(?falseProp) in time 100;
 invariant [tb_200] : ?initial ==> not(?falseProp) in time 200;

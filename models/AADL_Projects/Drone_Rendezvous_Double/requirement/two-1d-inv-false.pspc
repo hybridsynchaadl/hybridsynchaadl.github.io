@@ -1,13 +1,13 @@
-name: TwoDronesSystem_revu1D_Instance;
+name: TwoDronesSystem_simple_Instance;
 
-model: TwoDronesSystem::TwoDronesSystem.revu1D;
+model: TwoDronesSystem::TwoDronesSystem.simple;
 
-instance: "/Drone_Rendezvous_Double/package/instances/TwoDronesSystem_TwoDronesSystem_revu1D_Instance.aaxl2";
+instance: "/Drone_Rendezvous_Double/package/instances/TwoDronesSystem_TwoDronesSystem_simple_Instance.aaxl2";
 
-proposition [initial] : abs(drone1.environment.x - 0.1) < 0.01 and
-						abs(drone2.environment.x - 0.7) < 0.01;
+proposition [initial] : abs(drone1.env.x - 0.1) < 0.01 and
+						abs(drone2.env.x - 0.7) < 0.01;
 
-proposition [twoClose] : abs(drone1.environment.x-drone2.environment.x) < 0.5 ;
+proposition [twoClose] : abs(drone1.env.x-drone2.env.x) < 0.5 ;
 
 invariant [tb_100] : ?initial ==> not(?twoClose) in time 100;
 invariant [tb_200] : ?initial ==> not(?twoClose) in time 200;

@@ -5,7 +5,7 @@ public
 	with Data_Model;
 	with DroneControl;
 
-	system FormDrone
+	system Drone1D
 		features
 			inX: in data port Base_Types::Float;
 			inVX: in data port Base_Types::Float;
@@ -13,11 +13,11 @@ public
 			refVX: in data port Base_Types::Float;			
 			outX: out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
 			outVX: out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
-	end FormDrone;
-	system implementation FormDrone.impl
+	end Drone1D;
+	system implementation Drone1D.impl
 		subcomponents
-			drone: system DroneControl::FormDroneControl.impl;
-			environment: system Environment::Environment.impl;
+			drone: system DroneControl::Drone1DControl.impl;
+			environment: system Environment::Environment1D.impl;
 		connections
 			C1: port drone.outX -> outX;
 			C2: port drone.outVX -> outVX;
@@ -28,5 +28,33 @@ public
 			C7: port environment.currVX -> drone.currVX;
 			C8: port refX -> drone.refX;
 			C9: port refVX -> drone.refVX;				
-	end FormDrone.impl;
+	end Drone1D.impl;
+	
+	system Drone2D extends Drone1D
+		features
+			inY: in data port Base_Types::Float;
+			inVY: in data port Base_Types::Float;
+			refY: in data port Base_Types::Float;
+			refVY: in data port Base_Types::Float;			
+			outY: out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
+			outVY: out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
+		properties
+			Classifier_Substitution_Rule => Type_Extension;			
+	end Drone2D;
+	system implementation Drone2D.impl extends Drone1D.impl
+		subcomponents
+			drone: refined to system DroneControl::Drone2DControl.impl;
+			environment: refined to system Environment::Environment2D.impl;
+		connections
+			C10: port drone.outY -> outY;
+			C11: port drone.outVY -> outVY;
+			C12: port inY -> drone.inY;
+			C13: port inVY -> drone.inVY;
+			C14: port drone.accY -> environment.accY;
+			C15: port environment.currY -> drone.currY;
+			C16: port environment.currVY -> drone.currVY;
+			C17: port refY -> drone.refY;
+			C18: port refVY -> drone.refVY;				
+	end Drone2D.impl;	
+	
 end Drone;
