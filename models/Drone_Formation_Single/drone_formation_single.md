@@ -174,10 +174,6 @@ proposition [someClose] : (abs(drone1.env.x-drone2.env.x)<0.3 and abs(drone1.env
 			  (abs(drone2.env.x-drone4.env.x)<0.3 and abs(drone2.env.y-drone4.env.y)<0.3) or
 			  (abs(drone3.env.x-drone4.env.x)<0.3 and abs(drone3.env.y-drone4.env.y)<0.3);
 
-invariant [tb_100] : ?initial ==> not(?someClose) in time 100;
-invariant [tb_200] : ?initial ==> not(?someClose) in time 200;
-invariant [tb_300] : ?initial ==> not(?someClose) in time 300;
-invariant [tb_400] : ?initial ==> not(?someClose) in time 400;
 invariant [tb_500] : ?initial ==> not(?someClose) in time 500;
 ```
 
