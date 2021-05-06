@@ -5,9 +5,9 @@ slug: /models/Thermostat
 # Networked Thermostat Controllers
 
 This benchmark model represents the networked thermostat benchmark. Each
-thermostat component communicates its own temperature to the neighboring
-thermostat component and sets its hearter power. The goal of these models is
-for all thermostats to reach the same temperature.
+thermostat component sends its own temperature to the neighboring thermostat
+component and sets its hearter power. The goal of these models is for all
+thermostats to reach the same temperature.
 
 ## Download
 You can download the benchmark model: [Thermostat.zip](../Thermostat.zip)

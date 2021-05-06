@@ -7,7 +7,7 @@ slug: /models/Drone_Rendezvous_Formation
 
 
 This benchmark models represent the formation control of distributed drones
-with double-integrator dynamics. Each drone communicates its own position and
+with double-integrator dynamics. Each drone sends its own position and
 velocity sets a proper acceleration. The goal of these models is for all
 drones to maintain a formation tracing the reference drone without any collision.
 

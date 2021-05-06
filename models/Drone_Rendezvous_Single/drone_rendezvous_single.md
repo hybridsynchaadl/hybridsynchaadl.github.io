@@ -7,7 +7,7 @@ slug: /models/Drone_Rendezvous_Single
 
 
 This benchmark models represent the rendezvous control of distributed drones
-with single-integrator dynamics. Each drone communicates its own position and
+with single-integrator dynamics. Each drone sends its own position and
 sets a proper velocity. The goal of these models is for all drones to arrive
 near a common location simultaneously without any collision. 
 
