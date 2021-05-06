@@ -1,8 +1,0 @@
-/smt-check.maude
-/smt-exp-common.maude
-/smt-exp-simplification.maude
-/smt-exp2.maude
-/smt-interface2.maude
-/smt-meta-trans.maude
-/smt-prelude.maude
-/smt-vargen.maude
