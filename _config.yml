@@ -24,8 +24,9 @@ header:
 footer:
   show_powered_by: false
   contact:
-    - name: Jaehun Lee
-    - link: thkighie1224@postech.ac.kr
+    - name: Jaehun
+      link: thkighie1224@postech.ac.kr
+
 
 # Build settings
 markdown: kramdown

@@ -5,10 +5,10 @@ slug: /models/Drone_Formation_Single
 
 # Drone Formation Models with Single-Integrator Dynamics
 
-This benchmark models represent the rendezvous control of distributed drones
+This benchmark models represent the formation control of distributed drones
 with single-integrator dynamics. Each drone communicates its own position and
-sets a proper velocity. The goal of these models is for all drones maintains a
-formation tracing the reference drone without any collision.
+sets a proper velocity. The goal of these models is for all drones to maintain
+a formation tracing the reference drone without any collision.
 
 ### Download
 You can download the benchmark model: [Drone_Formation_Single.zip](../Drone_Formation_Single.zip)

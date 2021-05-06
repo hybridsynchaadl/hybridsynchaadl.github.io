@@ -9,9 +9,8 @@
           {% assign contact_icon_path = "/assets/img/icons/" | append: contact.name | downcase | append: ".png" | absolute_url %}
           <img
             src="{{ contact_icon_path }}"
-            alt="{{ contact.name | downcase }}"
           />
-          <a href="{{ contact.link }}" id="{{ contact.name | downcase }}-link">
+          <a href="mailto:{{ contact.link }}" id="{{ contact.name | downcase }}-link">
             {% if contact.value and contact.value != "" and contact.value != nil %}
               {{ contact.value }}
             {% else %}
@@ -19,7 +18,6 @@
             {% endif %}
           </a>
           <br />
-
         {% endfor %}
       </div>
 

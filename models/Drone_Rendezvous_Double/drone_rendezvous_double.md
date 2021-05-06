@@ -8,7 +8,7 @@ slug: /models/Drone_Rendezvous_Double
 
 This benchmark models represent the rendezvous control of distributed drones
 with double-integrator dynamics. Each drone communicates its own position and
-velocity sets a proper acceleration. The goal of these models is for all drones
+velocity, and sets a proper acceleration. The goal of these models is for all drones
 to arrive near a common location simultaneously without any collision. 
 
 ## Download

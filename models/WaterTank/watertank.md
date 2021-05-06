@@ -4,10 +4,10 @@ slug: /models/WaterTank
 ---
 # Networked Water Tank Systems
 
-This benchmark model represents the networked water tank benchmark. Each
-water tank component communicates its amount of water to the next water tank
-component and sets its power power. The goal of these models is
-for all water tank maintains the amount of water more than 30.
+This benchmark model represents the networked water tank benchmark. Each water
+tank component communicates its amount of water to the next water tank
+component and sets its power power. The goal of these models is for all water
+tank to maintain the amount of water larger than certain amounts.
 
 ## Download
 You can download the benchmark model: [WaterTank.zip](../watertank.zip)
@@ -140,7 +140,7 @@ end Environment.impl;
 ## Safety Requirement
 
 We analyze the safety invariant property where temperature of all water tank
-contains amount of water more than 30 up to bound 500 ms. 
+contains the amount of water more than 30 up to bound 500 ms. 
 
 four-complex-inv-false.pspc
 ```
