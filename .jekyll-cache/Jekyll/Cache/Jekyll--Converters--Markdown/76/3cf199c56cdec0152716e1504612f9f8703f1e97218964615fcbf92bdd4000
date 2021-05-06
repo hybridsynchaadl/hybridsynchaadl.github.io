@@ -1,0 +1,146 @@
+I"À<h1 id="networked-water-tank-systems">Networked Water Tank Systems</h1>
+
+<p>This benchmark model represents the networked water tank benchmark. Each
+water tank component communicates its amount of water to the next water tank
+component and sets its power power. The goal of these models is
+for all water tank maintains the amount of water more than 30.</p>
+
+<h2 id="download">Download</h2>
+<p>You can download the benchmark model: <a href="../watertank.zip">WaterTank.zip</a></p>
+
+<h2 id="top-level-components">Top-Level Components</h2>
+<p>We provide six cases of benchmark model: two, three and four water tanks
+with simple control logic or complex control logic.</p>
+
+<h2 id="architecture">Architecture</h2>
+<p><img src="../../images/architecture_watertank.png" /></p>
+
+<h2 id="hybridsynchaadl-model-controller-and-environment">HybridSynchAADL Model: Controller and Environment</h2>
+<p>Controller.aadl</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>thread WaterTankThread
+	features
+		on_control: out event port;
+		off_control: out event port;
+		curr_water: in data port Base_Types::Float;
+		incoming_water: in data port Base_Types::Float;
+		increased_water: out data port Base_Types::Float;
+		released_water: out data port Base_Types::Float;
+		power: out data port Base_Types::Float;	
+		decreased_water: in data port Base_Types::Float;
+	properties
+		Dispatch_Protocol =&gt; Periodic;
+end WaterTankThread;
+
+thread implementation WaterTankThread.simple
+	annex behavior_specification{**
+		states
+			init : initial complete state;
+			exec : state;
+		transitions
+			init -[ on dispatch ]-&gt; exec {
+				increased_water := incoming_water;
+				released_water := decreased_water	
+			};
+			exec -[ true ]-&gt; init {
+				if (curr_water &lt;= 33)
+					power := 0.5;
+					on_control!
+				elsif (curr_water &lt;= 39)
+					power := 0.3;
+					on_control!
+				else {
+					power := 0.0;
+					off_control!
+				}
+				end if
+			};
+	**};
+end WaterTankThread.simple;
+
+thread implementation WaterTankThread.complex extends WaterTankThread.simple
+    annex behavior_specification{**
+        states
+            init : initial complete state;
+            exec : state;
+        transitions
+            init -[ on dispatch ]-&gt; exec {
+                increased_water := incoming_water;
+                released_water := decreased_water
+            };
+            exec -[curr_water &lt;= 42]-&gt; init {
+                if (curr_water &lt;= 30)
+                    power := 0.5
+                elsif (curr_water &lt;= 33)
+                    power := 0.4
+                elsif (curr_water &lt;= 36)
+                    power := 0.3
+                elsif (curr_water &lt;= 39)
+                    power := 0.2
+                else {
+                    power := 0.1
+                }
+                end if;
+                on_control!
+            };
+            exec -[otherwise]-&gt; init {
+                off_control!
+            };
+    **};
+end WaterTankThread.complex;
+</code></pre></div></div>
+<p>Environment.aadl</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>system RoomEnv
+  features
+    temp : out data port Base_Types::Float {Data_Model::Initial_Value =&gt; ("0");};
+    power : in data port Base_Types::Float;   
+    on_control: in event port;
+    off_control : in event port;
+  properties
+    Hybrid_SynchAADL::isEnvironment =&gt; true;
+end RoomEnv;
+system implementation RoomEnv.impl
+  subcomponents
+    x: data Base_Types::Float;
+    p: data Base_Types::Float {Data_Model::Initial_Value =&gt; ("0");};
+  connections
+    C: port x -&gt; temp;
+    P: port power -&gt; p;
+  modes
+    off: initial mode;
+    on: mode;
+    off -[on_control]-&gt; on;
+    off -[off_control]-&gt; off;
+    on -[on_control]-&gt; on;
+    on -[off_control]-&gt; off;
+  properties
+    Hybrid_SynchAADL::ContinuousDynamics =&gt; 
+      "x(t) = x(0) + (0.01 * p) * t; " in modes (on), 
+      "x(t) = x(0) - (0.001 * t);" in modes (off);
+end RoomEnv.impl; 
+</code></pre></div></div>
+
+<h2 id="safety-requirement">Safety Requirement</h2>
+
+<p>We analyze the safety invariant property where temperature of each thermostat
+is maintained between 20 and 50 degrees up to bound 500 ms.</p>
+
+<p>four-complex-inv-false.pspc</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>proposition [initial] : abs(env1.x - 48.00) &lt; 0.1 and
+			abs(env2.x - 42.00) &lt; 0.1 and
+			abs(env3.x - 49.75) &lt; 0.1 and
+			abs(env4.x - 23.38) &lt; 0.1;
+						
+proposition [withinBound1] : 20.0 &lt; env1.x and env1.x &lt; 50.0;
+proposition [withinBound2] : 20.0 &lt; env2.x and env2.x &lt; 50.0;
+proposition [withinBound3] : 20.0 &lt; env3.x and env3.x &lt; 50.0;
+proposition [withinBound4] : 20.0 &lt; env4.x and env4.x &lt; 50.0;
+
+invariant [tb_500] : ?initial ==&gt; ?withinBound1 and ?withinBound2 and ?withinBound3 and ?withinBound4 in time 500;
+</code></pre></div></div>
+
+<h2 id="analysis-results">Analysis Results</h2>
+<p><img src="../../images/results_thermostat.png" /></p>
+
+<p><br />
+<br /></p>
+:ET

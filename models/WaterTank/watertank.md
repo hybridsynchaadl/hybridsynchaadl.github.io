@@ -18,156 +18,143 @@ with simple control logic or complex control logic.
 
 
 ## Architecture
-<img src="../../images/architecture_thermostat.png" >
+<img src="../../images/architecture_watertank.png" >
 
 ## HybridSynchAADL Model: Controller and Environment
 Controller.aadl
 ```
-thread ThermostatThread
+thread WaterTankThread
   features
     on_control: out event port;
     off_control: out event port;
-    power : out data port Base_Types::Float;
-    t_out : out data port Base_Types::Float;
-    t_in: in data port Base_Types::Float;
-    curr_temp : in data port Base_Types::Float;
+    curr_water: in data port Base_Types::Float;
+    incoming_water: in data port Base_Types::Float;
+    increased_water: out data port Base_Types::Float;
+    released_water: out data port Base_Types::Float;
+    power: out data port Base_Types::Float;  
+    decreased_water: in data port Base_Types::Float;
   properties
     Dispatch_Protocol => Periodic;
-end ThermostatThread;
+end WaterTankThread;
 
-thread implementation ThermostatThread.simple
+thread implementation WaterTankThread.simple
   annex behavior_specification{**
-    variables
-          a : Base_Types::Float;
     states
       init : initial complete state;
       exec : state;
     transitions
       init -[ on dispatch ]-> exec {
-        t_out := curr_temp
+        increased_water := incoming_water;
+        released_water := decreased_water  
       };
-
       exec -[ true ]-> init {
-        a := -(curr_temp - t_in);
-        if(a > 10){
-            power := 5;
-            on_control!
-        }
-        elsif(a > 3){
-            power := 3;
-            on_control!
-        }
-        else{
-            power := 0;
-            off_control!
-        }
-        end if
-      };
-  **};
-end ThermostatThread.simple;
-
-
-thread implementation ThermostatThread.complex extends ThermostatThread.simple
-    annex behavior_specification{**
-    variables
-      a : Base_Types::Float;
-    states
-      init : initial complete state;
-      exec : state;
-    transitions
-      init -[ on dispatch ]-> exec {
-        t_out := curr_temp  
-      };
-      
-      exec -[ curr_temp > 50 ]-> init {
-        off_control!;
-        power := 0
-      };
-      
-      exec -[ curr_temp < 20 ]-> init {
-        on_control!;
-        power := 10
-      };
-      
-      exec -[ otherwise ]-> init {
-        a := -(curr_temp - t_in);
-                
-        if(a > 10){
-          power := 5;
+        if (curr_water <= 33)
+          power := 0.5;
           on_control!
-        }
-        elsif(a > 5){
-          power := 4;
+        elsif (curr_water <= 39)
+          power := 0.3;
           on_control!
-        }
-        elsif(a > 3){
-          power := 3;
-          on_control!
-        }
-        elsif(a > 0){
-          power := 2;
-          on_control!
-        }
-        else{
-          power := 0;
+        else {
+          power := 0.0;
           off_control!
         }
         end if
       };
   **};
-end ThermostatThread.complex;
+end WaterTankThread.simple;
+
+thread implementation WaterTankThread.complex extends WaterTankThread.simple
+    annex behavior_specification{**
+        states
+            init : initial complete state;
+            exec : state;
+        transitions
+            init -[ on dispatch ]-> exec {
+                increased_water := incoming_water;
+                released_water := decreased_water
+            };
+            exec -[curr_water <= 42]-> init {
+                if (curr_water <= 30)
+                    power := 0.5
+                elsif (curr_water <= 33)
+                    power := 0.4
+                elsif (curr_water <= 36)
+                    power := 0.3
+                elsif (curr_water <= 39)
+                    power := 0.2
+                else {
+                    power := 0.1
+                }
+                end if;
+                on_control!
+            };
+            exec -[otherwise]-> init {
+                off_control!
+            };
+    **};
+end WaterTankThread.complex;
 ```
 Environment.aadl
 ```
-system RoomEnv
+system Environment
   features
-    temp : out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
-    power : in data port Base_Types::Float;   
-    on_control: in event port;
+    curr_water : out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
+    increased_water : in data port Base_Types::Float;
+    power: in data port Base_Types::Float;
+    decreased_water : out data port Base_Types::Float {Data_Model::Initial_Value => ("0");};
+    on_control : in event port;
     off_control : in event port;
   properties
     Hybrid_SynchAADL::isEnvironment => true;
-end RoomEnv;
-system implementation RoomEnv.impl
+end Environment;
+
+system implementation Environment.impl
   subcomponents
-    x: data Base_Types::Float;
-    p: data Base_Types::Float {Data_Model::Initial_Value => ("0");};
+    water: data Base_Types::Float;
+    decrease: data Base_Types::Float;
+    increase: data Base_Types::Float;
+    pump_power: data Base_Types::Float;
   connections
-    C: port x -> temp;
-    P: port power -> p;
+    C1: port water -> curr_water;
+    C2: port increased_water -> increase;
+    C3: port decrease -> decreased_water;
+    C4: port power -> pump_power;
   modes
     off: initial mode;
     on: mode;
+    
     off -[on_control]-> on;
     off -[off_control]-> off;
+    
     on -[on_control]-> on;
     on -[off_control]-> off;
+  
   properties
-    Hybrid_SynchAADL::ContinuousDynamics => 
-      "x(t) = x(0) + (0.01 * p) * t; " in modes (on), 
-      "x(t) = x(0) - (0.001 * t);" in modes (off);
-end RoomEnv.impl; 
+    Hybrid_SynchAADL::ContinuousDynamics =>
+      "decrease(t) = (50 * 0.001 * t) ; water(t) = water(0) + pump_power - (50 * 0.001 * t) + increase" in modes(on),
+      "decrease(t) = (50 * 0.001 * t) ; water(t) = water(0) - (50 * 0.001 * t) + increase" in modes(off);
+end Environment.impl;
 ```
 
 
 ## Safety Requirement
 
-We analyze the safety invariant property where temperature of each thermostat
-is maintained between 20 and 50 degrees up to bound 500 ms. 
+We analyze the safety invariant property where temperature of all water tank
+contains amount of water more than 30 up to bound 500 ms. 
 
 four-complex-inv-false.pspc
 ```
-proposition [initial] : abs(env1.x - 48.00) < 0.1 and
-			abs(env2.x - 42.00) < 0.1 and
-			abs(env3.x - 49.75) < 0.1 and
-			abs(env4.x - 23.38) < 0.1;
-						
-proposition [withinBound1] : 20.0 < env1.x and env1.x < 50.0;
-proposition [withinBound2] : 20.0 < env2.x and env2.x < 50.0;
-proposition [withinBound3] : 20.0 < env3.x and env3.x < 50.0;
-proposition [withinBound4] : 20.0 < env4.x and env4.x < 50.0;
+proposition [initial]: abs(env1.water - 55.0) < 0.1 and
+			abs(env2.water - 38.5) < 0.1 and
+			abs(env3.water - 44.0) < 0.1 and
+			abs(env4.water - 40.0) < 0.1;
 
-invariant [tb_500] : ?initial ==> ?withinBound1 and ?withinBound2 and ?withinBound3 and ?withinBound4 in time 500;
+proposition [upperBound] : env1.water >= 30 and 
+			   env2.water >= 30 and
+			   env3.water >= 30 and
+			   env4.water >= 30;							   
+
+invariant [tb_500] : ?initial ==> ?upperBound in time 500;
 ```
 
 ## Analysis Results

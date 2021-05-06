@@ -19,13 +19,9 @@
               class="work-bubble"
             />
             <span class="work-text">
-              <strong>{{ item.title }}</strong>
+              <a href="{{ site.url }}/{{ item.download }}"><strong>{{ item.title }}</strong></a>
               &mdash;
               {{ item.description }}
-            </span>
-            <span class="work-text">
-              <a href={{ site.url}}/{{ item.download }} download>Download
-			  </a>
             </span>
           </div>
           {% endfor %}

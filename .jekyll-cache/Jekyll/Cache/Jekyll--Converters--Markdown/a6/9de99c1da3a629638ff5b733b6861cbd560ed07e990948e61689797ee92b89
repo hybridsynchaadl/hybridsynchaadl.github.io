@@ -1,117 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-
-  
-  
-
-  
-
-  <!-- Primary Meta Tags -->
-  <title>HybridSynchAADL</title>
-  <meta name="title" content="HybridSynchAADL"/>
-  <meta name="description" content="Bay is a minimal Jekyll Theme."/>
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:site_name" content="HybridSynchAADL"/>
-  <meta property="og:type" content="website"/>
-  <meta property="og:url" content="http://localhost:4000/models/WaterTank/watertank"/>
-  <meta property="og:title" content="HybridSynchAADL"/>
-  <meta property="og:description" content="Bay is a minimal Jekyll Theme."/>
-  <meta property="og:image" content="http://localhost:4000"/>
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image"/>
-  <meta property="twitter:url" content="http://localhost:4000/models/WaterTank/watertank"/>
-  <meta property="twitter:title" content="HybridSynchAADL"/>
-  <meta property="twitter:description" content="Bay is a minimal Jekyll Theme."/>
-  <meta property="twitter:image" content="http://localhost:4000"/>
-  
-
-  <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css"/>
-  <link rel="canonical" href="http://localhost:4000/models/WaterTank/watertank"/>
-  <link rel="shortcut icon" href="http://localhost:4000/favicon.ico" type="image/x-icon"/>
-
-  <!-- Google Analytics -->
-  <script>
-    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', "UA-121636368-3", "auto");
-    ga('send', "pageview");
-  </script>
-  <script async src="https://www.google-analytics.com/analytics.js"></script>
-
-
-</head>
-
-
-  <body>
-    <header class="site-header">
-  <div class="wrapper">
-    <a class="site-title" href="http://localhost:4000/">
-      <img src="http://localhost:4000/assets/img/title2.png" alt="HybridSynchAADL" />
-    </a>
-
-    <nav class="site-nav">
-      <a href="#" class="menu-icon"></a>
-
-      <div class="menu">
-        
-          
-          
-          <a class="page-link" href="http://localhost:4000/">
-            Home
-          </a>
-        
-          
-          
-          <a class="page-link" href="http://localhost:4000/download">
-            Download
-          </a>
-        
-          
-          
-          <a class="page-link" href="http://localhost:4000/benchmark">
-            Benchmarks
-          </a>
-        
-          
-          
-          <a class="page-link" href="http://localhost:4000/document">
-            Documentation
-          </a>
-        
-          
-          
-          <a class="page-link" href="http://localhost:4000/artifact_cav2021">
-            Artifact
-          </a>
-        
-      </div>
-    </nav>
-  </div>
-</header>
-
-
-    <div class="page-content">
-      <div class="wrapper">
-        <div class="work">
-          <h1 id="networked-water-tank-systems">Networked Water Tank Systems</h1>
+I"M<h1 id="networked-water-tank-systems">Networked Water Tank Systems</h1>
 
 <p>This benchmark model represents the networked water tank benchmark. Each
 water tank component communicates its amount of water to the next water tank
@@ -249,14 +136,14 @@ contains amount of water more than 30 up to bound 500 ms.</p>
 
 <p>four-complex-inv-false.pspc</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>proposition [initial]: abs(env1.water - 55.0) &lt; 0.1 and
-			abs(env2.water - 38.5) &lt; 0.1 and
-			abs(env3.water - 44.0) &lt; 0.1 and
-			abs(env4.water - 40.0) &lt; 0.1;
+	   abs(env2.water - 38.5) &lt; 0.1 and
+	   abs(env3.water - 44.0) &lt; 0.1 and
+	   abs(env4.water - 40.0) &lt; 0.1;
 
 proposition [upperBound] : env1.water &gt;= 30 and 
-			   env2.water &gt;= 30 and
-			   env3.water &gt;= 30 and
-			   env4.water &gt;= 30;							   
+						   env2.water &gt;= 30 and
+						   env3.water &gt;= 30 and
+						   env4.water &gt;= 30;							   
 
 invariant [tb_500] : ?initial ==&gt; ?upperBound in time 500;
 </code></pre></div></div>
@@ -266,68 +153,4 @@ invariant [tb_500] : ?initial ==&gt; ?upperBound in time 500;
 
 <p><br />
 <br /></p>
-
-
-          
-        </div>
-      </div>
-    </div>
-
-    <footer class="site-footer">
-  <div class="wrapper">
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1 social-links">
-        <h4>CONTACT</h4>
-
-        
-
-          
-          <img
-            src="http://localhost:4000/assets/img/icons/jaehun%20lee.png"
-            alt="jaehun lee"
-          />
-          <a href="" id="jaehun lee-link">
-            
-              Jaehun Lee
-            
-          </a>
-          <br />
-
-        
-
-          
-          <img
-            src="http://localhost:4000/assets/img/icons/.png"
-            alt=""
-          />
-          <a href="thkighie1224@postech.ac.kr" id="-link">
-            
-              
-            
-          </a>
-          <br />
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</footer>
-
-
-  
-
-  
-
-
-
-
-
-
-    <script type="text/javascript" src="http://localhost:4000/assets/js/vendor/retina-1.3.0.min.js"></script>
-<script type="text/javascript" src="http://localhost:4000/assets/js/vendor/cash-4.1.5.min.js"></script>
-<script type="text/javascript" src="http://localhost:4000/assets/js/site.js"></script>
-
-  </body>
-</html>
+:ET
