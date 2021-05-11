@@ -114,17 +114,15 @@
           <h2 id="download-hybridsynchaadl-tool">Download HybridSynchAADL Tool</h2>
 
 <p>The HybridSynchAADL tool is an <a href="https://osate.org/">OSATE2</a> plugin. The tool is
-available for Linux (64-bit) and macOS (64-bit). As a prerequisite the following libraries
-are required.</p>
+available for Linux (64-bit) and macOS (64-bit). The following libraries are
+required.</p>
 
 <ul>
   <li>JAVA 8: <a href="https://openjdk.java.net/install/">https://openjdk.java.net/install/</a></li>
   <li>Maude-SE: <a href="https://maude-se.github.io/">https://maude-se.github.io/</a></li>
 </ul>
 
-<p>There are <b>two ways</b> to download the HybridSynchAADL tool:</p>
-
-<h3 id="1-the-hybridsynchaadl-tool-integrated-with-osate2">1. The HybridSynchAADL Tool Integrated with OSATE2</h3>
+<h3 id="1-download-hybridsynchaadl-integrated-with-osate2">1. Download HybridSynchAADL Integrated with OSATE2</h3>
 <ul>
   <li><a href="https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0">HybridSynchAADL 1.0 for Linux (64-bit)</a></li>
   <li><a href="https://www.dropbox.com/sh/ua5zds97b2j7n01/AAAjLUBHNAzb7impOw99ryAfa?dl=0">HybridSynchAADL 1.0 for macOS (64-bit)</a></li>
@@ -135,7 +133,7 @@ the following command:</p>
 
 <p><code class="highlighter-rouge">$ sudo xattr -rd com.apple.quarantine osate2.app/</code></p>
 
-<h3 id="2-the-hybridsynchaadl-tool-as-plugin-packages">2. The HybridSynchAADL Tool as Plugin Packages</h3>
+<h3 id="2-install-hybridsynchaadl-into-existing-osate2">2. Install HybridSynchAADL into Existing OSATE2</h3>
 
 <p>
 The HybridSynchAADL tool is composed of three plugin packages (three jar files). Download 
@@ -143,12 +141,12 @@ The HybridSynchAADL tool is composed of three plugin packages (three jar files).
 file.
 </p>
 
-<p>To install the plugin packages in OSATE2, create a directory <code>dropins</code> in the OSATE2 directory (for
+<p>To install the plugin packages into OSATE2, create a directory <code>dropins</code> in the installed OSATE2 directory (for
 macOS, <code>osate2.app/Contents/Eclipse/</code>). Move the plugin packages into 
 <code>dropins</code>.</p>
 
-<p>The plugin packages can be detected by OSATE2 by inserting the
-following lines after <code>#version=1</code> in the <code>bundles.info</code> file.</p>
+<p>Insert the following lines after <code>#version=1</code> in the
+<code>bundles.info</code> file to let OSATE2 detect the plugins.</p>
 
 <blockquote>
   <p>edu.postech.aadl.synch,1.0.0.202104261605,dropins/edu.postech.aadl.synch_1.0.0.202104261605.jar,4,false

@@ -3,7 +3,7 @@ layout: drone_formation_double
 slug: /models/Drone_Rendezvous_Formation
 ---
 
-# Drone Formation Models with Double-Integrator Dynamics
+# Formation Drones with Double-Integrator
 
 
 This benchmark models represent the formation control of distributed drones

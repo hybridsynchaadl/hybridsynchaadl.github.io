@@ -3,7 +3,7 @@ layout: drone_formation_single
 slug: /models/Drone_Formation_Single
 ---
 
-# Drone Formation Models with Single-Integrator Dynamics
+# Formation Drones with Single-Integrator
 
 This benchmark models represent the formation control of distributed drones
 with single-integrator dynamics. Each drone sends its own position and

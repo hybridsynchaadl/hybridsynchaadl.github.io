@@ -6,16 +6,13 @@ slug: /download
 ## Download HybridSynchAADL Tool
 
 The HybridSynchAADL tool is an [OSATE2](https://osate.org/) plugin. The tool is
-available for Linux (64-bit) and macOS (64-bit). As a prerequisite the following libraries
-are required. 
+available for Linux (64-bit) and macOS (64-bit). The following libraries are
+required. 
 
 * JAVA 8: <a href="https://openjdk.java.net/install/">https://openjdk.java.net/install/</a>
 * Maude-SE: <a href="https://maude-se.github.io/">https://maude-se.github.io/</a>
 
-
-There are <b>two ways</b> to download the HybridSynchAADL tool:
-
-### 1. The HybridSynchAADL Tool Integrated with OSATE2
+### 1. Download HybridSynchAADL Integrated with OSATE2
 * [HybridSynchAADL 1.0 for Linux (64-bit)](https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0)
 * [HybridSynchAADL 1.0 for macOS (64-bit)](https://www.dropbox.com/sh/ua5zds97b2j7n01/AAAjLUBHNAzb7impOw99ryAfa?dl=0)
 
@@ -24,7 +21,7 @@ the following command:
 
 ```$ sudo xattr -rd com.apple.quarantine osate2.app/ ```
 
-### 2. The HybridSynchAADL Tool as Plugin Packages 
+### 2. Install HybridSynchAADL into Existing OSATE2
 
 
 <p>
@@ -34,13 +31,12 @@ file.
 </p>
 
 
-To install the plugin packages in OSATE2, create a directory <code>dropins</code> in the OSATE2 directory (for
+To install the plugin packages into OSATE2, create a directory <code>dropins</code> in the installed OSATE2 directory (for
 macOS, <code>osate2.app/Contents/Eclipse/</code>). Move the plugin packages into 
 <code>dropins</code>.
 
-
-The plugin packages can be detected by OSATE2 by inserting the
-following lines after <code>#version=1</code> in the <code>bundles.info</code> file.
+Insert the following lines after <code>#version=1</code> in the
+<code>bundles.info</code> file to let OSATE2 detect the plugins.
 
 > edu.postech.aadl.synch,1.0.0.202104261605,dropins/edu.postech.aadl.synch_1.0.0.202104261605.jar,4,false
 > edu.postech.aadl.xtext.propspec,1.0.0.202104261605,dropins/edu.postech.aadl.xtext.propspec_1.0.0.202104261605.jar,4,false

@@ -3,7 +3,7 @@ layout: drone_rendezvous_single
 slug: /models/Drone_Rendezvous_Single
 ---
 
-# Drone Rendezvous Models with Single-Integrator Dynamics
+# Rendezvous Drones with Single-Integrator
 
 
 This benchmark models represent the rendezvous control of distributed drones

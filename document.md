@@ -14,7 +14,7 @@ items:
       src: /assets/img/work/study.png
       alt: study 
     download: docs/techrep.pdf
-    description: explains more details about the formal semantics, language, experiments. 
+    description: explains more details about the formal semantics, language, and experiments. 
 ---
 <br />
 <br />

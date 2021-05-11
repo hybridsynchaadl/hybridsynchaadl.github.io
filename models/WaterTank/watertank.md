@@ -4,10 +4,9 @@ slug: /models/WaterTank
 ---
 # Networked Water Tank Systems
 
-This benchmark model represents the networked water tank benchmark. Each water
-tank component sends its amount of water to the next water tank component and
-sets its power power. The goal of these models is for all water tank to
-maintain the amount of water larger than certain amounts.
+This benchmark model represents the a number of water tanks which are connected
+by pipes. The water level in each tank is separately controlled by the pump in
+the tank, which can be turend on or off.
 
 ## Download
 You can download the benchmark model: [WaterTank.zip](../watertank.zip)

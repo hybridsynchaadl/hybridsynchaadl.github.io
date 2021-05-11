@@ -3,7 +3,7 @@ layout: drone_rendezvous_double
 slug: /models/Drone_Rendezvous_Double
 ---
 
-# Drone Rendezvous Models with Double-Integrator Dynamics
+# Rendezvous Drones with Double-Integrator
 
 
 This benchmark models represent the rendezvous control of distributed drones
