@@ -8,7 +8,7 @@ items:
       src: /assets/img/work/report.png
       alt: report 
     download: docs/manual.pdf
-    description: explains the HybridSynchAADL modling language and tool.
+    description: explains the HybridSynchAADL modling language and tool. We provide also a tutorial file in this <a href="https://hybridsynchaadl.github.io/docs/tutorial.pdf">link</a>.
   - title: Technical Report 
     image:
       src: /assets/img/work/study.png
