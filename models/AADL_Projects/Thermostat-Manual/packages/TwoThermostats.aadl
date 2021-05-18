@@ -1,0 +1,132 @@
+package TwoThermostats
+public
+	with Hybrid_SynchAADL;
+	with Data_Model;
+	with Base_Types;
+	
+	system Thermostat
+	  features
+	    on_control: out event port;    off_control: out event port;
+	    set_power: out data port Base_Types::Float
+	               {Data_Model::Initial_Value => ("0");};
+	    curr: in data port Base_Types::Float;
+	    tin: in data port Base_Types::Float;
+	    tout: out data port Base_Types::Float
+	              {Data_Model::Initial_Value => ("0");};
+	end Thermostat;
+	system implementation Thermostat.impl
+	  subcomponents
+	    thermProcess : process ThermProcess.impl;
+	  connections
+	    C1: port thermProcess.on_control -> on_control;
+	    C2: port thermProcess.off_control -> off_control;
+	    C3: port thermProcess.set_power -> set_power;
+	    C4: port thermProcess.tout -> tout;
+	    C5: port curr -> thermProcess.curr;
+	    C6: port tin -> thermProcess.tin;
+	end Thermostat.impl;
+	
+	process ThermProcess
+	  features
+	    on_control: out event port;
+	    off_control: out event port;
+	    set_power: out data port Base_Types::Float;
+	    curr: in data port Base_Types::Float;
+	    tin: in data port Base_Types::Float;
+	    tout: out data port Base_Types::Float;
+	end ThermProcess;
+	process implementation ThermProcess.impl
+	  subcomponents
+	    thermThread : thread ThermThread.impl;
+	  connections
+	    C1: port thermThread.on_control -> on_control;
+	    C2: port thermThread.off_control -> off_control;
+	    C3: port thermThread.set_power -> set_power;
+	    C4: port thermThread.tout -> tout;
+	    C5: port curr -> thermThread.curr;
+	    C6: port tin -> thermThread.tin;
+	end ThermProcess.impl;
+	
+	thread ThermThread
+	  features
+	    on_control: out event port;
+	    off_control: out event port;
+	    set_power: out data port Base_Types::Float;
+	    curr: in data port Base_Types::Float;
+	    tin: in data port Base_Types::Float;
+	    tout: out data port Base_Types::Float;
+	  properties
+	    Dispatch_Protocol => Periodic;
+	    Hybrid_SynchAADL::Sampling_Time => 1ms .. 5ms;
+	    Hybrid_SynchAADL::Response_Time => 7ms .. 9ms;
+	end ThermThread;
+	
+	thread implementation ThermThread.impl
+	  subcomponents
+	    avg : data Base_Types::Float {Data_Model::Initial_Value => ("param");};
+	  annex behavior_specification{**
+	    states
+	      init : initial complete state;    exec : state;
+	    transitions
+	      init -[on dispatch]-> exec {
+	        avg := (tin + curr) / 2; tout := curr };
+	      exec -[avg > 25]-> init {
+	        off_control! };
+	      exec -[avg < 20 and avg >= 10]-> init {
+	        set_power := 5; on_control! };
+	      exec -[avg < 10]-> init {
+	        set_power := 10; on_control! };     **};
+	end ThermThread.impl;	
+	
+	system RoomEnv
+	  features
+	    temp: out data port Base_Types::Float;
+	    power: in data port Base_Types::Float;
+	    on_control: in event port;
+	    off_control: in event port;
+	  properties
+	    Hybrid_SynchAADL::isEnvironment => true;
+	end RoomEnv;
+	
+	system implementation RoomEnv.impl
+	  subcomponents
+	    x: data Base_Types::Float {Data_Model::Initial_Value => ("param");};
+	    p: data Base_Types::Float {Data_Model::Initial_Value => ("5");};
+	  connections
+	    C: port x -> temp;                  R: port power -> p;
+	  modes
+	    heaterOff: initial mode;            heaterOn: mode;
+	    heaterOff -[on_control]-> heaterOn; heaterOn -[off_control]-> heaterOff;
+	  properties
+	    Hybrid_SynchAADL::ContinuousDynamics =>
+	      "x(t) = x(0) - 0.1 * (x(0) - p / 0.1) * t;" in modes (heaterOn),
+	      "x(t) = x(0) * (1 - 0.1 * t);" in modes (heaterOff);
+	end RoomEnv.impl;	
+	
+	system TwoThermostats
+	  properties
+	    Hybrid_SynchAADL::Synchronous => true;
+	end TwoThermostats;
+	system implementation TwoThermostats.impl
+	  subcomponents
+	    ctrl1: system Thermostat.impl;        ctrl2: system Thermostat.impl;
+	    env1: system RoomEnv.impl;            env2: system RoomEnv.impl;
+	  connections
+	    turnOn1:   port ctrl1.on_control  -> env1.on_control;
+	    turnOff1:  port ctrl1.off_control -> env1.off_control;
+	    setPower1: port ctrl1.set_power   -> env1.power;
+	    getTemp1:  port env1.temp         -> ctrl1.curr;
+	    send1:     port ctrl1.tout        -> ctrl2.tin;
+	    turnOn2:   port ctrl2.on_control  -> env2.on_control;
+	    turnOff2:  port ctrl2.off_control -> env2.off_control;
+	    setPower2: port ctrl2.set_power   -> env2.power;
+	    getTemp2:  port env2.temp         -> ctrl2.curr;
+	    send2:     port ctrl2.tout        -> ctrl1.tin;
+	  properties
+	    Period => 10 ms;
+	    Hybrid_SynchAADL::Max_Clock_Deviation => 1 ms;
+	    Timing => Delayed applies to send1, send2;
+	end TwoThermostats.impl;
+	
+
+end TwoThermostats;

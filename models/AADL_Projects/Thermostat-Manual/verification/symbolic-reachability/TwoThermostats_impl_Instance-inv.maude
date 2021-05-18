@@ -1,0 +1,33 @@
+load /home/jaehun/maude-se-yices2/prelude.maude
+load /home/jaehun/maude-se-yices2/smt.maude
+load ../semantics/interpreter-symbolic2-merge.maude
+load ../instance/TwoThermostats_impl_Instance-symbolic.maude
+mod TEST-TWOTHERMOSTATS_IMPL_INSTANCE is
+  including TWOTHERMOSTATS_IMPL_INSTANCE-MODEL-SYMBOLIC .
+  including REACHABILITY-ANALYSIS .
+  including SPECIFICATION-LANGUAGE-SEMANTICS .
+
+  op initState : -> Object .
+  eq initState = initialize(collapse(initial)) .
+  
+  eq loopBoundNum = 10 .
+  eq transBoundNum = 10 .
+  
+  
+  eq @m@ = ['TEST-TWOTHERMOSTATS_IMPL_INSTANCE] .
+  
+  op inRan1 : -> PropSpec .
+  eq inRan1 = (env1 | ( (((c[x] ) > [[10.0]]) and ((c[x] ) <= [[25.0]])) )) .
+  op inRan2 : -> PropSpec .
+  eq inRan2 = (env2 | ( (((c[x] ) > [[5.0]]) and ((c[x] ) <= [[10.0]])) )) .
+  
+endm
+	  
+red reachAnalysis(
+    initState,
+    (TwoThermostatsimplInstance | ((abs(((env1 | c[x] ) - [[15.0]])) < [[3.0]]) and (abs(((env2 | c[x] ) - [[7.0]])) < [[1.0]]))),
+    TwoThermostatsimplInstance | not(((inRan1 and inRan2) and ((env1 | c[x] ) > (env2 | c[x] )))),
+    30
+    ) .
+
+quit

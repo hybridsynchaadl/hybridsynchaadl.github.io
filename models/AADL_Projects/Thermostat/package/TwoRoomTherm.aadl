@@ -1,0 +1,55 @@
+package TwoThermostat
+public
+  	with Thermostat;
+  	with Hybrid_SynchAADL;
+  	with RoomEnv;
+  	with Data_Model;
+
+	system TwoThermostat
+  		properties
+    		Hybrid_SynchAADL::Synchronous => true;
+	end TwoThermostat;
+  
+	system implementation TwoThermostat.simple
+  		subcomponents
+    		therm1: system Thermostat::Thermostat.simple;
+    		therm2: system Thermostat::Thermostat.simple;
+
+    		env1: system RoomEnv::RoomEnv.impl;
+    		env2: system RoomEnv::RoomEnv.impl;
+  		connections
+    		C11: port therm1.on_control -> env1.on_control;
+    		C12: port therm1.off_control -> env1.off_control;
+    		C13: port therm1.power -> env1.power;
+    		C14: port therm1.t_out -> therm2.t_in;
+    		C15: port env1.temp -> therm1.curr_temp;
+    
+    		C21: port therm2.on_control -> env2.on_control;
+    		C22: port therm2.off_control -> env2.off_control;
+    		C23: port therm2.power -> env2.power;
+    		C24: port therm2.t_out -> therm1.t_in; 
+    		C25: port env2.temp -> therm2.curr_temp;
+  		properties
+    		Period => 100 ms;
+   
+    		Data_Model::Initial_Value => ("param") applies to
+    			env1.x, env2.x;
+ 
+    		Timing => Delayed applies to 
+      		C14, C24;
+
+    		Hybrid_SynchAADL::Max_Clock_Deviation => 5ms;
+        
+    		Hybrid_SynchAADL::Sampling_Time => 20ms .. 30ms applies to 
+    			therm1, therm2;
+    		Hybrid_SynchAADL::Response_Time => 60ms .. 80ms applies to 
+    			therm1, therm2;
+	end TwoThermostat.simple;
+	
+	system implementation TwoThermostat.complex extends TwoThermostat.simple
+  		subcomponents
+    		therm1: refined to system Thermostat::Thermostat.complex;
+    		therm2: refined to system Thermostat::Thermostat.complex;
+	end TwoThermostat.complex;
+	
+end TwoThermostat;

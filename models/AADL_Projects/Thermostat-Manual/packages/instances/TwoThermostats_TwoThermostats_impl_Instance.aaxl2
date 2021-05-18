@@ -1,0 +1,1097 @@
+<?xml version="1.0" encoding="ASCII"?>
+<instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" name="TwoThermostats_impl_Instance" category="system">
+  <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+    <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+    <ownedValue>
+      <ownedValue xsi:type="aadl2:IntegerLiteral" value="10">
+        <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+      </ownedValue>
+    </ownedValue>
+    <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
+  </ownedPropertyAssociation>
+  <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+    <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Max_Clock_Deviation"/>
+    <ownedValue>
+      <ownedValue xsi:type="aadl2:IntegerLiteral" value="1">
+        <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+      </ownedValue>
+    </ownedValue>
+    <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.1"/>
+  </ownedPropertyAssociation>
+  <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+    <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Synchronous"/>
+    <ownedValue>
+      <ownedValue xsi:type="aadl2:BooleanLiteral" value="true"/>
+    </ownedValue>
+    <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.0"/>
+  </ownedPropertyAssociation>
+  <componentInstance name="ctrl1" category="system">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:IntegerLiteral" value="10">
+          <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Max_Clock_Deviation"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:IntegerLiteral" value="1">
+          <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.1"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Synchronous"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:BooleanLiteral" value="true"/>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <featureInstance name="set_power" direction="out">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Initial_Value"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.0/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.0"/>
+    </featureInstance>
+    <featureInstance name="curr">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.1"/>
+    </featureInstance>
+    <featureInstance name="tin">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.2"/>
+    </featureInstance>
+    <featureInstance name="tout" direction="out">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Initial_Value"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.3/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.3"/>
+    </featureInstance>
+    <featureInstance name="on_control" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="off_control" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedEventPort.1"/>
+    </featureInstance>
+    <componentInstance name="thermProcess" category="process">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="10">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Synchronous"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:BooleanLiteral" value="true"/>
+        </ownedValue>
+        <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <featureInstance name="set_power" direction="out">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.0"/>
+      </featureInstance>
+      <featureInstance name="curr">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
+      </featureInstance>
+      <featureInstance name="tin">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.2"/>
+      </featureInstance>
+      <featureInstance name="tout" direction="out">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.3"/>
+      </featureInstance>
+      <featureInstance name="on_control" category="eventPort" direction="out">
+        <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedEventPort.0"/>
+      </featureInstance>
+      <featureInstance name="off_control" category="eventPort" direction="out">
+        <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedEventPort.1"/>
+      </featureInstance>
+      <componentInstance name="thermThread" category="thread">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:IntegerLiteral" value="10">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Max_Clock_Deviation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.1"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Synchronous"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:BooleanLiteral" value="true"/>
+          </ownedValue>
+          <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Sampling_Time"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:RangeValue">
+              <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+                <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+              </minimum>
+              <maximum xsi:type="aadl2:IntegerLiteral" value="5">
+                <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+              </maximum>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedPropertyAssociation.1"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Response_Time"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:RangeValue">
+              <minimum xsi:type="aadl2:IntegerLiteral" value="7">
+                <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+              </minimum>
+              <maximum xsi:type="aadl2:IntegerLiteral" value="9">
+                <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+              </maximum>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedPropertyAssociation.2"/>
+        </ownedPropertyAssociation>
+        <featureInstance name="set_power" direction="out">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.0"/>
+        </featureInstance>
+        <featureInstance name="curr">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.1"/>
+        </featureInstance>
+        <featureInstance name="tin">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.2"/>
+        </featureInstance>
+        <featureInstance name="tout" direction="out">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.3"/>
+        </featureInstance>
+        <featureInstance name="on_control" category="eventPort" direction="out">
+          <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.0"/>
+        </featureInstance>
+        <featureInstance name="off_control" category="eventPort" direction="out">
+          <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.1"/>
+        </featureInstance>
+        <componentInstance name="avg" category="data">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Initial_Value"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:ListValue">
+                <ownedListElement xsi:type="aadl2:StringLiteral" value="param"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataSubcomponent.0/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <subcomponent xsi:type="aadl2:DataSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataSubcomponent.0"/>
+          <index>0</index>
+          <classifier xsi:type="aadl2:DataType" href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#Base_Types.Float"/>
+        </componentInstance>
+        <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedThreadSubcomponent.0"/>
+        <index>0</index>
+        <classifier xsi:type="aadl2:ThreadImplementation" href="../TwoThermostats.aadl#TwoThermostats.ThermThread.impl"/>
+      </componentInstance>
+      <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:ProcessImplementation" href="../TwoThermostats.aadl#TwoThermostats.ThermProcess.impl"/>
+    </componentInstance>
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedSystemSubcomponent.0"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:SystemImplementation" href="../TwoThermostats.aadl#TwoThermostats.Thermostat.impl"/>
+  </componentInstance>
+  <componentInstance name="ctrl2" category="system">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:IntegerLiteral" value="10">
+          <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Max_Clock_Deviation"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:IntegerLiteral" value="1">
+          <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.1"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Synchronous"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:BooleanLiteral" value="true"/>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <featureInstance name="set_power" direction="out">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Initial_Value"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.0/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.0"/>
+    </featureInstance>
+    <featureInstance name="curr">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.1"/>
+    </featureInstance>
+    <featureInstance name="tin">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.2"/>
+    </featureInstance>
+    <featureInstance name="tout" direction="out">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Initial_Value"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="0"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.3/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.3"/>
+    </featureInstance>
+    <featureInstance name="on_control" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="off_control" category="eventPort" direction="out">
+      <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedEventPort.1"/>
+    </featureInstance>
+    <componentInstance name="thermProcess" category="process">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:IntegerLiteral" value="10">
+            <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Synchronous"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:BooleanLiteral" value="true"/>
+        </ownedValue>
+        <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <featureInstance name="set_power" direction="out">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.0"/>
+      </featureInstance>
+      <featureInstance name="curr">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
+      </featureInstance>
+      <featureInstance name="tin">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.2"/>
+      </featureInstance>
+      <featureInstance name="tout" direction="out">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.3"/>
+      </featureInstance>
+      <featureInstance name="on_control" category="eventPort" direction="out">
+        <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedEventPort.0"/>
+      </featureInstance>
+      <featureInstance name="off_control" category="eventPort" direction="out">
+        <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedEventPort.1"/>
+      </featureInstance>
+      <componentInstance name="thermThread" category="thread">
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:IntegerLiteral" value="10">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Max_Clock_Deviation"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:IntegerLiteral" value="1">
+              <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.1"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Synchronous"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:BooleanLiteral" value="true"/>
+          </ownedValue>
+          <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Thread_Properties.aadl#Thread_Properties.Dispatch_Protocol"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:NamedValue">
+              <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.3/@ownedLiteral.0"/>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedPropertyAssociation.0"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Sampling_Time"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:RangeValue">
+              <minimum xsi:type="aadl2:IntegerLiteral" value="1">
+                <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+              </minimum>
+              <maximum xsi:type="aadl2:IntegerLiteral" value="5">
+                <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+              </maximum>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedPropertyAssociation.1"/>
+        </ownedPropertyAssociation>
+        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+          <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Response_Time"/>
+          <ownedValue>
+            <ownedValue xsi:type="aadl2:RangeValue">
+              <minimum xsi:type="aadl2:IntegerLiteral" value="7">
+                <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+              </minimum>
+              <maximum xsi:type="aadl2:IntegerLiteral" value="9">
+                <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+              </maximum>
+            </ownedValue>
+          </ownedValue>
+          <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedPropertyAssociation.2"/>
+        </ownedPropertyAssociation>
+        <featureInstance name="set_power" direction="out">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.0"/>
+        </featureInstance>
+        <featureInstance name="curr">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.1"/>
+        </featureInstance>
+        <featureInstance name="tin">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.2"/>
+        </featureInstance>
+        <featureInstance name="tout" direction="out">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.3"/>
+        </featureInstance>
+        <featureInstance name="on_control" category="eventPort" direction="out">
+          <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.0"/>
+        </featureInstance>
+        <featureInstance name="off_control" category="eventPort" direction="out">
+          <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedEventPort.1"/>
+        </featureInstance>
+        <componentInstance name="avg" category="data">
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Initial_Value"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:ListValue">
+                <ownedListElement xsi:type="aadl2:StringLiteral" value="param"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataSubcomponent.0/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+            <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+            <ownedValue>
+              <ownedValue xsi:type="aadl2:NamedValue">
+                <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+              </ownedValue>
+            </ownedValue>
+            <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+          </ownedPropertyAssociation>
+          <subcomponent xsi:type="aadl2:DataSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataSubcomponent.0"/>
+          <index>0</index>
+          <classifier xsi:type="aadl2:DataType" href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#Base_Types.Float"/>
+        </componentInstance>
+        <subcomponent xsi:type="aadl2:ThreadSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedThreadSubcomponent.0"/>
+        <index>0</index>
+        <classifier xsi:type="aadl2:ThreadImplementation" href="../TwoThermostats.aadl#TwoThermostats.ThermThread.impl"/>
+      </componentInstance>
+      <subcomponent xsi:type="aadl2:ProcessSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedProcessSubcomponent.0"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:ProcessImplementation" href="../TwoThermostats.aadl#TwoThermostats.ThermProcess.impl"/>
+    </componentInstance>
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedSystemSubcomponent.1"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:SystemImplementation" href="../TwoThermostats.aadl#TwoThermostats.Thermostat.impl"/>
+  </componentInstance>
+  <componentInstance name="env1" category="system">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:IntegerLiteral" value="10">
+          <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Max_Clock_Deviation"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:IntegerLiteral" value="1">
+          <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.1"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Synchronous"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:BooleanLiteral" value="true"/>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.ContinuousDynamics"/>
+      <ownedValue inMode="//@systemOperationMode.2 //@systemOperationMode.3">
+        <ownedValue xsi:type="aadl2:StringLiteral" value="x(t) = x(0) - 0.1 * (x(0) - p / 0.1) * t;"/>
+      </ownedValue>
+      <ownedValue inMode="//@systemOperationMode.0 //@systemOperationMode.1">
+        <ownedValue xsi:type="aadl2:StringLiteral" value="x(t) = x(0) * (1 - 0.1 * t);"/>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.isEnvironment"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:BooleanLiteral" value="true"/>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <featureInstance name="temp" direction="out">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.0"/>
+    </featureInstance>
+    <featureInstance name="power">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.1"/>
+    </featureInstance>
+    <featureInstance name="on_control" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="off_control" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedEventPort.1"/>
+    </featureInstance>
+    <componentInstance name="x" category="data">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Initial_Value"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="param"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataSubcomponent.0/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <subcomponent xsi:type="aadl2:DataSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataSubcomponent.0"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:DataType" href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#Base_Types.Float"/>
+    </componentInstance>
+    <componentInstance name="p" category="data">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Initial_Value"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="5"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataSubcomponent.1/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <subcomponent xsi:type="aadl2:DataSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataSubcomponent.1"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:DataType" href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#Base_Types.Float"/>
+    </componentInstance>
+    <modeInstance name="heaterOff" initial="true">
+      <mode href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedMode.0"/>
+    </modeInstance>
+    <modeInstance name="heaterOn">
+      <mode href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedMode.1"/>
+    </modeInstance>
+    <modeTransitionInstance name="heaterOff_on_control_heaterOn" destination="//@componentInstance.2/@modeInstance.1" trigger="//@componentInstance.2/@featureInstance.2" source="//@componentInstance.2/@modeInstance.0">
+      <modeTransition href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedModeTransition.0"/>
+    </modeTransitionInstance>
+    <modeTransitionInstance name="heaterOn_off_control_heaterOff" destination="//@componentInstance.2/@modeInstance.0" trigger="//@componentInstance.2/@featureInstance.3" source="//@componentInstance.2/@modeInstance.1">
+      <modeTransition href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedModeTransition.1"/>
+    </modeTransitionInstance>
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedSystemSubcomponent.2"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:SystemImplementation" href="../TwoThermostats.aadl#TwoThermostats.RoomEnv.impl"/>
+  </componentInstance>
+  <componentInstance name="env2" category="system">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Timing_Properties.aadl#Timing_Properties.Period"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:IntegerLiteral" value="10">
+          <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Max_Clock_Deviation"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:IntegerLiteral" value="1">
+          <unit href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/AADL_Project.aadl#/0/@ownedPropertyType.16/@ownedLiteral.3"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.1"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.Synchronous"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:BooleanLiteral" value="true"/>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.ContinuousDynamics"/>
+      <ownedValue inMode="//@systemOperationMode.1 //@systemOperationMode.3">
+        <ownedValue xsi:type="aadl2:StringLiteral" value="x(t) = x(0) - 0.1 * (x(0) - p / 0.1) * t;"/>
+      </ownedValue>
+      <ownedValue inMode="//@systemOperationMode.0 //@systemOperationMode.2">
+        <ownedValue xsi:type="aadl2:StringLiteral" value="x(t) = x(0) * (1 - 0.1 * t);"/>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="../../propertysets/HybridSynchAADL.aadl#Hybrid_SynchAADL.isEnvironment"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:BooleanLiteral" value="true"/>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedPropertyAssociation.0"/>
+    </ownedPropertyAssociation>
+    <featureInstance name="temp" direction="out">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.0"/>
+    </featureInstance>
+    <featureInstance name="power">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <feature xsi:type="aadl2:DataPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.1"/>
+    </featureInstance>
+    <featureInstance name="on_control" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedEventPort.0"/>
+    </featureInstance>
+    <featureInstance name="off_control" category="eventPort">
+      <feature xsi:type="aadl2:EventPort" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedEventPort.1"/>
+    </featureInstance>
+    <componentInstance name="x" category="data">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Initial_Value"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="param"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataSubcomponent.0/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <subcomponent xsi:type="aadl2:DataSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataSubcomponent.0"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:DataType" href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#Base_Types.Float"/>
+    </componentInstance>
+    <componentInstance name="p" category="data">
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Initial_Value"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:ListValue">
+            <ownedListElement xsi:type="aadl2:StringLiteral" value="5"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataSubcomponent.1/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
+        <ownedValue>
+          <ownedValue xsi:type="aadl2:NamedValue">
+            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.4"/>
+          </ownedValue>
+        </ownedValue>
+        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedPropertyAssociation.0"/>
+      </ownedPropertyAssociation>
+      <subcomponent xsi:type="aadl2:DataSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataSubcomponent.1"/>
+      <index>0</index>
+      <classifier xsi:type="aadl2:DataType" href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#Base_Types.Float"/>
+    </componentInstance>
+    <modeInstance name="heaterOff" initial="true">
+      <mode href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedMode.0"/>
+    </modeInstance>
+    <modeInstance name="heaterOn">
+      <mode href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedMode.1"/>
+    </modeInstance>
+    <modeTransitionInstance name="heaterOff_on_control_heaterOn" destination="//@componentInstance.3/@modeInstance.1" trigger="//@componentInstance.3/@featureInstance.2" source="//@componentInstance.3/@modeInstance.0">
+      <modeTransition href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedModeTransition.0"/>
+    </modeTransitionInstance>
+    <modeTransitionInstance name="heaterOn_off_control_heaterOff" destination="//@componentInstance.3/@modeInstance.0" trigger="//@componentInstance.3/@featureInstance.3" source="//@componentInstance.3/@modeInstance.1">
+      <modeTransition href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedModeTransition.1"/>
+    </modeTransitionInstance>
+    <subcomponent xsi:type="aadl2:SystemSubcomponent" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedSystemSubcomponent.3"/>
+    <index>0</index>
+    <classifier xsi:type="aadl2:SystemImplementation" href="../TwoThermostats.aadl#TwoThermostats.RoomEnv.impl"/>
+  </componentInstance>
+  <connectionInstance name="ctrl1.thermProcess.thermThread.set_power -> env1.p" complete="true" kind="portConnection" destination="//@componentInstance.2/@componentInstance.1" source="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.0">
+    <connectionReference context="//@componentInstance.0/@componentInstance.0" source="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.0/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPortConnection.2"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.0" source="//@componentInstance.0/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.2"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.0" destination="//@componentInstance.2/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPortConnection.2"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.2" source="//@componentInstance.2/@featureInstance.1" destination="//@componentInstance.2/@componentInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedPortConnection.1"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="ctrl1.thermProcess.thermThread.tout -> ctrl2.thermProcess.thermThread.tin" complete="true" kind="portConnection" destination="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@featureInstance.2" source="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.3">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Timing"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:NamedValue">
+          <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#/0/@ownedProperty.7/@ownedPropertyType/@ownedLiteral.2"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.2"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.0/@componentInstance.0" source="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.3" destination="//@componentInstance.0/@componentInstance.0/@featureInstance.3">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPortConnection.3"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.0" source="//@componentInstance.0/@componentInstance.0/@featureInstance.3" destination="//@componentInstance.0/@featureInstance.3">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.3"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.3" destination="//@componentInstance.1/@featureInstance.2">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPortConnection.4"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.1" source="//@componentInstance.1/@featureInstance.2" destination="//@componentInstance.1/@componentInstance.0/@featureInstance.2">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.5"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.1/@componentInstance.0" source="//@componentInstance.1/@componentInstance.0/@featureInstance.2" destination="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@featureInstance.2">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPortConnection.5"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="ctrl1.thermProcess.thermThread.on_control -> env1.on_control" complete="true" kind="portConnection" destination="//@componentInstance.2/@featureInstance.2" source="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.4">
+    <connectionReference context="//@componentInstance.0/@componentInstance.0" source="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.4" destination="//@componentInstance.0/@componentInstance.0/@featureInstance.4">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPortConnection.0"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.0" source="//@componentInstance.0/@componentInstance.0/@featureInstance.4" destination="//@componentInstance.0/@featureInstance.4">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.0"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.4" destination="//@componentInstance.2/@featureInstance.2">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPortConnection.0"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="ctrl1.thermProcess.thermThread.off_control -> env1.off_control" complete="true" kind="portConnection" destination="//@componentInstance.2/@featureInstance.3" source="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.5">
+    <connectionReference context="//@componentInstance.0/@componentInstance.0" source="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.5" destination="//@componentInstance.0/@componentInstance.0/@featureInstance.5">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.0" source="//@componentInstance.0/@componentInstance.0/@featureInstance.5" destination="//@componentInstance.0/@featureInstance.5">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.5" destination="//@componentInstance.2/@featureInstance.3">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPortConnection.1"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="ctrl2.thermProcess.thermThread.set_power -> env2.p" complete="true" kind="portConnection" destination="//@componentInstance.3/@componentInstance.1" source="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@featureInstance.0">
+    <connectionReference context="//@componentInstance.1/@componentInstance.0" source="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.1/@componentInstance.0/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPortConnection.2"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.1" source="//@componentInstance.1/@componentInstance.0/@featureInstance.0" destination="//@componentInstance.1/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.2"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.1/@featureInstance.0" destination="//@componentInstance.3/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPortConnection.7"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.3" source="//@componentInstance.3/@featureInstance.1" destination="//@componentInstance.3/@componentInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedPortConnection.1"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="ctrl2.thermProcess.thermThread.tout -> ctrl1.thermProcess.thermThread.tin" complete="true" kind="portConnection" destination="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.2" source="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@featureInstance.3">
+    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
+      <property href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#Communication_Properties.Timing"/>
+      <ownedValue>
+        <ownedValue xsi:type="aadl2:NamedValue">
+          <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.aadl2.contrib/resources/properties/Predeclared_Property_Sets/Communication_Properties.aadl#/0/@ownedProperty.7/@ownedPropertyType/@ownedLiteral.2"/>
+        </ownedValue>
+      </ownedValue>
+      <propertyAssociation href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPropertyAssociation.2"/>
+    </ownedPropertyAssociation>
+    <connectionReference context="//@componentInstance.1/@componentInstance.0" source="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@featureInstance.3" destination="//@componentInstance.1/@componentInstance.0/@featureInstance.3">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPortConnection.3"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.1" source="//@componentInstance.1/@componentInstance.0/@featureInstance.3" destination="//@componentInstance.1/@featureInstance.3">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.3"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.1/@featureInstance.3" destination="//@componentInstance.0/@featureInstance.2">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPortConnection.9"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.0" source="//@componentInstance.0/@featureInstance.2" destination="//@componentInstance.0/@componentInstance.0/@featureInstance.2">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.5"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.0/@componentInstance.0" source="//@componentInstance.0/@componentInstance.0/@featureInstance.2" destination="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.2">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPortConnection.5"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="ctrl2.thermProcess.thermThread.on_control -> env2.on_control" complete="true" kind="portConnection" destination="//@componentInstance.3/@featureInstance.2" source="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@featureInstance.4">
+    <connectionReference context="//@componentInstance.1/@componentInstance.0" source="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@featureInstance.4" destination="//@componentInstance.1/@componentInstance.0/@featureInstance.4">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPortConnection.0"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.1" source="//@componentInstance.1/@componentInstance.0/@featureInstance.4" destination="//@componentInstance.1/@featureInstance.4">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.0"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.1/@featureInstance.4" destination="//@componentInstance.3/@featureInstance.2">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPortConnection.5"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="ctrl2.thermProcess.thermThread.off_control -> env2.off_control" complete="true" kind="portConnection" destination="//@componentInstance.3/@featureInstance.3" source="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@featureInstance.5">
+    <connectionReference context="//@componentInstance.1/@componentInstance.0" source="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@featureInstance.5" destination="//@componentInstance.1/@componentInstance.0/@featureInstance.5">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.1" source="//@componentInstance.1/@componentInstance.0/@featureInstance.5" destination="//@componentInstance.1/@featureInstance.5">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.1"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.1/@featureInstance.5" destination="//@componentInstance.3/@featureInstance.3">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPortConnection.6"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="env1.x -> ctrl1.thermProcess.thermThread.curr" complete="true" kind="portConnection" destination="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.1" source="//@componentInstance.2/@componentInstance.0">
+    <connectionReference context="//@componentInstance.2" source="//@componentInstance.2/@componentInstance.0" destination="//@componentInstance.2/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedPortConnection.0"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.2/@featureInstance.0" destination="//@componentInstance.0/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPortConnection.3"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.0" source="//@componentInstance.0/@featureInstance.1" destination="//@componentInstance.0/@componentInstance.0/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.4"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.0/@componentInstance.0" source="//@componentInstance.0/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.0/@componentInstance.0/@componentInstance.0/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPortConnection.4"/>
+    </connectionReference>
+  </connectionInstance>
+  <connectionInstance name="env2.x -> ctrl2.thermProcess.thermThread.curr" complete="true" kind="portConnection" destination="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@featureInstance.1" source="//@componentInstance.3/@componentInstance.0">
+    <connectionReference context="//@componentInstance.3" source="//@componentInstance.3/@componentInstance.0" destination="//@componentInstance.3/@featureInstance.0">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedPortConnection.0"/>
+    </connectionReference>
+    <connectionReference context="/" source="//@componentInstance.3/@featureInstance.0" destination="//@componentInstance.1/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedPortConnection.8"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.1" source="//@componentInstance.1/@featureInstance.1" destination="//@componentInstance.1/@componentInstance.0/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPortConnection.4"/>
+    </connectionReference>
+    <connectionReference context="//@componentInstance.1/@componentInstance.0" source="//@componentInstance.1/@componentInstance.0/@featureInstance.1" destination="//@componentInstance.1/@componentInstance.0/@componentInstance.0/@featureInstance.1">
+      <connection xsi:type="aadl2:PortConnection" href="../TwoThermostats.aadl#/0/@ownedPublicSection/@ownedClassifier.3/@ownedPortConnection.4"/>
+    </connectionReference>
+  </connectionInstance>
+  <systemOperationMode name="som_1" currentMode="//@componentInstance.2/@modeInstance.0 //@componentInstance.3/@modeInstance.0"/>
+  <systemOperationMode name="som_2" currentMode="//@componentInstance.2/@modeInstance.0 //@componentInstance.3/@modeInstance.1"/>
+  <systemOperationMode name="som_3" currentMode="//@componentInstance.2/@modeInstance.1 //@componentInstance.3/@modeInstance.0"/>
+  <systemOperationMode name="som_4" currentMode="//@componentInstance.2/@modeInstance.1 //@componentInstance.3/@modeInstance.1"/>
+  <componentImplementation xsi:type="aadl2:SystemImplementation" href="../TwoThermostats.aadl#TwoThermostats.TwoThermostats.impl"/>
+</instance:SystemInstance>

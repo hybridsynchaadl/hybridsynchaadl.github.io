@@ -1,0 +1,464 @@
+mod TWOTHERMOSTATS_IMPL_INSTANCE-MODEL is
+	including MODEL-TRANSITION-SYSTEM .
+	
+	--- AADL identifiers
+	ops t : -> VarId [ctor] .
+	ops temp offcontrol tin oncontrol power curr tout setpower : -> FeatureId [ctor] .
+	ops TwoThermostatsimplInstance p thermProcess avg x env2 env1 ctrl2 ctrl1 thermThread : -> ComponentId [ctor] .
+	ops init heaterOn heaterOff exec : -> Location [ctor] .
+	ops loopBoundNum transBoundNum : -> Nat .
+	--- the initial state
+	op initial : -> Object .
+	eq initial = < TwoThermostatsimplInstance : System |
+		features : (
+			none),
+		subcomponents : (
+			< ctrl1 : System |
+				features : (
+					< setpower : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< curr : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< tin : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< tout : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< oncontrol : DataOutPort | 
+						content : null(Unit) ,
+						properties : none >
+					< offcontrol : DataOutPort | 
+						content : null(Unit) ,
+						properties : none >),
+				subcomponents : (
+					< thermProcess : Process |
+						features : (
+							< setpower : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< curr : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< tin : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< tout : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< oncontrol : DataOutPort | 
+								content : null(Unit) ,
+								properties : none >
+							< offcontrol : DataOutPort | 
+								content : null(Unit) ,
+								properties : none >),
+						subcomponents : (
+							< thermThread : Thread |
+								features : (
+									< setpower : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< curr : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< tin : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< tout : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< oncontrol : DataOutPort | 
+										content : null(Unit) ,
+										properties : none >
+									< offcontrol : DataOutPort | 
+										content : null(Unit) ,
+										properties : none >),
+								subcomponents : (
+									< avg : Data |
+										features : (
+											none),
+										subcomponents : (
+											none),
+										value : param(Real),
+										properties : (
+											none),
+										connections : (
+											empty) 
+										> ),
+								currState : (
+									init),
+								completeStates : (
+									init),
+								variables : (
+									empty),
+								transitions : (
+									(init -[ on dispatch ]-> exec {
+										(c{avg} := ((f[tin] + f[curr]) / [[2]])) ;
+										(f{tout} := f[curr])
+									}) ;
+									(exec -[ (c[avg] > [[25]]) ]-> init {
+										(offcontrol !)
+									}) ;
+									(exec -[ ((c[avg] < [[20]]) and (c[avg] >= [[10]])) ]-> init {
+										(f{setpower} := [[5]]) ;
+										(oncontrol !)
+									}) ;
+									(exec -[ (c[avg] < [[10]]) ]-> init {
+										(f{setpower} := [[10]]) ;
+										(oncontrol !)
+									})),
+								loopBound : (
+									loopBoundNum),
+								transBound : (
+									transBoundNum),
+								varGen : (
+									< "TwoThermostatsimplInstance.ctrl1.thermProcess.thermThread" >
+									),
+								properties : (
+									(TimingProperties::Period => {{10.0}}) ;
+									(HybridSynchAADL::MaxClockDeviation => {{1.0}}) ;
+									(HybridSynchAADL::Synchronous => {{true}}) ;
+									(HybridSynchAADL::SamplingTime => {{1.0 .. 5.0}}) ;
+									(HybridSynchAADL::ResponseTime => {{7.0 .. 9.0}})),
+								connections : (
+									empty) 
+								> ),
+						properties : (
+							(TimingProperties::Period => {{10.0}}) ;
+							(HybridSynchAADL::Synchronous => {{true}})),
+						connections : (
+							(thermThread .. tout --> tout) ;
+							(curr --> thermThread .. curr) ;
+							(thermThread .. setpower --> setpower) ;
+							(thermThread .. oncontrol --> oncontrol) ;
+							(thermThread .. offcontrol --> offcontrol) ;
+							(tin --> thermThread .. tin)) 
+						> ),
+				properties : (
+					(TimingProperties::Period => {{10.0}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{1.0}}) ;
+					(HybridSynchAADL::Synchronous => {{true}})),
+				connections : (
+					(thermProcess .. offcontrol --> offcontrol) ;
+					(tin --> thermProcess .. tin) ;
+					(thermProcess .. tout --> tout) ;
+					(curr --> thermProcess .. curr) ;
+					(thermProcess .. oncontrol --> oncontrol) ;
+					(thermProcess .. setpower --> setpower)) 
+				> 
+			< ctrl2 : System |
+				features : (
+					< setpower : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< curr : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< tin : DataInPort | 
+						cache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< tout : DataOutPort | 
+						content : null(Real) ,
+						properties : (DataModel::InitialValue => {{0}}) >
+					< oncontrol : DataOutPort | 
+						content : null(Unit) ,
+						properties : none >
+					< offcontrol : DataOutPort | 
+						content : null(Unit) ,
+						properties : none >),
+				subcomponents : (
+					< thermProcess : Process |
+						features : (
+							< setpower : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< curr : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< tin : DataInPort | 
+								cache : null(Real),
+								content : null(Real) ,
+								properties : none >
+							< tout : DataOutPort | 
+								content : null(Real) ,
+								properties : none >
+							< oncontrol : DataOutPort | 
+								content : null(Unit) ,
+								properties : none >
+							< offcontrol : DataOutPort | 
+								content : null(Unit) ,
+								properties : none >),
+						subcomponents : (
+							< thermThread : Thread |
+								features : (
+									< setpower : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< curr : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< tin : DataInPort | 
+										cache : null(Real),
+										content : null(Real) ,
+										properties : none >
+									< tout : DataOutPort | 
+										content : null(Real) ,
+										properties : none >
+									< oncontrol : DataOutPort | 
+										content : null(Unit) ,
+										properties : none >
+									< offcontrol : DataOutPort | 
+										content : null(Unit) ,
+										properties : none >),
+								subcomponents : (
+									< avg : Data |
+										features : (
+											none),
+										subcomponents : (
+											none),
+										value : param(Real),
+										properties : (
+											none),
+										connections : (
+											empty) 
+										> ),
+								currState : (
+									init),
+								completeStates : (
+									init),
+								variables : (
+									empty),
+								transitions : (
+									(init -[ on dispatch ]-> exec {
+										(c{avg} := ((f[tin] + f[curr]) / [[2]])) ;
+										(f{tout} := f[curr])
+									}) ;
+									(exec -[ (c[avg] > [[25]]) ]-> init {
+										(offcontrol !)
+									}) ;
+									(exec -[ ((c[avg] < [[20]]) and (c[avg] >= [[10]])) ]-> init {
+										(f{setpower} := [[5]]) ;
+										(oncontrol !)
+									}) ;
+									(exec -[ (c[avg] < [[10]]) ]-> init {
+										(f{setpower} := [[10]]) ;
+										(oncontrol !)
+									})),
+								loopBound : (
+									loopBoundNum),
+								transBound : (
+									transBoundNum),
+								varGen : (
+									< "TwoThermostatsimplInstance.ctrl2.thermProcess.thermThread" >
+									),
+								properties : (
+									(TimingProperties::Period => {{10.0}}) ;
+									(HybridSynchAADL::MaxClockDeviation => {{1.0}}) ;
+									(HybridSynchAADL::Synchronous => {{true}}) ;
+									(HybridSynchAADL::SamplingTime => {{1.0 .. 5.0}}) ;
+									(HybridSynchAADL::ResponseTime => {{7.0 .. 9.0}})),
+								connections : (
+									empty) 
+								> ),
+						properties : (
+							(TimingProperties::Period => {{10.0}}) ;
+							(HybridSynchAADL::Synchronous => {{true}})),
+						connections : (
+							(curr --> thermThread .. curr) ;
+							(thermThread .. tout --> tout) ;
+							(thermThread .. offcontrol --> offcontrol) ;
+							(thermThread .. oncontrol --> oncontrol) ;
+							(tin --> thermThread .. tin) ;
+							(thermThread .. setpower --> setpower)) 
+						> ),
+				properties : (
+					(TimingProperties::Period => {{10.0}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{1.0}}) ;
+					(HybridSynchAADL::Synchronous => {{true}})),
+				connections : (
+					(curr --> thermProcess .. curr) ;
+					(thermProcess .. setpower --> setpower) ;
+					(thermProcess .. tout --> tout) ;
+					(thermProcess .. oncontrol --> oncontrol) ;
+					(tin --> thermProcess .. tin) ;
+					(thermProcess .. offcontrol --> offcontrol)) 
+				> 
+			< env1 : Env |
+				features : (
+					< temp : EnvOutPort | 
+						target : thermThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< power : EnvInPort | 
+						target : thermThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< oncontrol : EnvInPort | 
+						target : thermThread,
+						envCache : null(Unit),
+						content : null(Unit) ,
+						properties : none >
+					< offcontrol : EnvInPort | 
+						target : thermThread,
+						envCache : null(Unit),
+						content : null(Unit) ,
+						properties : none >),
+				subcomponents : (
+					< x : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : param(Real),
+						properties : (
+							none),
+						connections : (
+							empty) 
+						> 
+					< p : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : null(Real),
+						properties : (
+							(DataModel::InitialValue => {{5}})),
+						connections : (
+							empty) 
+						> ),
+				currMode : (
+					heaterOff
+					),
+				jumps : (
+					(heaterOff -[ (oncontrol) ]-> heaterOn) ;
+					(heaterOn -[ (offcontrol) ]-> heaterOff)
+					),
+				flows : (
+					((heaterOn)[(x(t) = (c[x] - (([[0.1]] * (c[x] - (c[p] / [[0.1]]))) * v[t]))) ] ) ;
+					((heaterOff)[(x(t) = (c[x] * ([[1.0]] - ([[0.1]] * v[t])))) ] )
+					),
+				sampling : (
+					(thermThread : (rat(1.0),rat(5.0)))
+					),
+				response : (
+					(thermThread : (rat(7.0),rat(9.0)))
+					),
+				varGen : (
+					< "TwoThermostatsimplInstance.env1" >
+					),
+				properties : (
+					(TimingProperties::Period => {{10.0}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{1.0}}) ;
+					(HybridSynchAADL::Synchronous => {{true}}) ;
+					(HybridSynchAADL::ContinuousDynamics => {{"x(t) = x(0) * (1 - 0.1 * t);"}}) ;
+					(HybridSynchAADL::isEnvironment => {{true}})),
+				connections : (
+					(power =>> p) ;
+					(x ==> temp)) 
+				> 
+			< env2 : Env |
+				features : (
+					< temp : EnvOutPort | 
+						target : thermThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< power : EnvInPort | 
+						target : thermThread,
+						envCache : null(Real),
+						content : null(Real) ,
+						properties : none >
+					< oncontrol : EnvInPort | 
+						target : thermThread,
+						envCache : null(Unit),
+						content : null(Unit) ,
+						properties : none >
+					< offcontrol : EnvInPort | 
+						target : thermThread,
+						envCache : null(Unit),
+						content : null(Unit) ,
+						properties : none >),
+				subcomponents : (
+					< x : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : param(Real),
+						properties : (
+							none),
+						connections : (
+							empty) 
+						> 
+					< p : Data |
+						features : (
+							none),
+						subcomponents : (
+							none),
+						value : null(Real),
+						properties : (
+							(DataModel::InitialValue => {{5}})),
+						connections : (
+							empty) 
+						> ),
+				currMode : (
+					heaterOff
+					),
+				jumps : (
+					(heaterOff -[ (oncontrol) ]-> heaterOn) ;
+					(heaterOn -[ (offcontrol) ]-> heaterOff)
+					),
+				flows : (
+					((heaterOn)[(x(t) = (c[x] - (([[0.1]] * (c[x] - (c[p] / [[0.1]]))) * v[t]))) ] ) ;
+					((heaterOff)[(x(t) = (c[x] * ([[1.0]] - ([[0.1]] * v[t])))) ] )
+					),
+				sampling : (
+					(thermThread : (rat(1.0),rat(5.0)))
+					),
+				response : (
+					(thermThread : (rat(7.0),rat(9.0)))
+					),
+				varGen : (
+					< "TwoThermostatsimplInstance.env2" >
+					),
+				properties : (
+					(TimingProperties::Period => {{10.0}}) ;
+					(HybridSynchAADL::MaxClockDeviation => {{1.0}}) ;
+					(HybridSynchAADL::Synchronous => {{true}}) ;
+					(HybridSynchAADL::ContinuousDynamics => {{"x(t) = x(0) * (1 - 0.1 * t);"}}) ;
+					(HybridSynchAADL::isEnvironment => {{true}})),
+				connections : (
+					(power =>> p) ;
+					(x ==> temp)) 
+				> ),
+		properties : (
+			(TimingProperties::Period => {{10.0}}) ;
+			(HybridSynchAADL::MaxClockDeviation => {{1.0}}) ;
+			(HybridSynchAADL::Synchronous => {{true}})),
+		connections : (
+			(ctrl1 .. tout --> ctrl2 .. tin) ;
+			(ctrl1 .. oncontrol --> env1 .. oncontrol) ;
+			(ctrl2 .. tout --> ctrl1 .. tin) ;
+			(ctrl2 .. offcontrol --> env2 .. offcontrol) ;
+			(ctrl2 .. setpower --> env2 .. power) ;
+			(ctrl1 .. setpower --> env1 .. power) ;
+			(env1 .. temp --> ctrl1 .. curr) ;
+			(ctrl2 .. oncontrol --> env2 .. oncontrol) ;
+			(ctrl1 .. offcontrol --> env1 .. offcontrol) ;
+			(env2 .. temp --> ctrl2 .. curr)) 
+		>  .
+endm

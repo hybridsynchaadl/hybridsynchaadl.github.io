@@ -1,0 +1,30 @@
+(
+Time: 0
+TwoThermostatsimplInstance ->[
+  (ctrl2 . thermProcess . thermThread) ->[
+    variables: avg |=> 1.0e+1
+    currState: init]
+  (ctrl1 . thermProcess . thermThread) ->[
+    variables: avg |=> 1.0e+1
+    currState: init]
+  env2 ->[
+    variables: (p |=> 5.0),x |=> 7.1856892330538686
+    currMode: heaterOff]
+  env1 ->[
+    variables: (p |=> 5.0),x |=> 1.6291136190828663e+1
+    currMode: heaterOff]])
+
+Time: 10
+TwoThermostatsimplInstance ->[
+  (ctrl2 . thermProcess . thermThread) ->[
+    variables: avg |=> 1.9555610015187785
+    currState: init]
+  (ctrl1 . thermProcess . thermThread) ->[
+    variables: avg |=> 3.2047968194453493
+    currState: init]
+  env2 ->[
+    variables: (p |=> 1.0e+1),x |=> 3.4050111243858957e+1
+    currMode: heaterOn]
+  env1 ->[
+    variables: (p |=> 1.0e+1),x |=> 3.7488232014355191e+1
+    currMode: heaterOn]]

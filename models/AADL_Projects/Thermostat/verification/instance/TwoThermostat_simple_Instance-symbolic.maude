@@ -1,0 +1,17 @@
+load TwoThermostat_simple_Instance.maude
+mod TWOTHERMOSTAT_SIMPLE_INSTANCE-MODEL-SYMBOLIC is
+	including TWOTHERMOSTAT_SIMPLE_INSTANCE-MODEL .
+	including BEHAVIOR-SYMBOLIC-LOCATION .
+	
+	eq init = loc(real(0)) .
+	eq exec = loc(real(1)) .
+	eq off = loc(real(2)) .
+	eq on = loc(real(3)) .
+	eq @@default@loc@@ = loc(real(4)) .
+	
+	eq locName(loc([(0/1).Real])) = 'init .
+	eq locName(loc([(1/1).Real])) = 'exec .
+	eq locName(loc([(2/1).Real])) = 'off .
+	eq locName(loc([(3/1).Real])) = 'on .
+	eq locName(loc([(4/1).Real])) = '@@default@loc@@ .
+endm

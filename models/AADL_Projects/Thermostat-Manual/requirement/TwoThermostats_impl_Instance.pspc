@@ -1,0 +1,11 @@
+name: TwoThermostats_impl_Instance;
+
+model: TwoThermostats::TwoThermostats.impl;
+
+instance: "/Thermostat-Manual/packages/instances/TwoThermostats_TwoThermostats_impl_Instance.aaxl2";
+
+proposition [inRan1]: env1 | (x > 10 and x <= 25);
+proposition [inRan2]: env2 | (x > 5  and x <= 10);
+
+invariant [inv]: abs(env1.x - 15) < 3 and abs(env2.x - 7) < 1
+     ==> ?inRan1 and ?inRan2 and (env1.x > env2.x) in time 30;
