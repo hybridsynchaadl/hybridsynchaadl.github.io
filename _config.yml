@@ -19,7 +19,7 @@ header:
     - name: Documentation
       slug: /document
     - name: Artifact 
-      slug: /artifact_cav2021
+      slug: /artifact_sttt
 
 footer:
   show_powered_by: false
