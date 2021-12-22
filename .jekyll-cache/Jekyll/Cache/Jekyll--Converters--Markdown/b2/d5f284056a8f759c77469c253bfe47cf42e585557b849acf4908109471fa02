@@ -1,9 +1,4 @@
----
-layout: artifact_sttt
-title: Artifact 
-slug: artifact_sttt
----
-<p>
+I"è<p>
 This page explains the artifact for our paper: "Modeling and
 Formal Analysis of Virtually Synchronous CPSs in AADL" by J. Lee, K. Bae, 
 , P. C. √ñlveczky, S. Kim, M, Kang. The artifact includes the HybridSynchAADL tool and the
@@ -23,8 +18,10 @@ directory for more details about the tool and experiments.
 We explain how to install and run the artifact in a non-VM environment. The artifact requires the following libraries:
 </p>
 
-* JAVA 8: <a href="https://openjdk.java.net/install/">https://openjdk.java.net/install/</a>
-* GNU parallel: <a href="https://www.gnu.org/software/parallel/">https://www.gnu.org/software/parallel/</a>
+<ul>
+  <li>JAVA 8: <a href="https://openjdk.java.net/install/">https://openjdk.java.net/install/</a></li>
+  <li>GNU parallel: <a href="https://www.gnu.org/software/parallel/">https://www.gnu.org/software/parallel/</a></li>
+</ul>
 <p>
 To install our artifact, download and unzip the following archive file which
 contains the benchmark models and scripts in the directory <code>STTT-Artifact</code>: 
@@ -38,11 +35,13 @@ The archive file already contains the following tools. Maude-SE is needed for
 the HybridSynchAADL tool, and the other tools are used for the experiments.
 </p>
 
-* Maude-SE: <a href="https://maude-se.github.io/">https://maude-se.github.io/</a>
-* SpaceEx: <a href="http://spaceex.imag.fr/">http://spaceex.imag.fr/</a>
-* Flow\*: <a href="https://flowstar.org/">https://flowstar.org/</a>
-* HyComp: <a href="https://es-static.fbk.eu/tools/hycomp/">https://es-static.fbk.eu/tools/hycomp/</a>
-* dReach: <a href="http://dreal.github.io/">http://dreal.github.io/</a>
+<ul>
+  <li>Maude-SE: <a href="https://maude-se.github.io/">https://maude-se.github.io/</a></li>
+  <li>SpaceEx: <a href="http://spaceex.imag.fr/">http://spaceex.imag.fr/</a></li>
+  <li>Flow*: <a href="https://flowstar.org/">https://flowstar.org/</a></li>
+  <li>HyComp: <a href="https://es-static.fbk.eu/tools/hycomp/">https://es-static.fbk.eu/tools/hycomp/</a></li>
+  <li>dReach: <a href="http://dreal.github.io/">http://dreal.github.io/</a></li>
+</ul>
 
 <p>
 For Ubuntu, we provide a script (<code>set-up.sh</code>) to install Java 8 and GNU
@@ -56,27 +55,25 @@ you can create a new VirtualBox image with Ubuntu installed,  unzip
 <code>STTT-Artifact</code> to install the required libraries for the artifact.
 </p>
 
-
 <h2>Setting up the HybridSynchAADL Tool</h2>
 <p>
 In the artifact, the HybridSynchAADL tool is located in the directory
 <code>STTT-Artifact/hybridsynchaadl/osate</code>. For the workspace, use the directory
 <code>STTT-Artifact/hybridsynchaadl/workspace</code>, which includes a HybridSynchAADL model
 <code>FourDronesSystem</code>. You also need to set the Maude path: in the top menu, go to
-<code>Window => Preferences => Maude Preferences</code>, and fill the Maude directory and
+<code>Window =&gt; Preferences =&gt; Maude Preferences</code>, and fill the Maude directory and
 executable Maude file.
 </p>
 
-
-
 <figure>
-<img src="images/workspace.png" width="80%" height="80%">
+<img src="images/workspace.png" width="80%" height="80%" />
 <figcaption style="font-size: 14px">Workspace</figcaption>
 </figure>
 <figure>
-<img src="images/maude_preferences.png" width="80%" height="80%">
+<img src="images/maude_preferences.png" width="80%" height="80%" />
 <figcaption style="font-size: 14px">Maude Preferences</figcaption>
 </figure>
 
-<br />
-<br />
+<p><br />
+<br /></p>
+:ET
