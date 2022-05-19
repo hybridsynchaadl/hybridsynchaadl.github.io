@@ -1,7 +1,7 @@
 ---
-layout: artifact_sttt
+layout: sttt
 title: Artifact 
-slug: artifact_sttt
+slug: sttt
 ---
 <p>
 This page explains the artifact for our paper: "Modeling and
