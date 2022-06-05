@@ -1,7 +1,7 @@
 ---
 layout: isola2022
 title: Artifact 
-slug: isola2022
+slug: isola2022/
 ---
 <p>
 This page explains the artifact for our paper: "HYBRIDSYNCHAADL: Modeling and
