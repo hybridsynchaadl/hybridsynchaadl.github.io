@@ -1,4 +1,4 @@
-<p>
+I"­<p>
 This page explains the artifact for our paper: "HYBRIDSYNCHAADL: Modeling and
 Formal Analysis of Virtually Synchronous CPSs in AADL" by J. Lee, S. Kim, K.
 Bae, and P. C. Ã–lveczky. The artifact includes the HybridSynchAADL tool and the
@@ -74,3 +74,4 @@ executable Maude file.
 
 <p><br />
 <br /></p>
+:ET

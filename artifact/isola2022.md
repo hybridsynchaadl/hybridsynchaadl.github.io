@@ -68,11 +68,11 @@ executable Maude file.
 
 
 <figure>
-<img src="images/workspace.png" width="80%" height="80%">
+<img src="../images/workspace.png" width="40%" height="40%">
 <figcaption style="font-size: 14px">Workspace</figcaption>
 </figure>
 <figure>
-<img src="images/maude_preferences.png" width="80%" height="80%">
+<img src="../images/maude_preferences.png" width="40%" height="40%">
 <figcaption style="font-size: 14px">Maude Preferences</figcaption>
 </figure>
 
