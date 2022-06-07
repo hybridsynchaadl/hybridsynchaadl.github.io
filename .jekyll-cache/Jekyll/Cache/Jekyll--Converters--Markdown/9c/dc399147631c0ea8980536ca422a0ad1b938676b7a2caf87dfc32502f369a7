@@ -1,8 +1,8 @@
-<p>
+I")	<p>
 This page explains the artifact for our paper: "An Extension of HybridSynchAADL
 and Its Application to Collaborating Autonomous UAVs" by J. Lee, K.  Bae, and
-P. C. Ölveczky. This page includes the HybridSynchAADL tool, case study model,
-and executable formal semantics.
+P. C. Ölveczky. The artifact includes the HybridSynchAADL tool, case study
+model, and Readme.txt file.
 </p>
 
 <h2>Complete AADL Specification for the Case Study</h2>
@@ -20,6 +20,11 @@ We also defines an executable formal semantic for this case study.
 <ul>
   <li><a href="https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0">semantics.zip</a></li>
 </ul>
+
+<p>
+To download our semantics, download and unzip the following semantics file:
+<a href="https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0">semantics.zip</a>
+</p>
 
 <h2>The HybridSynchAADL Tool</h2>
 <p>
@@ -51,3 +56,4 @@ executable Maude file.
 
 <p><br />
 <br /></p>
+:ET

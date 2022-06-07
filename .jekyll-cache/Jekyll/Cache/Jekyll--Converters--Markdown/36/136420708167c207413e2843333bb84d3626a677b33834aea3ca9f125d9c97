@@ -1,27 +1,25 @@
-<p>
+I"p<p>
 This page explains the artifact for our paper: "An Extension of HybridSynchAADL
 and Its Application to Collaborating Autonomous UAVs" by J. Lee, K.  Bae, and
-P. C. Ölveczky. This page includes the HybridSynchAADL tool, case study model,
-and executable formal semantics.
+P. C. Ölveczky. The artifact includes the HybridSynchAADL tool, case study
+model, and Readme.txt file.
 </p>
 
-<h2>Complete AADL Specification for the Case Study</h2>
+<h2>How to run the artifact in Ubuntu environment</h2>
 <p>
-The HybridSynchAADL model of the packet delivery system example from out paper
-is provided below.  The archive file contains AADL source code (in packages
-directory) and the requirement specification (in requirements directory).
+We explain how to install and run the artifact in Ubuntu environment. The artifact requires the following libraries:
 </p>
-<ul>
-  <li><a href="https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0">model.zip</a></li>
-</ul>
-<p>
-We also defines an executable formal semantic for this case study. 
-</p>
-<ul>
-  <li><a href="https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0">semantics.zip</a></li>
-</ul>
 
-<h2>The HybridSynchAADL Tool</h2>
+<p>
+To download our case study model <i>Packet Delivery Systems</i>, download and unzip the following model file:
+<a href="https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0">model.zip</a>
+</p>
+<p>
+To download our semantics, download and unzip the following semantics file:
+<a href="https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0">semantics.zip</a>
+</p>
+
+<h2>Setting up the HybridSynchAADL Tool</h2>
 <p>
 To install our hybridsynchaadl tool, download and unzip the following archive files:
 <a href="https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0">artifact.zip</a>
@@ -32,10 +30,10 @@ The artifact requires the following libraries:
   <li>Maude-SE: <a href="https://maude-se.github.io/">https://maude-se.github.io/</a></li>
 </ul>
 <p>
-In the artifact, HybridSynchAADL tool can be exeucted by double clicking 
+In the artifact, HybridSynchAADL tool can be exeucted by double clicking  located in the directory
 <code>/hybridsynchaadl/osate</code>. For the workspace, use the directory
 <code>/hybridsynchaadl/workspace</code>, which includes a HybridSynchAADL model
-<code>PacketDeliverySystem</code>. You also need to set the Maude path: in the top menu, go to
+<code>FourDronesSystem</code>. You also need to set the Maude path: in the top menu, go to
 <code>Window =&gt; Preferences =&gt; Maude Preferences</code>, and fill the Maude directory and
 executable Maude file.
 </p>
@@ -51,3 +49,4 @@ executable Maude file.
 
 <p><br />
 <br /></p>
+:ET

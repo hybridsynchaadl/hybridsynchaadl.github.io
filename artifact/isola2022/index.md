@@ -1,66 +1,41 @@
 ---
 layout: isola2022
 title: Artifact 
-slug: isola2022/
+slug: isola2022
 ---
 <p>
-This page explains the artifact for our paper: "HYBRIDSYNCHAADL: Modeling and
-Formal Analysis of Virtually Synchronous CPSs in AADL" by J. Lee, S. Kim, K.
-Bae, and P. C. Ölveczky. The artifact includes the HybridSynchAADL tool and the
-scripts for running the experiments in the paper.
-</p>
-<p>
-A VirtualBox image for the artifact is available at
-<a href="http://doi.org/10.5281/zenodo.4699760">http://doi.org/10.5281/zenodo.4699760</a>. In the virtual machine, the artifact is
-located in the directory <code>home/user/CAV2021-AeC</code>. See <code>Readme.txt</code> in the
-directory for more details about the tool and experiments.
+This page explains the artifact for our paper: "An Extension of HybridSynchAADL
+and Its Application to Collaborating Autonomous UAVs" by J. Lee, K.  Bae, and
+P. C. Ölveczky. This page includes the HybridSynchAADL tool, case study model,
+and executable formal semantics.
 </p>
 
-<h2>Running the Artifact in a non-VM Environment</h2>
+<h2>Complete AADL Specification for the Case Study</h2>
 <p>
-We explain how to install and run the artifact in a non-VM environment. The artifact requires the following libraries:
+The HybridSynchAADL model of the packet delivery system example from out paper
+is provided below.  The archive file contains AADL source code (in packages
+directory) and the requirement specification (in requirements directory).
 </p>
+* <a href="https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0">model.zip</a>
+<p>
+We also defines an executable formal semantic for this case study. 
+</p>
+* <a href="https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0">semantics.zip</a>
 
-* JAVA 8: <a href="https://openjdk.java.net/install/">https://openjdk.java.net/install/</a>
-* GNU parallel: <a href="https://www.gnu.org/software/parallel/">https://www.gnu.org/software/parallel/</a>
+
+<h2>The HybridSynchAADL Tool</h2>
 <p>
-To install our artifact, download and unzip the following archive file which
-contains the benchmark models and scripts in the directory <code>CAV2021-AeC</code>: 
-</p>
-<p>
+To install our hybridsynchaadl tool, download and unzip the following archive files:
 <a href="https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0">artifact.zip</a>
+The artifact requires the following libraries:
 </p>
-
-<p>
-The archive file already contains the following tools. Maude-SE is needed for
-the HybridSynchAADL tool, and the other tools are used for the experiments.
-</p>
-
+* JAVA 11+: <a href="https://openjdk.java.net/install/">https://openjdk.java.net/install/</a>
 * Maude-SE: <a href="https://maude-se.github.io/">https://maude-se.github.io/</a>
-* SpaceEx: <a href="http://spaceex.imag.fr/">http://spaceex.imag.fr/</a>
-* Flow\*: <a href="https://flowstar.org/">https://flowstar.org/</a>
-* HyComp: <a href="https://es-static.fbk.eu/tools/hycomp/">https://es-static.fbk.eu/tools/hycomp/</a>
-* dReach: <a href="http://dreal.github.io/">http://dreal.github.io/</a>
-
 <p>
-For Ubuntu, we provide a script (<code>set-up.sh</code>) to install Java 8 and GNU
-parallel, if not already installed.
-</p>
-
-<p>
-The above instructions also apply when creating a new VM image. For example,
-you can create a new VirtualBox image with Ubuntu installed,  unzip
-<code>artifact.zip</code> on the virtual machine, and run <code>set-up.sh</code> in the directory
-<code>CAV2021-AeC</code> to install the required libraries for the artifact.
-</p>
-
-
-<h2>Setting up the HybridSynchAADL Tool</h2>
-<p>
-In the artifact, the HybridSynchAADL tool is located in the directory
-<code>CAV2021-AeC/hybridsynchaadl/osate</code>. For the workspace, use the directory
-<code>CAV2021-AeC/hybridsynchaadl/workspace</code>, which includes a HybridSynchAADL model
-<code>FourDronesSystem</code>. You also need to set the Maude path: in the top menu, go to
+In the artifact, HybridSynchAADL tool can be exeucted by double clicking 
+<code>/hybridsynchaadl/osate</code>. For the workspace, use the directory
+<code>/hybridsynchaadl/workspace</code>, which includes a HybridSynchAADL model
+<code>PacketDeliverySystem</code>. You also need to set the Maude path: in the top menu, go to
 <code>Window => Preferences => Maude Preferences</code>, and fill the Maude directory and
 executable Maude file.
 </p>
@@ -68,11 +43,11 @@ executable Maude file.
 
 
 <figure>
-<img src="../images/workspace.png" width="40%" height="40%">
+<img src="../../images/workspace.png" max-width="40%" height="auto">
 <figcaption style="font-size: 14px">Workspace</figcaption>
 </figure>
 <figure>
-<img src="../images/maude_preferences.png" width="40%" height="40%">
+<img src="../../images/maude_preferences.png" max-width="40%" height="auto">
 <figcaption style="font-size: 14px">Maude Preferences</figcaption>
 </figure>
 
