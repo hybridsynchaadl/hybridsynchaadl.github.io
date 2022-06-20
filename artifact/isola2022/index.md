@@ -1,6 +1,6 @@
 ---
 layout: artifact
-title: Artifact 
+title: ISOLA 2022
 slug: artifact/isola2022/
 ---
 <p>
@@ -10,36 +10,15 @@ P. C. Ölveczky. This page includes the HybridSynchAADL tool, case study model,
 and executable formal semantics.
 </p>
 
-<h2>Abstract</h2>
-<p>
-Many collective adaptive systems consist of distributed nodes that communicate
-with each other and with their physical environments, but that logically should
-operate in a synchronous way. HybridSynchAADL is a recent modeling language and
-formal analysis tool for such virtually synchronous cyber-physical systems
-(CPSs). HybridSynchAADL leverages the Hybrid PALS equivalence to reduce the
-hard prob- lem of designing and verifying virtually synchronous CPSs—with
-asynchronous communication, network delays, imprecise local clocks, contin uous
-dynamics, etc.—to the much easier tasks of designing and verifying their
-underlying synchronous designs. The HybridSynchAADL modeling language is an
-annotated subset of the industrial modeling standard AADL, and
-Maude-with-SMT-based formal analysis of HybridSynchAADL models has been
-integrated into the OSATE tool environment for AADL. Up to now HybridSynchAADL
-has lacked important programming language features such as compound data types
-and user-defined functions. This makes it difficult to model advanced control
-logics of collective adaptive systems. In this paper, we extend the
-HybridSynchAADL language, its formal semantics, and its analysis tool to
-support array and record data types and user-defined functions. We apply our
-extension of HybridSynchAADL to design and analyze a collection of
-collaborating autonomous drones that adapt to their environments.
-</p>
-
-<h2>Complete AADL Specification for the Case Study</h2>
+## Complete AADL Specification for the Case Study ##
 <p>
 The HybridSynchAADL model of the packet delivery system example from out paper
 is provided below. The archive file contains AADL source code (in packages
 directory) and the requirement specification (in requirements directory).
 </p>
 * <a href="https://www.dropbox.com/sh/o7f2igk8s0zktu5/AAD8TApEPw_ecr2-m_6bRMlqa?dl=0">model.zip</a>
+
+## Formal Semantics for HybridSynchAADL ##
 <p>
 We also defines an executable formal semantic for this case study. This
 semantics is significantly adapted from <a href="https://hybridsynchaadl.github.io/artifact/isola2022/sttt-paper.pdf">this paper</a> and extended to deal
@@ -51,8 +30,8 @@ with array data types, arrays of components and ports, and subprograms.
 <h2>The HybridSynchAADL Tool</h2>
 <p>
 To install our hybridsynchaadl tool, download and unzip the following archive files:
-<a href="https://www.dropbox.com/sh/rqhw6v8zgyxso84/AADPsfTjIGR8gFxClVxtIRKja?dl=0">artifact.zip</a>
-The artifact requires the following libraries:
+<a href="https://www.dropbox.com/sh/rqhw6v8zgyxso84/AADPsfTjIGR8gFxClVxtIRKja?dl=0">tool.zip</a>
+The hybridsynchaadl tool requires the following libraries:
 </p>
 * JAVA 11+: <a href="https://openjdk.java.net/install/">https://openjdk.java.net/install/</a>
 * Maude-SE: <a href="https://maude-se.github.io/">https://maude-se.github.io/</a>

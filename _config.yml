@@ -18,6 +18,8 @@ header:
       slug: /models
     - name: Documentation
       slug: /document
+    - name: Publications
+      slug: /publications
 
 footer:
   show_powered_by: false

@@ -1,6 +1,6 @@
 ---
 layout: artifact
-title: Artifact 
+title: CAV 2021
 slug: artifact/cav2021/
 ---
 <p>

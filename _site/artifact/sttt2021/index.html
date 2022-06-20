@@ -24,22 +24,22 @@
   
 
   <!-- Primary Meta Tags -->
-  <title>HybridSynchAADL | Artifact</title>
-  <meta name="title" content="HybridSynchAADL | Artifact"/>
+  <title>HybridSynchAADL | STTT 2021</title>
+  <meta name="title" content="HybridSynchAADL | STTT 2021"/>
   <meta name="description" content="Bay is a minimal Jekyll Theme."/>
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:site_name" content="HybridSynchAADL | Artifact"/>
+  <meta property="og:site_name" content="HybridSynchAADL | STTT 2021"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="http://localhost:4000/artifact/sttt2021/"/>
-  <meta property="og:title" content="HybridSynchAADL | Artifact"/>
+  <meta property="og:title" content="HybridSynchAADL | STTT 2021"/>
   <meta property="og:description" content="Bay is a minimal Jekyll Theme."/>
   <meta property="og:image" content="http://localhost:4000"/>
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image"/>
   <meta property="twitter:url" content="http://localhost:4000/artifact/sttt2021/"/>
-  <meta property="twitter:title" content="HybridSynchAADL | Artifact"/>
+  <meta property="twitter:title" content="HybridSynchAADL | STTT 2021"/>
   <meta property="twitter:description" content="Bay is a minimal Jekyll Theme."/>
   <meta property="twitter:image" content="http://localhost:4000"/>
   
@@ -96,6 +96,12 @@
             Documentation
           </a>
         
+          
+          
+          <a class="page-link" href="http://localhost:4000/publications">
+            Publications
+          </a>
+        
       </div>
     </nav>
   </div>
@@ -105,85 +111,78 @@
     <div class="page-content">
       <div class="wrapper">
         <div class="work">
-          <h1 class="page-heading">Artifact</h1>
+          <h1 class="page-heading">STTT 2021</h1>
           <p>
 This page explains the artifact for our paper: "Modeling and
 Formal Analysis of Virtually Synchronous CPSs in AADL" by J. Lee, K. Bae, 
 , P. C. Ölveczky, S. Kim, M, Kang. The artifact includes the HybridSynchAADL tool and the
 scripts for running the experiments in the paper. Apart from providing
-significantly more detail, this paper extends our conference tool paper. The
-artifact used in conference tool paper can be found in this <a href="http://localhost:4000/artifact_cav2021">link</a>
-</p>
-<p>
-A VirtualBox image for the artifact is available at
-<a href="https://www.dropbox.com/sh/cmwun189of2ia77/AADskPa3wy4lGCh-W3fRei2Ia?dl=0">the dropbox link</a>. In the virtual machine, the artifact is
-located in the directory <code>home/user/STTT-Artifact</code>. See <code>Readme.txt</code> in the
-directory for more details about the tool and experiments.
+significantly more detail, this paper extends our conference tool paper. 
 </p>
 
-<h2>Running the Artifact in a non-VM Environment</h2>
+<h2>Formal semantics for HybridSynchAADL</h2>
 <p>
-We explain how to install and run the artifact in a non-VM environment. The artifact requires the following libraries:
+We define the formal semantics of HybridSynchAADL using Maude with SMT solving.
+HybridSynchAADL components are symbolically represented as Maude terms with SMT
+constraints. We thoroughly tested the formal semantics and the generated
+models. We developed a test suite for unit testing of the equations and rules
+in the formal semantics, and a test suite for system testing of the code
+generation and state merging. The test suites are located in
+<code>semantics/test</code>
 </p>
-
 <ul>
-  <li>JAVA 8: <a href="https://openjdk.java.net/install/">https://openjdk.java.net/install/</a></li>
-  <li>GNU parallel: <a href="https://www.gnu.org/software/parallel/">https://www.gnu.org/software/parallel/</a></li>
+  <li><a href="https://www.dropbox.com/sh/hwgudlrux7s5usd/AADcdwf53rDsMWKbm-u8pczOa?dl=0">semantics.zip</a></li>
 </ul>
-<p>
-To install our artifact, download and unzip the following archive file which
-contains the benchmark models and scripts in the directory <code>STTT-Artifact</code>: 
-</p>
-<p>
-<a href="https://www.dropbox.com/sh/25amqjgaya42l7y/AADVen70E8CqHUBTSxDLhDDAa?dl=0">artifact.zip</a>
-</p>
 
+<h2>Benchmark Models</h2>
 <p>
-The archive file already contains the following tools. Maude-SE is needed for
-the HybridSynchAADL tool, and the other tools are used for the experiments.
+In the paper, we analyzed HybridSynchAADL models: networked watertank,
+thermostat controllers, and rendezvous and formation control for distrubted
+drones. For other tools(SpaceEx, Flowstar, HyComp, and dReach), we encoded the
+synchronous designs of the HybridSynchAADL models as networks of hybrid
+automata. 
+</p>
+<ul>
+  <li><a href="https://www.dropbox.com/sh/rlhsoac86q5atxt/AACXNGpaNIrQCGuZJl2LTZa7a?dl=0">models.zip</a></li>
+</ul>
+
+<h2>HybridSynchAADL tool</h2>
+<p>
+To install our hybridsynchaadl tool, download and unzip the following archive files:
+<a href="https://www.dropbox.com/sh/6e7gt8iqtm1clf5/AABumu-9VhTPSvEmMEHFCiAca?dl=0">tool.zip</a>
+The artifact requires the following libraries:
 </p>
 
 <ul>
+  <li>JAVA 11+: <a href="https://openjdk.java.net/install/">https://openjdk.java.net/install/</a></li>
   <li>Maude-SE: <a href="https://maude-se.github.io/">https://maude-se.github.io/</a></li>
-  <li>SpaceEx: <a href="http://spaceex.imag.fr/">http://spaceex.imag.fr/</a></li>
-  <li>Flow*: <a href="https://flowstar.org/">https://flowstar.org/</a></li>
-  <li>HyComp: <a href="https://es-static.fbk.eu/tools/hycomp/">https://es-static.fbk.eu/tools/hycomp/</a></li>
-  <li>dReach: <a href="http://dreal.github.io/">http://dreal.github.io/</a></li>
 </ul>
 
-<p>
-For Ubuntu, we provide a script (<code>set-up.sh</code>) to install Java 8 and GNU
-parallel, if not already installed.
-</p>
-
-<p>
-The above instructions also apply when creating a new VM image. For example,
-you can create a new VirtualBox image with Ubuntu installed,  unzip
-<code>artifact.zip</code> on the virtual machine, and run <code>set-up.sh</code> in the directory
-<code>STTT-Artifact</code> to install the required libraries for the artifact.
-</p>
-
-<h2>Setting up the HybridSynchAADL Tool</h2>
 <p>
 In the artifact, the HybridSynchAADL tool is located in the directory
-<code>STTT-Artifact/hybridsynchaadl/osate</code>. For the workspace, use the directory
-<code>STTT-Artifact/hybridsynchaadl/workspace</code>, which includes a HybridSynchAADL model
+<code>hybridsynchaadl/osate</code>. For the workspace, use the directory
+<code>hybridsynchaadl/workspace</code>, which includes a HybridSynchAADL model
 <code>FourDronesSystem</code>. You also need to set the Maude path: in the top menu, go to
 <code>Window =&gt; Preferences =&gt; Maude Preferences</code>, and fill the Maude directory and
 executable Maude file.
 </p>
 
 <figure>
-<img src="../../images/workspace.png" max-width="40%" height="auto" />
-<figcaption style="font-size: 14px">Workspace</figcaption>
-</figure>
-<figure>
 <img src="../../images/maude_preferences.png" max-width="40%" height="auto" />
 <figcaption style="font-size: 14px">Maude Preferences</figcaption>
 </figure>
 
-<p><br />
-<br /></p>
+<p><br /></p>
+
+<h2> Artifact </h2>
+<p>
+We provide the artifact to reproduce the results in our paper. The artifact
+includes semantics, models, tools, scripts to automatically perform experiments
+and Readme.txt.
+</p>
+<ul>
+  <li><a href="https://www.dropbox.com/sh/25amqjgaya42l7y/AADVen70E8CqHUBTSxDLhDDAa?dl=0">artifact</a></li>
+</ul>
 
         </div>
       </div>
