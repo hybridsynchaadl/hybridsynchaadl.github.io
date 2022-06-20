@@ -1,7 +1,7 @@
 ---
-layout: isola2022
+layout: artifact
 title: Artifact 
-slug: isola2022/
+slug: artifact/isola2022/
 ---
 <p>
 This page explains the artifact for our paper: "An Extension of HybridSynchAADL

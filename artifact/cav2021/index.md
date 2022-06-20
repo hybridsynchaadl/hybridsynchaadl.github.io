@@ -1,20 +1,18 @@
 ---
-layout: sttt
+layout: artifact
 title: Artifact 
-slug: sttt
+slug: artifact/cav2021/
 ---
 <p>
-This page explains the artifact for our paper: "Modeling and
-Formal Analysis of Virtually Synchronous CPSs in AADL" by J. Lee, K. Bae, 
-, P. C. Ölveczky, S. Kim, M, Kang. The artifact includes the HybridSynchAADL tool and the
-scripts for running the experiments in the paper. Apart from providing
-significantly more detail, this paper extends our conference tool paper. The
-artifact used in conference tool paper can be found in this <a href="http://localhost:4000/artifact_cav2021">link</a>
+This page explains the artifact for our paper: "HYBRIDSYNCHAADL: Modeling and
+Formal Analysis of Virtually Synchronous CPSs in AADL" by J. Lee, S. Kim, K.
+Bae, and P. C. Ölveczky. The artifact includes the HybridSynchAADL tool and the
+scripts for running the experiments in the paper.
 </p>
 <p>
 A VirtualBox image for the artifact is available at
-<a href="https://www.dropbox.com/sh/cmwun189of2ia77/AADskPa3wy4lGCh-W3fRei2Ia?dl=0">the dropbox link</a>. In the virtual machine, the artifact is
-located in the directory <code>home/user/STTT-Artifact</code>. See <code>Readme.txt</code> in the
+<a href="http://doi.org/10.5281/zenodo.4699760">http://doi.org/10.5281/zenodo.4699760</a>. In the virtual machine, the artifact is
+located in the directory <code>home/user/CAV2021-AeC</code>. See <code>Readme.txt</code> in the
 directory for more details about the tool and experiments.
 </p>
 
@@ -27,10 +25,10 @@ We explain how to install and run the artifact in a non-VM environment. The arti
 * GNU parallel: <a href="https://www.gnu.org/software/parallel/">https://www.gnu.org/software/parallel/</a>
 <p>
 To install our artifact, download and unzip the following archive file which
-contains the benchmark models and scripts in the directory <code>STTT-Artifact</code>: 
+contains the benchmark models and scripts in the directory <code>CAV2021-AeC</code>: 
 </p>
 <p>
-<a href="https://www.dropbox.com/sh/25amqjgaya42l7y/AADVen70E8CqHUBTSxDLhDDAa?dl=0">artifact.zip</a>
+<a href="https://www.dropbox.com/sh/yqdb2vkkf2clhti/AACCsILskApL3s8MsBHN52sPa?dl=0">artifact.zip</a>
 </p>
 
 <p>
@@ -53,15 +51,15 @@ parallel, if not already installed.
 The above instructions also apply when creating a new VM image. For example,
 you can create a new VirtualBox image with Ubuntu installed,  unzip
 <code>artifact.zip</code> on the virtual machine, and run <code>set-up.sh</code> in the directory
-<code>STTT-Artifact</code> to install the required libraries for the artifact.
+<code>CAV2021-AeC</code> to install the required libraries for the artifact.
 </p>
 
 
 <h2>Setting up the HybridSynchAADL Tool</h2>
 <p>
 In the artifact, the HybridSynchAADL tool is located in the directory
-<code>STTT-Artifact/hybridsynchaadl/osate</code>. For the workspace, use the directory
-<code>STTT-Artifact/hybridsynchaadl/workspace</code>, which includes a HybridSynchAADL model
+<code>CAV2021-AeC/hybridsynchaadl/osate</code>. For the workspace, use the directory
+<code>CAV2021-AeC/hybridsynchaadl/workspace</code>, which includes a HybridSynchAADL model
 <code>FourDronesSystem</code>. You also need to set the Maude path: in the top menu, go to
 <code>Window => Preferences => Maude Preferences</code>, and fill the Maude directory and
 executable Maude file.
@@ -70,11 +68,11 @@ executable Maude file.
 
 
 <figure>
-<img src="images/workspace.png" width="80%" height="80%">
+<img src="../../images/workspace.png" max-width="40%" height="auto">
 <figcaption style="font-size: 14px">Workspace</figcaption>
 </figure>
 <figure>
-<img src="images/maude_preferences.png" width="80%" height="80%">
+<img src="../../images/maude_preferences.png" max-width="40%" height="auto">
 <figcaption style="font-size: 14px">Maude Preferences</figcaption>
 </figure>
 

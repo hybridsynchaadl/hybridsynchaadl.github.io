@@ -15,7 +15,7 @@ header:
     - name: Download
       slug: /download
     - name: Benchmarks 
-      slug: /benchmark
+      slug: /models
     - name: Documentation
       slug: /document
 
