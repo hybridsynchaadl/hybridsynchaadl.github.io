@@ -3,15 +3,6 @@ layout: benchmark
 title: Publications
 slug: /publications
 ---
-- Rigorous Model Engineering of Multirate CPSs in Multirate HybridSynchAADL
-<br />
-<b>Jaehun Lee, Kyungmin Bae, Peter Csaba &Ouml;lveczky</b>
-<br />
-International Symposium On Leveraging Applications of Formal Methods, Verification and Validation, 2024
-<br />
-\[[artifact](https://www.dropbox.com/sh/25amqjgaya42l7y/AADVen70E8CqHUBTSxDLhDDAa?dl=0)\] 
-\[[artifact_web](https://hybridsynchaadl.github.io/artifact/isola2024)\]
-
 - Modeling and Formal Analysis of Virtually Synchronous Cyber-Physical Systems 
 <br />
 <b>Jaehun Lee, Kyungmin Bae, Peter Csaba &Ouml;lveczky, Sharon Kim, and Minseok Kang</b>
