@@ -16,16 +16,14 @@ The MR-HybridSynchAADL model of the packet delivery system example from out pape
 is provided below. The archive file contains AADL source code (in packages
 directory) and the requirement specification (in requirements directory).
 </p>
-* <a href="https://www.dropbox.com/sh/o7f2igk8s0zktu5/AAD8TApEPw_ecr2-m_6bRMlqa?dl=0">model.zip</a>
+* <a href="https://github.com/hybridsynchaadl/hybridsynchaadl.github.io.git">model.zip</a>
 
 ## Formal Semantics for MR-HybridSynchAADL ##
 <p>
 We also defines an executable formal semantic for this case study. This
-semantics is significantly adapted from <a href="https://hybridsynchaadl.github.io/artifact/isola2022/sttt-paper.pdf">this paper</a> and extended to deal
-with array data types, arrays of components and ports, and subprograms.
+semantics is significantly adapted from <a href="https://hybridsynchaadl.github.io/artifact/isola2022/sttt-paper.pdf">this paper</a>.
 </p>
-* <a href="https://www.dropbox.com/sh/sg2yi2a46ipm2lj/AAAPWFSfJKq1LIvFJ7e0wOtqa?dl=0">semantics.zip</a>
-
+* <a href="https://www.dropbox.com/scl/fi/n82su1xdsbjij3fncqano/semantics.zip?rlkey=1jfwqrslk1fyhyfvubz3vv6k9&st=l3t78qho&dl=0">semantics.zip</a> 
 
 <h2>The MR-HybridSynchAADL Tool</h2>
 <p>
