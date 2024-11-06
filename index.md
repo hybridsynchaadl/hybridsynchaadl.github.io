@@ -4,13 +4,16 @@ layout: home
 <p>
 
 
- <b>HybridSynchAADL</b> contains a modeling language and formal analysis tool for virtually synchronous cyber-physical systems with complex control programs, continuous behaviors, and bounded clock skews, network delays, and execution times.
+ <b>MR-HybridSynchAADL</b> contains a modeling language and formal analysis tool for virtually synchronous multirate cyber-physical systems, with complex control programs, continuous behaviors, and bounded clock skews, network delays, and execution times. 
 </p>
 <p>
- <b>HybridSynchAADL</b> leverages the Hybrid PALS equivalence, so that it is sufficient to model and verify the simpler underlying synchronous designs. 
+ <b>MR-HybridSynchAADL</b> modeling language specifies hierarchical multirate synchronous designs for distributed controllers interacting with continuous physical environments. 
 </p>
 <p>
- <b>HybridSynchAADL</b> models are given a formal semantics and analyzed using Maude with SMT solving, which allows users to represent advanced control programs and communication features in Maude, while capturing timing uncertainties and continuous behaviors symbolically with SMT solving. 
+ <b>MR-HybridSynchAADL</b> semantics define both a symbolic semantics for the synchronous composition of the components, capturing continuous behaviors and timing uncertainties, and a concrete semantics, for simulation, in rewriting logic, in a modular way to ensure consistency between these two semantics.
+</p>
+<p>
+ <b>MR-HybridSynchAADL</b> tool provides randomized simulation and Maude-with-SMT-based reachability analysis, and is fully integrated into the OSATE tool environment for the avionics modeling standard AADL.
 </p>
 
 

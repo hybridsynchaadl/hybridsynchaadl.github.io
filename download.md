@@ -3,29 +3,29 @@ layout: download
 slug: /download
 ---
 
-## Download HybridSynchAADL Tool
+## Download MR-HybridSynchAADL Tool
 
-The HybridSynchAADL tool is an [OSATE2](https://osate.org/) plugin. The tool is
+The MR-HybridSynchAADL tool is an [OSATE2](https://osate.org/) plugin. The tool is
 available for Linux (64-bit) and macOS (64-bit). The following libraries are
 required. 
 
-* JAVA 8: <a href="https://openjdk.java.net/install/">https://openjdk.java.net/install/</a>
+* JRE-17: <a href="https://openjdk.java.net/install/">https://openjdk.java.net/install/</a>
 * Maude-SE: <a href="https://maude-se.github.io/">https://maude-se.github.io/</a>
 
-### 1. Download HybridSynchAADL Integrated with OSATE2
-* [HybridSynchAADL 1.0 for Linux (64-bit)](https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0)
-* [HybridSynchAADL 1.0 for macOS (64-bit)](https://www.dropbox.com/sh/ua5zds97b2j7n01/AAAjLUBHNAzb7impOw99ryAfa?dl=0)
+### 1. Download MR-HybridSynchAADL Integrated with OSATE2
+* [MR-HybridSynchAADL 1.0 for Linux (64-bit)](https://www.dropbox.com/sh/bjxdii83bpcqte1/AACnSTH5s71vWLlb0NbHvTAoa?dl=0)
+* [MR-HybridSynchAADL 1.0 for macOS (64-bit)](https://www.dropbox.com/sh/ua5zds97b2j7n01/AAAjLUBHNAzb7impOw99ryAfa?dl=0)
 
 Note that the OSATE2 binary for macOS is not signed. To correct this issue, run
 the following command: 
 
 ```$ sudo xattr -rd com.apple.quarantine osate2.app/ ```
 
-### 2. Install HybridSynchAADL into Existing OSATE2
+### 2. Install MR-HybridSynchAADL into Existing OSATE2
 
 
 <p>
-The HybridSynchAADL tool is composed of three plugin packages (three jar files). Download 
+The MR-HybridSynchAADL tool is composed of three plugin packages (three jar files). Download 
 <a href="https://tinyurl.com/4v6d46ue">plugins.zip</a> and unzip the archive
 file.
 </p>
@@ -47,7 +47,7 @@ The <code>bundles.info</code> file is located in:
 * macOS : osate2.app/Contents/Eclipse/configuration/org.eclipse.equinox.simpleconfigurator
 
 
-When you run the HybridSynchAADL tool, you can see the following window.
+When you run the MR-HybridSynchAADL tool, you can see the following window.
 
 ![OSATE](https://raw.githubusercontent.com/hybridsynchaadl/HybridSynchAADL/master/images/start.png)
 

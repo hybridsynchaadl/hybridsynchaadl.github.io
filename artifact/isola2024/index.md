@@ -16,7 +16,7 @@ The MR-HybridSynchAADL model of the packet delivery system example from out pape
 is provided below. The archive file contains AADL source code (in packages
 directory) and the requirement specification (in requirements directory).
 </p>
-* <a href="https://www.dropbox.com/scl/fi/sasm9gt4v49mm52f1ic5d/PacketDelivery_2024_Multirate.zip?rlkey=h7lhtejwhv5fk2dowiffpivlm&st=ccyh7z64&dl=0">model.zip</a>
+* <a href="https://www.dropbox.com/scl/fi/eern4s3y3bjj3unuxhvzz/PacketDelivery_Multirate.zip?rlkey=v0yh7h5ok2fnkjhlqu8dpwrwb&st=6u4ubzzs&dl=0">model.zip</a>
 
 ## Formal Semantics for MR-HybridSynchAADL ##
 <p>
