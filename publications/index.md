@@ -8,7 +8,7 @@ slug: /publications
 <br />
 <b>Jaehun Lee, Kyungmin Bae and Peter Csaba &Omul;lveczky</b>
 <br />
-International Symposium on Leveraing Applications of Formal Methods, Verification and Validation, 2022
+International Symposium on Leveraing Applications of Formal Methods, Verification and Validation, 2024
 <br />
 \[[artifact]()\]
 \[[artifact_web](https://hybridsynchaadl.github.io/artifact/isola2024)\]
